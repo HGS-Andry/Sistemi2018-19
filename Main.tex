@@ -1,0 +1,41 @@
+\documentclass[a4paper, 12pt, italian]{book}
+\usepackage{mathptmx}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{bbm}
+\usepackage{enumerate}
+\usepackage[margin=2cm]{geometry}
+
+% voglio compilare sono cap1_Intro.tex
+\includeonly{./capitoli/cap1_Intro}
+% NB \includeonly va prima di \begin{document}
+\begin{document}
+
+\begin{titlepage}
+
+\begin{center}
+\LARGE{Università degli Studi di Verona}\\
+\line(1,0){450}\\
+\vspace{10em}
+\Huge{\textbf{Appunti di Sistemi}}\\
+\vspace{14em}
+\huge{di Wilma Valentino}\\
+\line(1,0){450}\\
+\LARGE{2019}\\
+\end{center}
+
+\end{titlepage}
+
+\tableofcontents
+
+\include{./capitoli/cap1_Intro}
+\include{./capitoli/cap2_Gni}
+
+
+\end{document}
