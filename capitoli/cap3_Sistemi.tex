@@ -1,12 +1,124 @@
-\documentclass[10pt,a4paper]{article}
-\usepackage[utf8]{inputenc}
-\usepackage[italian]{babel}
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{amssymb}
-\usepackage{graphicx}
-\begin{document}
-	\section{Sistemi}
-	\paragraph{Sistemi a tempo continuo}
-	\subparagraph{Proprietà dei sistemi a tempo continuo}
-\end{document}
+\chapter{Sistemi}
+\section{introduzione}
+%TODO
+
+
+
+\section{Stabilità}
+%TODO
+\subsection{Stabilità asintotica}
+Si studia la stabilità asintotica di sistemi descritti dall'equazione %TODO: aggiungere link all'equazione (1)
+
+\begin{theorem}
+	Il sistema % TODO: aggiungere link all'equazione (1) %
+	è asintoticamente se per ogni scelta delle consizioni iniziali:
+	\begin{equation*}
+		\lim_{t \to \infty}v_l(t)=0
+		\Leftrightarrow\text{tutti i modi elementari } m(t)=e^{\lambda t}\frac{t^l}{t!}\text{ sono convergenti a $0$}
+		\Leftrightarrow Re(\lambda_i)<0,\forall i = \overline{1,r}
+	\end{equation*}
+\end{theorem}
+%TODO: Aggiungere esempio filtro RL
+%TODO: Aggiungere esempio massa molla smorzatore
+
+%TODO
+
+\subsection{BIBO stabilità}
+%TODO
+
+\section{Modelli}
+%TODO
+
+\section{Risposta Libera}
+%TODO
+
+\section{Risposta Impulsiva}
+\begin{definition}
+	Dato un sistema descritto dall'equazione %TODO: aggiungere link all'equazione (1)
+	, inizialmente a riposo, definiamo la risposta impulsiva e indichiamo con $h(t)$ l'uscita del sistema in corrispondenza dell'impulso unitario $\delta (t)$ in ingresso.
+\end{definition}
+
+\begin{definition}
+	Date due funzioni $v_1(t)$ e $v_2(t) \quad t\in\mathbb{R} $ definiamo il prodotto (o integrale) di convoluzione come:
+	\begin{equation*}
+		(v_1 * v_2)(t) 
+		= \int_{-\infty}^{\infty}v_1(\tau)v_2(\tau - t)\,d\tau 
+		= \int_{-\infty}^{\infty}v_1(t - \tau)v_2(\tau )\,d\tau
+	\end{equation*}
+	Proprietà
+	\begin{enumerate}
+		\item $v_1 * v_2 = v_2 * v_1 $ (commutatività)
+		\item $(v_1 * v_2) * v_3  = v_1 * (v_2 * v_3) $ (associatività)
+		\item $v_1 * (v_2 + v_3)  = v_1 * v_2 + v_1 * v_3)$ (distributività)
+	\end{enumerate}
+\begin{oss}
+	$(v *\delta)(t)\overset{def}{=} \int_{-\infty}^{\infty}v(\tau)\delta(t - \tau)\,d\tau = v(t)$ (proprietà di riproducibilità dell'impulso)
+\end{oss}
+\end{definition}
+%TODO: Aggiugnere immagine con sistemi a blocchi? Mi pare una ripetizione
+%TODO: non so come definire questa parte se è una dimostrazione o un teorema
+Tenendo conto che $h(t)=0$ per $t<0$ (causalità) avremo:
+\begin{equation*}
+	\int_{-\infty}^{\infty}h(\tau)u(t - \tau)\,d\tau 
+	= \int_{-\infty}^{t^+}h(t - \tau)u(\tau)\,d\tau
+\end{equation*}
+\begin{proof}
+ponendo:  $t-\tau = s \Rightarrow d\tau = - ds 
+\qquad \tau = 0^-  \Rightarrow s+t^+ 
+\qquad \tau=\infty \Rightarrow s = -\infty$
+\[
+%TODO controllare gil estremi dell'integrale
+\int_{t^+}^{\infty}h(t-s)u(s)\,-ds 
+=-\int_{t^+}^{\infty}h(t-s)u(s)\,ds
+=\int_{-\infty}^{t^+}h(t-s)u(s)\,ds
+\qedhere
+\]
+\end{proof}
+
+proprieta:
+La risposta in uscita del sistema%TODO: aggiungere link all'equazione (1)
+, inizialmente a riposo, di risposta impulsiva $h(t)\quad t\in\mathbb{R}$ in corrispondenza a un ingresso $u(t)\quad t\in\mathbb{R}$, se esiste, è data da:
+\[
+v(t)=(h*u)(t) = \int_{0^-}^{\infty}h(\tau)u(t - \tau)\,d\tau
+= \int_{-\infty}^{t^+}h(t - \tau)u(\tau)\,d\tau
+\]
+in particolare la risposta forzata ad un ingresso $u(t)\quad t\in\mathbb{R} \quad u(t)=0 , t<0$ è:
+\[
+\int_{0^-}^{t^+}h(t - \tau)u(\tau)\,d\tau 
+\quad\text{oppure}\quad
+\int_{0^-}^{t^+}h(\tau)u(t - \tau)\,d\tau 
+\]
+
+%TODO anche qui non so cosa sia
+sostituisco $\delta (t)$ in %TODO: aggiungere link all'equazione (1)
+\begin{equation}
+	a_n \frac{d^{(n)} h(t)}{dt^n}+\dots+a_0\,h(t) = b_m \frac{d^{(n+1)} \delta(t)}{dt^{n+1}}+\dots+b_0\,\delta(t) %TODO n+1 oppure m+1?
+	\tag{7}\label{equation 7}
+\end{equation}
+Studiamo l'evoluzione forzata sull'orizzonte temporale $(0,+\infty)$ %TODO aggiungere disegno?
+\[
+	h(0) = \frac{dh(t)}{dt}\bigg\vert_{t=0^-}
+	=\frac{d^{(n-1)}h(t)}{dt^{n-1}}\bigg\vert_{h=0^-}
+	= 0
+	\delta(t) = 0 \qquad\text{per } t>0
+\]
+\begin{equation}
+	\overset{\eqref{equation 7}}{\Rightarrow}a_n \frac{d^{(n)} h(t)}{dt^n}+\dots+a_0\,h(t) = 0 
+	\tag{8}\label{equation 8}
+\end{equation}
+	
+ %TODO controlla formula
+\begin{oss}
+	$\eqref{equation 8} \Rightarrow h (t)$ è una combinazione lineare di tutti i modi elementari ottenuti dalla soluzione dell'equazione caratteristica del sistema%TODO: aggiungere link all'equazione (1)
+	in cui si aggiunge un termine impulsivo soltanto nei sistemi in cui $n=m$:
+	\begin{equation}
+		h(t)=0 \text{ per } t<0 \Rightarrow h(t) = h(t)\delta_{-1} (t)
+		\Rightarrow h(t)= d_0 \delta(t) + \sum_{i=1}^{r}\sum_{l=0}^{\mu_i-1}d_{i,l} \,e^{\lambda_it}\frac{t^l}{t!}\delta_{-1} (t)
+		\tag{9}\label{equation 9}
+	\end{equation}
+\end{oss}
+
+%TODO
+
+\section{Risposta Forzata}
+%TODO

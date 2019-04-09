@@ -1,0 +1,146 @@
+\documentclass[a4paper, 12pt, italian]{book}
+\usepackage{mathptmx}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{bbm}
+\usepackage{enumerate}
+\usepackage[margin=2cm]{geometry}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+
+\begin{document}
+
+\begin{titlepage}
+
+\begin{center}
+\Huge{\textbf{Strutture e funzioni comuni}}\\
+\end{center}
+
+\end{titlepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Per compilare un solo capitolo
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Ricordo che se voglio compilare un solo capitolo devo mettere
+% \includeonly{./capitoli/cap1_Introduzione}
+% e \includeonly va prima di \begin{document}
+
+% dopo \end{titlepage}
+% dobbiamo mettere tutti gli include 
+% 
+%\include{./capitoli/cap1_Introduzione}
+%\include{./capitoli/cap2_Segnali}
+%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Per vedere i numeri di riga
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Opzioni -> Configura TeXstudio
+% Visualizza opzioni avanzate
+% Editore avanzato
+% Visualizza numeri di riga -> Tutti
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Per le immagini .png io ho usato
+%%% Potete usare questa immagine come modello di sistema
+%%% ho usato paint per farla <3
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Per le immagini: esempio modello di sistema}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.7\linewidth]{immagini/sistema2}
+	\caption{ modello di un sistema come scatola nera}
+	\label{fig:sistema}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Modello entrata e uscita
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Modello entrata e uscita:}
+\begin{equation*}
+\sum\limits_{i=0}^n a_{i} \frac{ d^{i} v }{ dt^{i}  } = \sum\limits_{i=0}^m b_{i} \frac{ d^{i} u }{ dt^{i}  }
+\end{equation*}
+con $u$ e $v$ funzioni con dominio uguale a $\mathbb{R}$. In generale abbiamo $n\geq m$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Funzione gradino
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Funzione gradino e immagine:}
+\begin{equation*}
+u(n)=
+\begin{cases} 
+1, & \mbox{se }n\geq 0 \\ 
+0, & \mbox{altrimenti}
+\end{cases} 
+\end{equation*}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.5]{immagini/gradino}
+	\caption{ La funzione gradino (unit step) come input }
+	\label{fig: Unit step}
+\end{figure}
+
+\pagebreak
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Immagine del piano complesso da modificare se volete
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Piano complesso}
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=1.2]{immagini/pianoComplesso}
+	\caption{ Piano complesso }
+	\label{fig: piano complesso}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Struttura di un teorema
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Teorema}
+
+% Ipotesi e tesi
+Se $f$ è continua e
+\begin{equation*}
+F(x)=\int_a^x f(t)\,dt
+\end{equation*}
+allora
+\begin{equation*}
+F’(x)=f(x)
+\end{equation*}
+
+
+% poi la dimostrazione
+\begin{proof}[Dim]
+	\begin{equation*}
+	\begin{split}
+	\mathscr{L} & = ciaoMamma \\
+	& = gniiii
+	\end{split}
+	\end{equation*}
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Varie funzioni e convenzioni
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{funzioni e convenzioni}
+Re() %Parte reale
+v_1(t) %uscita v1
+t\in\mathbb{R} %t appartiene a R
+* % simbolo di convoluzione
+\overset{def}{=} %uguale per definizione
+h(0) = \frac{dh(t)}{dt}\bigg\vert_{t=0^-} %derivata in t=0- con barra verticale
+
+
+
+
+
+
+
+\end{document}

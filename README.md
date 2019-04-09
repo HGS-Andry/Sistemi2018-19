@@ -10,9 +10,9 @@
    - Segnali Elementari a tempo discreto
  - 3 Sistemi (Andrea e Riccardo)
    - Introduzione
-   - Stabilit√†
-     - Stabilit√† asintotica
-     - BIBO stabilit√†
+   - Stabilit‡
+     - Stabilit‡ asintotica
+     - BIBO stabilit‡†
    - Modelli
    - Risposta Libera
    - Risposta Impulsiva
@@ -23,12 +23,12 @@
  
 
 ### begin
- - def: definizioni generali
+ - definition: definizioni generali
  - axiom: assioma
  - theorem :ipotesi pi√π tesi e lemma (formula)
    - proof : dimostrazione
  - example : esempi
- - esercizi: esercizi
+ - exercise: esercizi
  - oss: osservazione del professore
  - nb: nota bene personali
  - matlab: esempi di matlab

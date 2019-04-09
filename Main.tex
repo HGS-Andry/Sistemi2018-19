@@ -11,10 +11,32 @@
 \usepackage{bbm}
 \usepackage{enumerate}
 \usepackage[margin=2cm]{geometry}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Definizione struttura
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newenvironment{theorem}{Teorema: }{}
+\newenvironment{exercise}{Esercizio:}{}				  
+\newenvironment{definition}{Definizione: }{}
+\newenvironment{oss}{Osservazione: }{}		
+\newenvironment{example}{Esempio:}{}		
+%\newenvironment{proof}{Dim:}{}	
+
+
 
 % voglio compilare sono cap1_Intro.tex
-\includeonly{./capitoli/cap1_Intro}
+%\includeonly{./capitoli/cap3_Sistemi}
 % NB \includeonly va prima di \begin{document}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%Inizio documento
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 \begin{document}
 
 \begin{titlepage}
@@ -25,7 +47,7 @@
 \vspace{10em}
 \Huge{\textbf{Appunti di Sistemi}}\\
 \vspace{14em}
-\huge{di Wilma Valentino}\\
+\Large{di Wilma Valentino, Ivan Piazza, Laura ???, Riccardo Torre, Andrea Dall'Alba}\\
 \line(1,0){450}\\
 \LARGE{2019}\\
 \end{center}
@@ -34,8 +56,9 @@
 
 \tableofcontents
 
-\include{./capitoli/cap1_Intro}
-\include{./capitoli/cap2_Gni}
+\include{./capitoli/cap1_Introduzione}
+\include{./capitoli/cap2_Segnali}
+\include{./capitoli/cap3_Sistemi}
 
 
 \end{document}
