@@ -1,6 +1,131 @@
 \chapter{Sistemi}
-\section{introduzione}
+\section{Sistemi a tempo continuo}
+%TODO immagine e descrizione?
+\section{Proprietà dei sistemi a tempo continuo}
+\subsection{Linearità}\label{sist_prop_Lin}  
+	\[
+	\alpha u_1+\beta u_1 \overset{\text{sistema}}{\longmapsto} \alpha v_1+\beta v_2
+	\]
+	dove $ u_1 \overset{\text{sistema}}{\longmapsto} v_1$ e $u_2\overset{\text{sistema}}{\longmapsto} v_2$
+	
+\subsection{Tempo invarianza} \label{sist_prop_TIn}
+	\[
+	u(t-\tau) \overset{\text{sistema}}{\longmapsto} v(t-\tau)
+	\]
+	\begin{definition}
+		I sistemi che soddisfano \ref{sist_prop_Lin} e \ref{sist_prop_TIn} li chiameremo sistemi LTI
+	\end{definition}
+
+ \subsection{Causalità (Sistema non anticipatorio):} \label{sist_prop_cau}
+	
+	L'effetto non precede la causa (la causa anticipa l'effetto)
+	
+	\begin{oss}
+		Ci sarà sempre un istante iniziale $t_0$ a partire da cui studieremo il sistema
+		%TODO non sono sicuro
+	\end{oss}
+		\[
+		\Leftrightarrow \exists \,t_0 \in \mathbb{R} \quad t.c. \quad u(t)=0 \quad t<t_0
+		\Rightarrow v(t)=0 \quad t<t_0
+		\quad t_0 =0 \quad \text{per Tempo Invarianza (TI)}
+	\]
+	%TODO aggiungere disegno?
+\subsection{Stabilità BIBO (Bounded Input Bounded Output)}\label{sist_prop_BIBOstab}
+	
+	Per sistemi causali (da un entrata limitata c'è un' uscita limitata)
+	\[
+	\begin{split}
+		\forall t \in [t_0, + \infty) \subseteq \mathbb{R} \qquad \exists \, M_u >0 \quad t.c. \quad \lvert u(t) \rvert < M_u \\
+		\Rightarrow \exists \, M_v > 0 \quad t.c. \quad \forall t \in [t_0, + \infty) \quad t.c. \quad \lvert v(t) \rvert < M_v\\
+	\end{split}		
+	\]
+	%TODO aggiungere disegno
+	
+\subsection{Stabilità asintotica}
+	Se $\exists \, t_0 \quad t.c. \quad u(t)=0, \quad \forall t \ge t_0 \Rightarrow \lim_{t \to +\infty} v(t)=0$\\
+	In assenza di sollecitazioni in ingresso l'uscita converge a zero asintoticamente: $\lim_{t \to \infty} v(t)=0$
+	%TODO: aggiungere immagini?
+	
+%TODO esempi di modelli di equaz. differenziali
+
+	
+\section{Modelli}
+
+In generale un modello SISO è descritto da un'equazione differenziale a coefficienti costanti di ordine $n$.
+%TODO aggiungiamo di nuovo la formula 1?
+\begin{equation}
+\begin{split}
+	a_n \frac{d^{(n)} v(t)}{dt^n} 
+		+ a_{n-1} \frac{d^{(n-1)} v(t)}{dt^{n-1}} 
+		+ \dots 
+		+ a_1 \frac{dv(t)}{dt} 
+		+ a_0\,v(t)\\
+	= b_m \frac{d^{(m)} u(t)}{dt^m}
+		+ b_{m-1} \frac{d^{(m-1)} u(t)}{dt^{m-1}} 
+		+ \dots
+		+ b_1 \frac{du(t)}{dt} 
+		+ b_0\,u(t)\\
+	a_n, b_m \ne 0	
+\end{split}
+	%TODO sarebbe carino dividerla decentemente	
+\tag{2}\label{equation 2}
+\end{equation}
+
+\begin{oss}
+	Nei casi pratici $n \ge m$	
+\end{oss}
+
+\begin{definition}
+	I sistemi in cui $n \ge m$ si chiamano propri. Se $n > m$ il sistema si chiamerà strettamente proprio.
+	%TODO enfatizzare proprio e strettametne proprio
+\end{definition}
+
+\begin{oss}
+	In generale l'uscita $v(t)$ del sistema % TODO: aggiungere link all'equazione (1) %
+	non è univoca. Se definiamo $n$ condizioni iniziali all'istante $t_0 = 0^-$ (per l'uscita $v$):
+	\begin{equation}
+		v(0^-) \,
+		,\, \frac{dv(t)}{dt}\bigg\vert_{t=0^-} \,
+		,\, \dots\,
+		,\, \frac{d^{(n-1)}v(t)}{dt^{n-1}}\bigg\vert_{t=0^-}
+		\tag{3}\label{equation 3}
+	\end{equation}
+	$\Rightarrow$ la soluzione di % TODO: aggiungere link all'equazione (1)
+	è unica.
+\end{oss}
+
+La soluzione dell'equazione % TODO: aggiungere link all'equazione (1)
+si ottiene come somma di una soluzione che dipende soltanto dalle condizioni iniiziali (\ref{equation 3}) chiamato evoluzione libera $v_l(t)$ e da una soluzione che dipende soltanto dall'ingresso $u(t)$ con condizioni iniziali tutte nulle, chiamato evoluzione forzata $v_f(t)$ %TODO sottolineare evoluzione forzata e libera
+\[
+v(t) = v_l(t) + v_f(t)
+\]
+L'evoluzione libera si ottiene dall'equazione omogenea associata
+\begin{equation}
+	a_n \frac{d^{(n)} v(t)}{dt^n} 
+		+ a_{n-1} \frac{d^{(n-1)} v(t)}{dt^{n-1}} 
+		+ \dots 
+		+ a_1 \frac{dv(t)}{dt} 
+		+ a_0\,v(t)
+	= 0
+	\tag{4}\label{equation 4}
+\end{equation}
+e le condizioni iniziali (\ref{equation 3}).
+
+Associamo a (\ref{equation 4}) l'equazione caratteristica. Otteniamo il polinomio caratteristico: %TODO enfatizza polinomio caratteristico
+\begin{equation}
+	a_n s^n 
+	+ a_{n-1} s^{n-1}
+	+ \dots
+	+ a_1 s^1
+	+ a_0
+	\tag{5}\label{equation 5}
+\end{equation}
+
+Per il toerema fondamentale dell'algebra, (\ref{equation 5}) ha $r$ radici  distinte $\lambda_1,\lambda_2, \dots, \lambda_r$ di molteplicità $\mu_1, \mu_2, \dots,\mu_r$ dove  $\mu_1 +\mu_2 + \dots + \mu_r = n$
+%TODO controlla
+
 %TODO
+
 
 
 
@@ -11,7 +136,7 @@ Si studia la stabilità asintotica di sistemi descritti dall'equazione %TODO: ag
 
 \begin{theorem}
 	Il sistema % TODO: aggiungere link all'equazione (1) %
-	è asintoticamente se per ogni scelta delle consizioni iniziali:
+	è asintoticamente stabile se per ogni scelta delle consizioni iniziali:
 	\begin{equation*}
 		\lim_{t \to \infty}v_l(t)=0
 		\Leftrightarrow\text{tutti i modi elementari } m(t)=e^{\lambda t}\frac{t^l}{t!}\text{ sono convergenti a $0$}
@@ -26,8 +151,6 @@ Si studia la stabilità asintotica di sistemi descritti dall'equazione %TODO: ag
 \subsection{BIBO stabilità}
 %TODO
 
-\section{Modelli}
-%TODO
 
 \section{Risposta Libera}
 %TODO
@@ -50,7 +173,8 @@ Si studia la stabilità asintotica di sistemi descritti dall'equazione %TODO: ag
 		\item $v_1 * v_2 = v_2 * v_1 $ (commutatività)
 		\item $(v_1 * v_2) * v_3  = v_1 * (v_2 * v_3) $ (associatività)
 		\item $v_1 * (v_2 + v_3)  = v_1 * v_2 + v_1 * v_3)$ (distributività)
-	\end{enumerate}
+	\end{enumerate}
+
 \begin{oss}
 	$(v *\delta)(t)\overset{def}{=} \int_{-\infty}^{\infty}v(\tau)\delta(t - \tau)\,d\tau = v(t)$ (proprietà di riproducibilità dell'impulso)
 \end{oss}
@@ -96,9 +220,9 @@ sostituisco $\delta (t)$ in %TODO: aggiungere link all'equazione (1)
 	\tag{7}\label{equation 7}
 \end{equation}
 Studiamo l'evoluzione forzata sull'orizzonte temporale $(0,+\infty)$ %TODO aggiungere disegno?
-\[
+\[ %TODO controlla formula, soprattutto t = 0-
 	h(0) = \frac{dh(t)}{dt}\bigg\vert_{t=0^-}
-	=\frac{d^{(n-1)}h(t)}{dt^{n-1}}\bigg\vert_{h=0^-}
+	=\frac{d^{(n-1)}h(t)}{dt^{n-1}}\bigg\vert_{t=0^-}
 	= 0
 	\delta(t) = 0 \qquad\text{per } t>0
 \]
