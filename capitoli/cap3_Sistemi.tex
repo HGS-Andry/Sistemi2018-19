@@ -1,6 +1,11 @@
 \chapter{Sistemi}
 \section{Sistemi a tempo continuo}
 %TODO immagine e descrizione?
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Proprietà dei sistemi a tempo continuo
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Proprietà dei sistemi a tempo continuo}
 \subsection{Linearità}\label{sist_prop_Lin}  
 	\[
@@ -12,6 +17,7 @@
 	\[
 	u(t-\tau) \overset{\text{sistema}}{\longmapsto} v(t-\tau)
 	\]
+	
 	\begin{definition}
 		I sistemi che soddisfano \ref{sist_prop_Lin} e \ref{sist_prop_TIn} li chiameremo sistemi LTI
 	\end{definition}
@@ -48,6 +54,10 @@
 	
 %TODO esempi di modelli di equaz. differenziali
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Modelli
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	
 \section{Modelli}
 
@@ -124,10 +134,33 @@ Associamo a (\ref{equation 4}) l'equazione caratteristica. Otteniamo il polinomi
 Per il toerema fondamentale dell'algebra, (\ref{equation 5}) ha $r$ radici  distinte $\lambda_1,\lambda_2, \dots, \lambda_r$ di molteplicità $\mu_1, \mu_2, \dots,\mu_r$ dove  $\mu_1 +\mu_2 + \dots + \mu_r = n$
 %TODO controlla
 
+La soluzione di (\ref{equation 4}) sarà:
+\begin{equation}
+	v_l(t)=  \sum_{i=1}^{r}\sum_{l=0}^{\mu_i-1}c_{i,l} \,e^{\lambda_it}\frac{t^l}{t!}
+	\tag{6}\label{equation 6}
+\end{equation}
+I coefficienti $c_{i,l}
+	\quad i=\overline{1,r} 
+	\quad l=\overline{o,\mu_{i-1}}
+	\quad \forall\mu_i \in \{\mu_1,\mu_2,\dots,\mu_r\} $ 
+	verranno determinati dalle condizioni iniziali (\ref{equation 3})
+	
+\begin{oss}
+	Se $\mu_1 = \mu_2 = \dots = \mu_r = 1$ allora:
+	\begin{equation}
+		v_l(t)=  \sum_{i=1}^{n}c_{i} \,e^{\lambda_it}
+	\end{equation}
+\end{oss}
+
+\begin{definition}
+	$m(t) = e^{\lambda_i t} \frac{t^l}{l!} $ si chiama modo elementare del sistema
+	%TODO enfatizzare modo elementare del sistema
+\end{definition}
 %TODO
 
-
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Stabilità
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Stabilità}
 %TODO
@@ -155,7 +188,13 @@ Si studia la stabilità asintotica di sistemi descritti dall'equazione %TODO: ag
 \section{Risposta Libera}
 %TODO
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Risposta impulsiva
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Risposta Impulsiva}
+
 \begin{definition}
 	Dato un sistema descritto dall'equazione %TODO: aggiungere link all'equazione (1)
 	, inizialmente a riposo, definiamo la risposta impulsiva e indichiamo con $h(t)$ l'uscita del sistema in corrispondenza dell'impulso unitario $\delta (t)$ in ingresso.
@@ -168,6 +207,7 @@ Si studia la stabilità asintotica di sistemi descritti dall'equazione %TODO: ag
 		= \int_{-\infty}^{\infty}v_1(\tau)v_2(\tau - t)\,d\tau 
 		= \int_{-\infty}^{\infty}v_1(t - \tau)v_2(\tau )\,d\tau
 	\end{equation*}
+	
 	Proprietà
 	\begin{enumerate}
 		\item $v_1 * v_2 = v_2 * v_1 $ (commutatività)
@@ -242,7 +282,35 @@ Studiamo l'evoluzione forzata sull'orizzonte temporale $(0,+\infty)$ %TODO aggiu
 	\end{equation}
 \end{oss}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Sistemi LTI generali definiti dalla risposta impulsiva
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Sistemi LTI generali definiti dalla risposta impulsiva}
+
+Possono essere non causali.
+Per i sistemi causali abbiamo $h(t) =0, t<0$.
+In generale possiamo descrivere un sistema SISO associando ad un ingresso $u(t), t \in \mathbb{R}$ e ad una funzione $h(t), t \in \mathbb{R}$ l'uscita:
+\begin{equation}
+	v(t)=(h*u)(t) = \int_{-\infty}^{+\infty}h(\tau)u(t-\tau)\,d\tau
+	\tag{10}\label{equation 10}
+\end{equation}
+
+\begin{oss}
+	per la proprietà del prodotto di convoluzione: $h(t)=(h*s)(t)$ (la risposta impulsiva) %TODO eh?
+\end{oss}
+
+Per i sistemi LTI causali:
+\[
+	v(t)=(h*u)(t) = \int_{-\infty}^{t^+}h(t-\tau)u(\tau)\,d\tau = \int_{0^-}^{+\infty}h(\tau)u(t-\tau)\,d\tau
+\]
 %TODO
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Risposta forzata
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Risposta Forzata}
 %TODO
