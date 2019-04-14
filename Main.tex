@@ -21,12 +21,33 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newenvironment{theorem}{Teorema: }{}
 \newenvironment{exercise}{Esercizio:}{}				  
-\newenvironment{definition}{Definizione: }{}
-\newenvironment{oss}{Osservazione: }{}		
+%\newenvironment{definition}{Definizione: }{}
+%\newenvironment{oss}{Osservazione: }{}		
 \newenvironment{example}{Esempio:}{}		
 %\newenvironment{proof}{Dim:}{}	
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Preamboli Ivan
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\newcommand{\AdC}{ascisse di convergenza }
+\newcommand{\RdC}{regione di convergenza }
+\newcommand{\LA}{\mathscr{L}T}
+\newcommand{\intZeroInfinity}{\int_{0^-}^{+\infty}}
+\newcommand{\gradino}{\delta_{-1}}
+\newcommand{\derN}[2]{\frac{d^{#2}#1}{dt^{#2}}}
+\newcommand{\der}[1]{\frac{d#1}{dt}}
+\newcommand{\NB}{I nota bene della zia wilma}
+
+\theoremstyle{definition}
+\newtheorem*{definizione}{Def}
+\theoremstyle{remark}
+\newtheorem*{osservazione}{Oss}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Preamboli Andrea
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\DeclarePairedDelimiter{\Abs}{\bigg\lvert}{\bigg\rvert}
 
 % voglio compilare sono cap1_Intro.tex
 %\includeonly{./capitoli/cap3_Sistemi}
@@ -60,6 +81,8 @@
 \include{./capitoli/cap1_Introduzione}
 \include{./capitoli/cap2_Segnali}
 \include{./capitoli/cap3_Sistemi}
+\include{./capitoli/cap4_TrasfDiLaplace}
+%\include{./capitoli/Esercizi}
 
 
 \end{document}

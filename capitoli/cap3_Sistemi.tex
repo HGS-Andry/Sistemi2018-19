@@ -18,18 +18,18 @@
 	u(t-\tau) \overset{\text{sistema}}{\longmapsto} v(t-\tau)
 	\]
 	
-	\begin{definition}
+	\begin{definizione}
 		I sistemi che soddisfano \ref{sist_prop_Lin} e \ref{sist_prop_TIn} li chiameremo sistemi LTI
-	\end{definition}
+	\end{definizione}
 
  \subsection{Causalità (Sistema non anticipatorio):} \label{sist_prop_cau}
 	
 	L'effetto non precede la causa (la causa anticipa l'effetto)
 	
-	\begin{oss}
+	\begin{osservazione}
 		Ci sarà sempre un istante iniziale $t_0$ a partire da cui studieremo il sistema
 		%TODO non sono sicuro
-	\end{oss}
+	\end{osservazione}
 		\[
 		\Leftrightarrow \exists \,t_0 \in \mathbb{R} \quad t.c. \quad u(t)=0 \quad t<t_0
 		\Rightarrow v(t)=0 \quad t<t_0
@@ -63,8 +63,8 @@
 
 In generale un modello SISO è descritto da un'equazione differenziale a coefficienti costanti di ordine $n$.
 %TODO aggiungiamo di nuovo la formula 1?
-\begin{equation}
-\begin{split}
+\begin{multline}
+%\begin{multline}
 	a_n \frac{d^{(n)} v(t)}{dt^n} 
 		+ a_{n-1} \frac{d^{(n-1)} v(t)}{dt^{n-1}} 
 		+ \dots 
@@ -74,23 +74,23 @@ In generale un modello SISO è descritto da un'equazione differenziale a coeffic
 		+ b_{m-1} \frac{d^{(m-1)} u(t)}{dt^{m-1}} 
 		+ \dots
 		+ b_1 \frac{du(t)}{dt} 
-		+ b_0\,u(t)\\
+		+ b_0\,u(t) \qquad
 	a_n, b_m \ne 0	
-\end{split}
+%\end{multline}
 	%TODO sarebbe carino dividerla decentemente	
 \tag{2}\label{equation 2}
-\end{equation}
+\end{multline}
 
-\begin{oss}
+\begin{osservazione}
 	Nei casi pratici $n \ge m$	
-\end{oss}
+\end{osservazione}
 
-\begin{definition}
+\begin{definizione}
 	I sistemi in cui $n \ge m$ si chiamano propri. Se $n > m$ il sistema si chiamerà strettamente proprio.
 	%TODO enfatizzare proprio e strettametne proprio
-\end{definition}
+\end{definizione}
 
-\begin{oss}
+\begin{osservazione}
 	In generale l'uscita $v(t)$ del sistema % TODO: aggiungere link all'equazione (1) %
 	non è univoca. Se definiamo $n$ condizioni iniziali all'istante $t_0 = 0^-$ (per l'uscita $v$):
 	\begin{equation}
@@ -102,7 +102,7 @@ In generale un modello SISO è descritto da un'equazione differenziale a coeffic
 	\end{equation}
 	$\Rightarrow$ la soluzione di % TODO: aggiungere link all'equazione (1)
 	è unica.
-\end{oss}
+\end{osservazione}
 
 La soluzione dell'equazione % TODO: aggiungere link all'equazione (1)
 si ottiene come somma di una soluzione che dipende soltanto dalle condizioni iniiziali (\ref{equation 3}) chiamato evoluzione libera $v_l(t)$ e da una soluzione che dipende soltanto dall'ingresso $u(t)$ con condizioni iniziali tutte nulle, chiamato evoluzione forzata $v_f(t)$ %TODO sottolineare evoluzione forzata e libera
@@ -145,17 +145,17 @@ I coefficienti $c_{i,l}
 	\quad \forall\mu_i \in \{\mu_1,\mu_2,\dots,\mu_r\} $ 
 	verranno determinati dalle condizioni iniziali (\ref{equation 3})
 	
-\begin{oss}
+\begin{osservazione}
 	Se $\mu_1 = \mu_2 = \dots = \mu_r = 1$ allora:
-	\begin{equation}
+	\begin{equation*}
 		v_l(t)=  \sum_{i=1}^{n}c_{i} \,e^{\lambda_it}
-	\end{equation}
-\end{oss}
+	\end{equation*}
+\end{osservazione}
 
-\begin{definition}
+\begin{definizione}
 	$m(t) = e^{\lambda_i t} \frac{t^l}{l!} $ si chiama modo elementare del sistema
 	%TODO enfatizzare modo elementare del sistema
-\end{definition}
+\end{definizione}
 %TODO
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -195,12 +195,12 @@ Si studia la stabilità asintotica di sistemi descritti dall'equazione %TODO: ag
 
 \section{Risposta Impulsiva}
 
-\begin{definition}
+\begin{definizione}
 	Dato un sistema descritto dall'equazione %TODO: aggiungere link all'equazione (1)
 	, inizialmente a riposo, definiamo la risposta impulsiva e indichiamo con $h(t)$ l'uscita del sistema in corrispondenza dell'impulso unitario $\delta (t)$ in ingresso.
-\end{definition}
+\end{definizione}
 
-\begin{definition}
+\begin{definizione}
 	Date due funzioni $v_1(t)$ e $v_2(t) \quad t\in\mathbb{R} $ definiamo il prodotto (o integrale) di convoluzione come:
 	\begin{equation*}
 		(v_1 * v_2)(t) 
@@ -215,10 +215,10 @@ Si studia la stabilità asintotica di sistemi descritti dall'equazione %TODO: ag
 		\item $v_1 * (v_2 + v_3)  = v_1 * v_2 + v_1 * v_3)$ (distributività)
 	\end{enumerate}
 
-\begin{oss}
+\begin{osservazione}
 	$(v *\delta)(t)\overset{def}{=} \int_{-\infty}^{\infty}v(\tau)\delta(t - \tau)\,d\tau = v(t)$ (proprietà di riproducibilità dell'impulso)
-\end{oss}
-\end{definition}
+\end{osservazione}
+\end{definizione}
 %TODO: Aggiugnere immagine con sistemi a blocchi? Mi pare una ripetizione
 %TODO: non so come definire questa parte se è una dimostrazione o un teorema
 Tenendo conto che $h(t)=0$ per $t<0$ (causalità) avremo:
@@ -226,7 +226,7 @@ Tenendo conto che $h(t)=0$ per $t<0$ (causalità) avremo:
 	\int_{-\infty}^{\infty}h(\tau)u(t - \tau)\,d\tau 
 	= \int_{-\infty}^{t^+}h(t - \tau)u(\tau)\,d\tau
 \end{equation*}
-\begin{proof}
+\begin{proof}[Dim]
 ponendo:  $t-\tau = s \Rightarrow d\tau = - ds 
 \qquad \tau = 0^-  \Rightarrow s+t^+ 
 \qquad \tau=\infty \Rightarrow s = -\infty$
@@ -272,7 +272,7 @@ Studiamo l'evoluzione forzata sull'orizzonte temporale $(0,+\infty)$ %TODO aggiu
 \end{equation}
 	
  %TODO controlla formula
-\begin{oss}
+\begin{osservazione}
 	$\eqref{equation 8} \Rightarrow h (t)$ è una combinazione lineare di tutti i modi elementari ottenuti dalla soluzione dell'equazione caratteristica del sistema%TODO: aggiungere link all'equazione (1)
 	in cui si aggiunge un termine impulsivo soltanto nei sistemi in cui $n=m$:
 	\begin{equation}
@@ -280,7 +280,7 @@ Studiamo l'evoluzione forzata sull'orizzonte temporale $(0,+\infty)$ %TODO aggiu
 		\Rightarrow h(t)= d_0 \delta(t) + \sum_{i=1}^{r}\sum_{l=0}^{\mu_i-1}d_{i,l} \,e^{\lambda_it}\frac{t^l}{t!}\delta_{-1} (t)
 		\tag{9}\label{equation 9}
 	\end{equation}
-\end{oss}
+\end{osservazione}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -297,20 +297,116 @@ In generale possiamo descrivere un sistema SISO associando ad un ingresso $u(t),
 	\tag{10}\label{equation 10}
 \end{equation}
 
-\begin{oss}
+\begin{osservazione}
 	per la proprietà del prodotto di convoluzione: $h(t)=(h*s)(t)$ (la risposta impulsiva) %TODO eh?
-\end{oss}
+\end{osservazione}
 
 Per i sistemi LTI causali:
 \[
 	v(t)=(h*u)(t) = \int_{-\infty}^{t^+}h(t-\tau)u(\tau)\,d\tau = \int_{0^-}^{+\infty}h(\tau)u(t-\tau)\,d\tau
 \]
-%TODO
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Risposta forzata
+%% Stabilità BIBO dei sistemi LTI generali
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Risposta Forzata}
+\section{Stabilità BIBO dei sistemi LTI generali}
+
+%TODO forse ripetizione
+%\emph{Generale} = non più descritti da eq.differenziale.
+
+%\emph{BIBO stabilità} = $\lvert u(t) \rvert < M_u,\quad \forall t \in \mathbb{R} \quad \Rightarrow \quad \exists \, M_v, \quad \lvert v(t) \rvert < M_v, \quad \forall t \in \mathbb{R} $
+
+%TODO come gestiamo le proprietà?
+%proprietà:
+
+Un sistema a tempo continuo LTI è BIBO stabile:
+\[
+	\Leftrightarrow \int_{-\infty}^{+\infty}\lvert h(t) \rvert \,dt < +\infty
+\]
+(La risposta impulsiva è sommabile oppure assolutamente integrabile)
+
+\begin{proof}[Dim]
+	\emph{$(\Leftarrow)$}
+	\[
+		\text{hp:} \quad \int_{-\infty}^{+\infty}\lvert h(t) \rvert \,dt < +\infty \quad \overset{?}{\Rightarrow} \quad \text{BIBO stabile}
+	\]	
+	dato un ingresso $u(t) \quad t.c.\quad \lvert u(t) \rvert < M_u , \forall t \in \mathbb{R}$ preso $t \in \mathbb{R}$ 
+	\[
+		\quad v(t)=(h*u)(t) = \int_{-\infty}^{+\infty}h(\tau)u(t-\tau)\,d\tau 
+	\]
+	%TODO manca qualcosa...
+	\[
+		\lvert v(t) \rvert 
+		= \bigg\lvert \int_{-\infty}^{+\infty}h(\tau)u(t-\tau)\,d\tau \,  \bigg\rvert
+		\le \int_{-\infty}^{+\infty} \rvert h(\tau)u(t-\tau) \lvert\,d\tau
+		= \int_{-\infty}^{+\infty} \rvert h(\tau) \lvert \, \underbrace{\rvert u(t-\tau) \lvert}_{\le M_u} \,d\tau
+		\le \underbrace{\int_{-\infty}^{+\infty} \rvert h(\tau)\lvert\,d\tau}_{\le + \infty}
+	\]
+	\[
+		\text{scegliendo } M_v := m_u \int_{-\infty}^{+\infty} \rvert h(\tau)\lvert\,d\tau \in \mathbb{R} \Rightarrow \lvert v(t) \rvert < M_v, \forall t \in \mathbb{R}\Rightarrow \text{BIBO stabile} \qedhere
+	\]
+\end{proof}
+
+\begin{proof}[Dim]
+	\emph{$(\Rightarrow)$}
+	\[
+		\text{hp: BIBO stabile} \quad \overset{?}{\Rightarrow} \quad \int_{-\infty}^{+\infty}\lvert h(t) \rvert \,dt < +\infty
+	\]
+	per assurdo supponiamo che :
+	\[
+		\int_{-\infty}^{+\infty}\lvert h(t) \rvert \,dt = +\infty
+	\]
+	$\forall u(t)$ con $u(t)<M_u \Rightarrow \exists M_v \quad t.c. \quad v(t) = (h*u)(t), \quad \lvert v(t) \rvert < M_v , \quad \forall t \in \mathbb{R} \quad$scegliamo:
+	\[
+		u(t) = sgn(h(-t)) = \begin{cases}
+			1 &h(-t)>0\\
+			0 &h(-t)=0\\
+			-1 &h(-t)<0\\
+		\end{cases}
+	\]
+	poniamo $\lvert u(t)\rvert <2,\quad M_u = 2$ (é sempre limitato, ad esempio $<2$). %TODO non sono sicuro della spiegazione
+	Quindi:
+	\[
+		t \in \mathbb{R}\quad v(t) = \int_{-\infty}^{+\infty}h(\tau)u(t-\tau)\,d\tau 
+	\]
+	Poniamo $t=0$:
+	\[
+		v(0) = \int_{-\infty}^{+\infty}h(\tau)u(-\tau)\,d\tau 
+		= \int_{-\infty}^{+\infty}\underbrace{h(\tau)\, sgn(\tau)}_{\lvert h(\tau)\rvert}\,d\tau %TODO Controlla 
+		= \int_{-\infty}^{+\infty}\lvert h(\tau) \rvert \,d\tau = +\infty
+	\]
+	Ci troviamo in una contraddizione con l'ipotesi.
+\end{proof}
+
+\begin{osservazione}\leavevmode
+	\begin{enumerate}
+		\item Per i sitemi LTI causali BIBO stabilità $\Leftrightarrow \int_{-\infty}^{+\infty}\lvert h(t) \rvert \,dt < +\infty$
+		\item Dato (\ref{equation 9}) per il sistema %TODO: aggiungere link all'equazione (1)
+		$\Rightarrow h(t) $ è sommabile $\Leftrightarrow$ tutti i modi sono cenvergenti (per cui $d_{i,l}\ne0)\Leftrightarrow Re(\lambda_i)<0 \Leftrightarrow $ è BIBO stabile
+		\item \{I modi di $h(t)$\} $\subseteq$ \{i modi di $v_l(t)$\} (alcuni modi $d_{i,l}=0$ )
+		\item  Stabilità asintotica $\Rightarrow$ BIBO stabilità (il contrario non è valido $\cancel{\Leftarrow}$ )
+	\end{enumerate}
+\end{osservazione}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Risposta in Frequenza
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Risposta in Frequenza}
+
+Dato un sistema LTI e BIBO dtabile di risposta impulsiva $h(t), t \in \mathbb{R}$ reale a valori reali, mi interessa la risposta al sistema in corrispondenza di ingressi esponenziali con esponente immaginario puro (fasori).
+
+\[ 
+	 u_1(t) =Ae^{j(\omega \, t + \phi)}= Ae^{j\phi}e^{j\omega t} \quad \overset{h(t)\text{ BIBO stabile}}{\longmapsto} \quad v_1(t)=?
+\]
+con $A \in \mathbb{R_+}, \phi$ e $\omega_0 \in \mathbb{R}$. %TODO controlla omega zero?
+
+\[
+	v_1(t) = \int_{-\infty}^{+\infty}h(\tau)u_1(t-\tau)\,d\tau
+	= \int_{-\infty}^{+\infty}h(\tau)Ae^{j(\omega_0(t-\tau)+\phi)}\,d\tau
+	= \underbrace{Ae^{j(\omega_0 t+\phi)}}_{\in \mathbb{C}} \underbrace{\int_{-\infty}^{+\infty}h(\tau)e^{-j\omega_0 \tau}\, d\tau}_{\text{è stabile?}}
+\]
+%TODO immagine sistema 
+
 %TODO

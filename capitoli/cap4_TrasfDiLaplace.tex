@@ -1,3 +1,341 @@
-\chapter{TrasfDiLaplace}
-\section{Ivan_Love_You}
+\chapter{Trasformata Di Laplace}
+%\section{Ivan_Love_You}
+%\documentclass[a4paper]{report}
+%\usepackage[T1]{fontenc}
+%\usepackage[utf8]{inputenc}
+%\usepackage[italian]{babel}
+%\usepackage{mathrsfs}
+%\usepackage{amsthm}
+%\usepackage{amsmath}
+%\usepackage{amsfonts}
+%\usepackage{cancel}
+%ivan è bravo <3 LODI
 
+
+
+%\begin{document}
+%\chapter{La trasformata di Laplace [TdL]} % TODO: chapter
+
+\begin{definizione}
+   Se $v:\mathbb{R}\to\mathbb{C}$ è localmente sommabile in $[0, +\infty)$ oppure \\$\Bigl(\displaystyle\int_a^bv(t)\,dt < +\infty\quad\forall a,b \in[0, +\infty)\Bigr)$ si definisce la TdL unilatera del segnale $v(t)$\\
+   $\displaystyle\LA[v(t)](s) := V(S) = \intZeroInfinity v(t)e^{-st}\,dt$ , dove $s = \sigma + jw$ è una variabile complessa
+   $V$ è definita per quei valori di $s$ per cui l'integrale è ben definito\\ $\displaystyle\Leftrightarrow \intZeroInfinity v(t)e^{-st}\,dt < +\infty$\\
+   Tale regione del piano complesso è chiamata \emph{regione di convergenza (RdC)}\\
+   Si può dimostrare che la RdC è un semipiano aperto del tipo \\$\mathrm{RdC} = \{s\in\mathbb{C}/\Re(s)>\alpha\}$ dove $\alpha\in\mathbb{R}$ ascissa di convoluzione della TdL
+   %TODO: Figura
+   \begin{proof}[Dim]
+      Dimostriamo per combinazioni lineari di funzioni esponenziali
+      \[
+         \begin{split}
+            & v(t) = \sum_{i = 1}^nc_ie^{\lambda it} \qquad \lambda_i = \sigma_i + jw_i\in\mathbb{C}, i = \overline{1,n}\\
+            & V(s) = \intZeroInfinity \sum_{i = 1}^nc_ie^{\lambda it}e^{-st}\,dt = \sum_{i = 1}^nc_i\intZeroInfinity e^{\lambda it}e^{-st}\,dt\\
+            & \mathrm{Dimostriamo\, che\, } \Bigg\lvert\intZeroInfinity e^{\lambda_it}e^{-st}\,dt\Bigg\rvert < +\infty\quad\forall i \\
+            & \intZeroInfinity e^{\sigma_it}\cdot \underbrace{e^{jw_it}}_{\lvert\,\,\rvert = 1}\cdot e^{-\sigma t}\cdot \underbrace{e^{-jwt}}_{\lvert\,\,\rvert = 1}\,dt = \intZeroInfinity e^{(\sigma_i - \sigma)t} = \frac{e^{(\sigma_i - \sigma)t}}{\sigma_i - \sigma}\Big|_{0^-}^{+\infty} =\\
+            & = \underbrace{\lim_{t\to+\infty}\frac{e^{(\sigma_i - \sigma)t}}{\sigma_i - \sigma}}_{\mathrm{converge\, per\, \sigma_i - \sigma < 0 \,\Leftrightarrow\, \sigma > \sigma_i}} - \frac{1}{\sigma_i - \sigma}
+         \end{split}
+      \]
+      Scegliendo $\alpha = sup\{\Re(\lambda_i) : i = \overline{1,n}\} \Leftarrow$ TdL converge $\displaystyle\forall v(t) = \sum_{i = 1}^nc_ie^{\lambda_it}$ \AdC
+      \begin{osservazione}
+         \begin{enumerate}
+            \item I sistemi stabili hanno $\displaystyle \alpha < 0(\Leftrightarrow \Re(\lambda_i) < \alpha < 0\quad \forall i = \overline{1,n}) \Rightarrow jw\in\mathrm{\,RdC\,}\forall w\in\mathbb{R}$
+            \item $v(t) (\mathrm{time}) \leftrightarrow V(s)(\mathrm{complex})$
+         \end{enumerate}
+      \end{osservazione}
+   \end{proof}
+\end{definizione}
+
+\section{Proprietà della trasformata di Laplace}
+\subsection{Linearità}
+\[
+   \begin{split}
+      \LA[a_1v_1(t) + a_2v_2(t)] = a_1\LA[v_1(t)] + a_2\LA[v_2(t)]\\
+      \mathrm{RDC} = {s\in\mathbb{C} / \Re(s)>\alpha}\mathrm{, dove}\,\alpha\ge\{\alpha_1, \alpha_2\}
+   \end{split}
+\]
+%------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+\subsection{Time shifting (Ritardo temporale)}
+Se $v(t)$ ammette TdL allora, $v(t - \tau)$ ammette TdL e $\LA[v(t) - \tau] = e^{-s\tau}V(s)$\, $\tau>0$\\
+L'\AdC di $v(t - \tau)$ è la stessa di $v(t)$
+\begin{proof}[Dim]
+   \[
+      \begin{split}
+         \LA[v(t) - \tau] & = \intZeroInfinity v(t - \tau)e^{-st}\,dt = \int_{0^-}^\tau v(t - \tau)e^{-st}\,dt\,+\,\int_\tau^{+\infty}v(t - \tau)e^{-st}\,dt =\\
+         & = \int_\tau^{+\infty}v(t - \tau)e^{-st}\,dt = \intZeroInfinity v(e^{-s(x + \tau)}\,dx = \intZeroInfinity v(t)e^{-s\tau}e^{-st}\,dt =\\
+         & x = t - \tau \Rightarrow dt = dx \\
+         & poi \\ % TODO: inserire tabella
+         & x = t \Rightarrow dx = dt\\
+         & = e^{-s\tau}\overbrace{\int_\tau^{+\infty}v(t)e^{-st}\,dt}^{V(s)} = e^{-s\tau}V(s)
+      \end{split}
+   \]
+\end{proof}
+%------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+\subsection{Moltiplicazione per una funzione esponenziale (Frequency shifting)}
+   $\LA[e^{\lambda t}v(t)] = V(s - \tau)$\\
+   $\alpha_2 = \alpha + \Re(\lambda)$, dove $\lambda$ è AdC di $v(t)$\\
+   $\alpha_2 = $ \AdC di $e^{\lambda t}v(t)$
+\begin{proof}[Dim]
+   \[
+      \intZeroInfinity e^{\lambda t}v(t)e^{-st}\,dt = \intZeroInfinity v(t)e^{-(s - \lambda)t}\,dt = V(s - \lambda)
+   \]
+\end{proof}
+%------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+\subsection{Cambiamento di scala}
+
+$\LA[v(rt)] = \frac{1}{r}V\Bigl(\frac{s}{r}\Bigr)$\\
+$\alpha_2 = r\alpha$ ($\alpha$ \AdC di $v(t)$)
+
+\begin{proof}[Dim]
+   \[
+      \begin{split}
+         &\intZeroInfinity v(rt)e^{-st}\,dt = \intZeroInfinity \frac{1}{r}v(x)e^{-\frac{s}{t}}\,dx = \frac{1}{r}V\Bigl(\frac{s}{r}\Bigr)\\
+         & rt = x\\
+         & t = \frac{x}{r}\,dx = \frac{1}{r}\,dt %TODO: tabella
+      \end{split}
+   \]
+\end{proof}
+%------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+\subsection{Proprità della derivata}
+Se $v(t)$ ammette TdL ed esiste ed è finito $v(0^-) = \lim_{t\to 0} \Rightarrow \frac{dv(t)}{dt}$ ammette TdL e
+\[
+   \begin{split}
+      & \LA\Bigl[\frac{dv(t)}{dt}\Bigr] = s\LA[v(t)] - v(0^-)\\
+      & \alpha_2 = \LA\Bigl[\frac{dv(t)}{dt}\Bigr]\\
+      & \alpha = \LA[v(t)]
+   \end{split}
+\]
+L'\AdC $(\alpha_2 \le \alpha)$
+
+\begin{proof}[Dim]
+   \[
+      \begin{split}
+         \LA\Bigl[\frac{dv(t)}{dt}\Bigr] & = \intZeroInfinity \frac{dv(t)}{dt}e^{-st}\,dt = v(t) - e^{-st}\Big|_{0^-}^{+\infty} - (-s)\underbrace{\intZeroInfinity v(t)e^{-st}\,dt}_{V(s)} =\\
+         & = \underbrace{\lim_{t\to +\infty}[v(t)e^{-st}|_{0^-}^{t}]}_{-v(0^-)} + sV(s) = -v(0^-) + sV(s)\\
+      \end{split}
+   \]
+\end{proof}
+%------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+\subsection*{5.1$\quad$ Proprità della derivata seconda ed n-esima}
+\[
+   \LA\Bigl[\frac{d^2v(t)}{dt^2}\Bigr] = s^2\LA[v(t)] - sv(0^-) - \frac{dv(0^-)}{dt}
+\]
+\begin{proof}[Dim]
+   \[
+      \begin{split}
+         \LA\Bigl[\frac{d}{dt}\Bigl[\frac{dv(t)}{dt}\Bigr]\Bigr]\overset{(5)}{=} & s\overbrace{\LA\Bigl[\frac{dv(t)}{dt}\Bigr]}^{sV(s) - v(0^-)} - \frac{dv(0^-)}{dt} = s(s\LA[V(t)] - v(0^-)) - \frac{dv(0^-)}{dt} = \\
+         = & s^2V(s) - sv(0^-) - \frac{dv(0^-)}{dt}
+      \end{split}
+   \]
+   In generale,
+   \[
+      \LA\Bigl[\frac{d^iv(t)}{dt^i}\Bigr] = s^i\LA[v(t)] - \sum_{k = 0}^{i - 1}\frac{d^kv(t)}{dt^k}\Big|_{t = 0^-}s^{i - 1 - k}
+   \]
+\end{proof}
+%------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+\subsection{Moltiplicazione per una funzione polinomiale}
+\begin{proof}[Dim]
+\[
+   \LA[tv(t)] = - \frac{dV(s)}{ds}
+\]
+Con la stessa \RdC
+   \[
+      \begin{split}
+         \frac{dV(s)}{ds} & = \frac{d}{ds}\Bigl[\intZeroInfinity v(t)e^{-st}dt\Bigr] = \intZeroInfinity \frac{\delta e^{-st}}{\delta s}v(t)dt = \intZeroInfinity -te^{-st}v(t) dt =\\
+         & = \intZeroInfinity[-tv(t)]e^{-st}dt = - \LA[tv(t)]
+      \end{split}
+   \]
+   In generale,
+   \[
+      \LA[t^iv(t)] = (-1)^i\frac{d^iV(s)}{ds^i}
+   \]
+\end{proof}
+%------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+\subsection{Integrale nel dominio del tempo}
+Se $v(t)$ ha la TdL $V(s)$ per $\Re(s) > \alpha \Longrightarrow \int_{0^-}^tv(\tau)d\tau$ ha TdL $\alpha_1 = max\{0, \alpha\}$ e $\LA[\int_{0^-}^tv(\tau)d\tau] = \frac{V(s)}{s}$
+\begin{proof}[Dim]
+   \[
+      \begin{split}
+         & v_1(t) = \int_{0^-}^tv(\tau)d\tau \Rightarrow v_1'(t) = v(t)\\
+         & v_1(0^-) = 0\\
+         & \LA[v(t)] = \LA\Bigl[\frac{dv_1(t)}{dt}\Bigr] = s\LA[v_1(t)] - \overbrace{v_1(0^-)}^{0} = \LA\Bigl[\int_{0^-}^tv(\tau)d\tau\Bigr] = \frac{V(s)}{s}
+      \end{split}
+   \]
+\end{proof}
+%------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+\subsection{Integrale nel dominio complesso $\mathbb{C}$}
+Se esiste $\lim_{t\to 0^-}\frac{v(t)}{t}$ allora,
+\[
+   \LA\Bigl[\frac{v(t)}{t}\Bigr] = \int_s^{+\infty}V(s)\,ds
+\]
+\begin{proof}[Dim]
+   \[
+      \begin{split}
+         & V(s) = \intZeroInfinity v(t)e^{-st}\,dt= \int_s^{+\infty}V(s)\,ds = \int_s^{+\infty}\Bigl[\intZeroInfinity v(t)e^{-st}\,dt\Bigr]\,ds = \\
+         & = \int_s^{+\infty}v(t)\Bigl[\intZeroInfinity e^{-st}\,dt\Bigr]\,ds = \intZeroInfinity v(t)\Bigl[-\frac{1}{t}e^{-st}\Big|_s^{+\infty}\Bigr]\,dt = \\ %TODO: controlla veridicità
+         & = \intZeroInfinity v(t)\frac{e^{-st}}{t}\,dt = \LA\Bigl[\frac{v(t)}{t}\Bigr]
+      \end{split}
+   \]
+\end{proof}
+%------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+\subsection{Teorema del valore iniziale}
+Se $v(t)$ ha Tdl, se $\exists \lim_{s\to \infty}v(t)$, finito $\Rightarrow \lim_{t\to 0^-}v(t) = \lim_{s\to \infty}sV(s)$
+\begin{proof}[Dim]
+   \[
+      \begin{split}
+         & \LA\Bigl[\frac{dv(t)}{dt}\Bigr] = sV(s) - v(0^-)\qquad [5]\\
+         & \lim_{s\to \infty}[sV(s) - v(0^-)] = \lim_{s\to \infty}\intZeroInfinity\frac{dv(t)}{dt}e^{-st}\,dt = \lim_{s\to \infty} \Biggl(\lim_{\substack{T\to \infty \\ \varepsilon\to 0^-}}\int_\varepsilon^T\frac{dv(t)}{dt}e^{-st}\,dt\Biggr) \\
+         & = \lim_{\substack{T\to \infty \\ \varepsilon\to 0^-}}\Biggl[\int_\varepsilon^T\frac{dv(t)}{dt}\Bigl(\underbrace{\lim_{s\to \infty}e^{-st}\,dt}_0\Bigr)\Biggr] = 0 \Rightarrow \lim_{s\to \infty}[sV(s) - v(0^-)] = 0 \\
+         & \lim_{s\to \infty}sV(s) = v(0^-)
+      \end{split}
+   \]
+\end{proof}
+%------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+\subsection{Teorema del valore finale}
+Se $v(t)$ ha Tdl, e $\lim_{s\to \infty}v(t)$ esiste ed è finito $\Rightarrow \lim_{t\to \infty}v(t) = \lim_{s\to 0^+}sV(s)$
+\begin{proof}[Dim]
+   \[
+      \begin{split}
+         & \LA\Bigl[\frac{dv(t)}{dt}\Bigr] = sV(s) - v(0^-)\qquad [5]\\
+         & \lim_{s\to 0^+}[sV(s) - v(0^-)] = \lim_{s\to 0^+}\intZeroInfinity\frac{dv(t)}{dt}e^{-st}\,dt = \lim_{\substack{T\to \infty \\ \varepsilon\to 0^-}}\Biggl[\int_\varepsilon^T\frac{dv(t)}{dt}\Bigl(\underbrace{\lim_{s\to 0^+}e^{-st}\,dt}_1\Bigr)\Biggr]\\
+         & = \lim_{\substack{T\to \infty \\ \varepsilon\to 0^-}} \Bigl[[v(t)|_\varepsilon^T\Bigr] = \lim_{\substack{T\to \infty \\ \varepsilon\to 0^-}}[v(t) - v(\varepsilon)] = \lim_{T\to\infty}v(T) - v(0^-)\\
+         & \lim_{s\to 0^+}sV(s) - \cancel{v(0^-)} = \lim_{T\to\infty}v(T) - \cancel{v(0^-)}
+      \end{split}
+   \]
+\end{proof}
+%------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+\subsection{Convoluzione nel dominio del tempo (Prodotto nelle frequenze)}
+Se $v_1(t)$, $v_2(t)$ sono nulle per $t < 0$ e hanno TdL $V_1(s)$, $V_2(s)$ $\Rightarrow [v_1 * v_2](t)$ ha TdL:\\
+\[
+   \underbrace{\LA[(v_1 * v_2)(t)]}_{Convoluzione\, nel\, tempo} = \underbrace{V_1(s)\cdot V_2(s)}_{Moltiplicazione\, nelle\, frequenze}
+\]
+\begin{proof}[Dim]
+   \[
+      \begin{split}
+         &\LA[(v_1 * v_2)(t)] =\\
+         & = \LA\Biggl[\intZeroInfinity \underbrace{v_1(\tau)}_{=\, 0\, per\, t < 0}v_2(t - \tau)\,d\tau\Biggr] = \intZeroInfinity\Biggl[\intZeroInfinity v_1(\tau)v_2(t - \tau)\,d\tau\Biggr]e^{-st}\,dt\\
+         & = \intZeroInfinity v_2(\tau)\Biggl[\intZeroInfinity v_2(t - \tau)e^{-st}\,dt\Biggr]\,d\tau \rightarrow \intZeroInfinity v_1(\tau)\Biggl[\intZeroInfinity v_2(\lambda)e^{-s(\lambda + \tau)}\,d\lambda\Biggr]\,d\tau \\ 
+         & t - \tau = \lambda \\
+         & t = \lambda + \tau \\
+         & dt = d\lambda \\
+         & = \intZeroInfinity v_1(\tau)e^{-st}\Biggl[\underbrace{\intZeroInfinity v_2(\lambda)e^{-s\lambda}\,d\lambda}_{\LA[v_2(t)]}\Biggr] = \LA[v_2(t)]\intZeroInfinity v(\tau)e^{-st}\,d\tau = V_2(s)\cdot V_1(s)
+      \end{split}
+   \]
+\end{proof}
+
+%===================================================================================================================================================================================
+
+\section{Esempi di trasformazioni notevoli}
+   \begin{enumerate}
+      \item[a.] Impulso ideale unitario $\delta(t)$\\
+         $\displaystyle\LA[\delta(t)] = \intZeroInfinity\delta(t)e^{-st}\,dt \overset{\mathrm{Campionamento\,per\,} v(t) = e^{-st}}{=} e^{s\cdot 0} = 1$\\
+         $V(s) = 1$ RdC = $\mathbb{C}$
+      \item[b.] Gradino unitario $\gradino$\\
+         $\displaystyle\LA[\gradino(t)] = \intZeroInfinity\underbrace{\gradino(t)}_{1}e^{-st}\,dt = \intZeroInfinity e^{-st} = $\\
+         $\displaystyle = -\frac{e^{-st}}{s}\Big|_{0^-}^{+\infty} = 0 - \Bigl(-\frac{1}{s}\Bigr) = \frac{1}{s}$
+      \item[c.] Impulso unitario\\
+         $\LA[\delta(t - t_0)] = e^{-st_0}\LA[\overbrace{\delta(t)}^{1}] = e^{-st_0}$
+      \item[d.] Esponenziale causale $v(t) = e^{\lambda t}\gradino(t), \lambda\in\mathbb{C}$\\
+         $\displaystyle\LA[e^{\lambda t}\gradino(t)] \overset{(3)}{=} V(s - \lambda) = \frac{1}{s -\lambda}$\\
+         RdC = $\{s\in\mathbb{C} : \Re(s) > \Re(\lambda)\}$
+      \item[e.] Esponenziale causale moltiplicata per una funzione polinomiale\\
+         \begin{center}
+            $\displaystyle v(t) = \frac{t^\ell}{\ell!}e^{\lambda t}\gradino(t)$
+         \end{center}
+         \[
+            \begin{split}
+               &\LA\Bigl[\frac{t^\ell}{\ell!}e^{\lambda t}\gradino(t)\Bigr] \overset{(1)}{=} \frac{1}{\ell}\LA[t^\ell \overbrace{e^{\lambda t}\gradino(t)}^{v(t)}] \overset{(6)}{=} \frac{(-1)^\ell}{\ell!}\cdot\frac{d^\ell}{ds^\ell}\LA[e^{\lambda t}\gradino(t)] =\\
+               &\overset{(d)}{=} \frac{(-1)^\ell}{\ell!}\cdot\frac{d^\ell}{ds^\ell}\Bigl[\frac{1}{s - \lambda}\Bigr] = \frac{(-1)^\ell}{\cancel{\ell!}}\cdot\cancel{\ell!}\frac{1}{(s - \lambda)^{\ell + 1}} = \frac{1}{(s - \lambda)^{\ell + 1}}
+            \end{split}
+         \]
+         Esempio
+         \[
+            \begin{split}
+               \LA[te^{\lambda t}\gradino(t)] = \frac{1}{(s - \lambda)^{2}}\\
+               \LA\Bigl[\frac{t^2}{2!}e^{\lambda t}\gradino(t)\Bigr] = \frac{1}{(s - \lambda)^{3}}
+            \end{split}
+         \]
+         Per $\lambda = 0$
+         \[
+            \begin{split}
+               \LA\Bigl[\frac{t^\ell}{\ell!}\gradino(t)\Bigr] = \frac{1}{s^{\ell + 1}}\\
+               \LA[t^\ell\gradino(t)] = \frac{\ell!}{s^{\ell + 1}}
+            \end{split}
+         \]
+   \end{enumerate}
+   \section{Sistemi LTI causali analisi dominio complesso o nel dominio delle frequenze}
+   \begin{center}
+      $\displaystyle a_n\der{v(t)}{n} + \dots + a_0v(t) = b_m\der{u(t)}{m} + \dots + b_0u(t)\qquad(1)$
+   \end{center}
+      $a_n, b_m \neq 0 \quad n\ge m \quad u(t)$ ingresso nullo per $t < 0\quad (u(t) = u(t)\gradino)$\\
+      Condizioni iniziali $\displaystyle= v(0^-), \der{v(0^-)}, \dots, \derN{v(0^-)}{n-1}$\\
+      Se $u(t)$ ha TdL $v(t)$ ammette TdL $\bigr(v(t)$ ristretto per $t\ge 0\bigl)$\\
+      $U(s) = \LA[u(t)]\qquad e\qquad V(s) = \LA[v(t)]$\\
+      (Proprietà 5) $\displaystyle\qquad \LA\Bigr[\derN{v(t)}{i}\Bigl] = s^iV(s) - \sum_{k = 0}^{i - 1}\derN{v(t)}{k}\Big|_{t = 0^-}s^{i - 1 - k}, i = \overline{1,n}$\\
+      Applichiamo la TdL a (1), ma solo all'uscita
+      \[
+         \begin{split}
+            &\displaystyle a_n\Biggr[s^nV(s) - \sum_{k = 0}^{n - 1}\derN{v(t)}{k}\Big|_{t = 0^-}s^{n - 1 - k}\Biggl] + a_{n - 1}\Biggr[s^nV(s) - \sum_{k = 0}^{n - 2}\derN{v(t)}{k}\Big|_{t = 0^-}s^{n - 2 - k}\Biggl] + \dots + a_0V(s) =\\
+            & = b_ms^mU(s) + b_{m - 1}s^{m - 1}U(s) + \dots + b_0U(s)\\\\
+            & (\overbrace{a_ns^n + a_{n - 1}s^{n - 1} + \dots + a_0}^{d(s) \mathrm{\,\,polinomio\,\,di\,\,grado\,\,}n})V(s) -\\
+            & \overbrace{a_nv(0^-)s^{n-1} - \Bigl[a_{n-1}v(0^-) + a_n\der{v(t)}\Big|_{t = 0^-}\Bigr]s^{n - 2} - \dots + \Biggl[\sum_{k = 0}^{n - 1}a_{k + 1}\derN{v(t)}{k}\Big|_{t = 0^-}\Biggr]}^{p(s)\mathrm{\,\,polinomio\,\,di\,\,grado\,\,}n-1} = \\
+            & = (\overbrace{b_ms^m + b_{m - 1}s^{m - 1} + \dots + b_0}^{n(s) \mathrm{\,\,polinomio\,\,di\,\,grado\,\,}m})U(s)\\
+            & \Rightarrow d(s)V(s) - p(s) = n(s)U(s)\qquad\Big|_{\mathrm{Divido\,\,per\,\,}d(s)}\\
+            & \Rightarrow V(s) = \frac{p(s)}{d(s)}+ \frac{n(s)}{d(s)}U(s)
+         \end{split}
+      \]
+      \begin{osservazione}
+         \begin{enumerate}
+            \item $\displaystyle\frac{p(s)}{d(s)}$ dipende soltanto dalle condizioni iniziali su $V$ e dal polinomio caratteristico $\Rightarrow$ rappresento la TdL della risposta libera
+               \[V_\ell(s) = \frac{p(s)}{d(s)}\]
+            \item $\displaystyle\frac{n(s)}{d(s)}U(s)$ dipende soltanto dal sistema e dall'ingresso $\Rightarrow$ TdL della risposta forzata
+               \[V_f(s) = \frac{n(s)}{d(s)}U(s)\]
+               \[V(s) = \frac{p(s)}{d(s)} + \frac{n(s)}{d(s)}U(s)\]
+            \item Sappiamo che $v_f(t) = [h * u](t) \xRightarrow{(11)} V_f(s) = H(s)U(s) \Rightarrow H(s) = \frac{n(s)}{d(s)}$ è la TdL di $h(t)$ (risposta impulsiva)\\
+            (Funzione di trasferimento del sistema)
+            \[H(s) = \frac{b_ms^m + b_{m - 1}s^{m - 1} + \dots + b_0}{a_ns^n + a_{n - 1}s^{n - 1} + \dots + a_0}\]
+            (Funzione razionale in $s \in \mathbb{C}$)
+         \end{enumerate}
+      \end{osservazione}
+      \emph{Esempio} $\qquad\displaystyle\derN{v(t)}{3} + \derN{v(t)}{2} = \der{u(t)}$
+      \[
+         \begin{split}
+            &\mathrm{TdL} \Rightarrow s^3V(s) - s^2v(0^-) - s\dot{v}(0^-) - \ddot{v}(0^-) + s^2V(s) - sv(0^-) - \dot{v}(0^-) = U(s) \rightarrow \mathrm{\,\,Niente\,\,condizioni\,\,iniziali}\\
+            &d(s) = s^3 + s^2\\
+            &p(s) = s^2v(0^-) + [\dot{v}(0^-) + v(0^-)]s + \ddot{v}(0^-) + \dot{v}(0^-)\\
+            &n(s) = s\\
+            &H(s) = \frac{s}{s^3 + s^2} = \frac{1}{s^2 + s}\\
+            &H(s) = \LA[h(t)]\\
+            &h(t) = d_0\delta(t) + \sum_{i = 0}^{r}\sum_{\ell = 0}^{\mu - 1}\cdot d_{i,\ell}\cdot e^{\lambda_it}\cdot\frac{t^\ell}{\ell}\cdot\gradino(t)\xRightarrow{TdL} H(s) = d_0\delta(t) + \sum_{i = 0}^{r}\sum_{\ell = 0}^{\mu - 1}d_{i, \ell}\cdot\frac{1}{(s - \lambda_i)^{\ell + 1}}
+            \end{split}
+      \]
+      $d_0$ compare solo se $n = m$\\
+      $\lambda_i$ sono le radici di $\displaystyle\sum_{i = 0}^{n}a_is^i = 0\qquad$ (equazione caratteristica)\\
+      \[
+         \displaystyle\xRightarrow[\mathrm{fondamentale}]{\mathrm{Teorema}}\sum_{i = 0}^{n}a_is^i = a_n(s - \lambda_1)^{\mu_1}\cdot...\cdot(s - \lambda_r)^{\mu_r} \Rightarrow H(s) = \frac{\overline{n}(s)}{(s - \lambda_1)^{\mu_1}\cdot...\cdot(s - \lambda_r)^{\mu_r}}, \mathrm{\,\,dove\,\,}\overline{n}(s) = \frac{n(s)}{a_n}
+      \]
+      Posso anche scrivere
+      \[
+         \frac{(d(s)) \rightarrow b_m(s - p_1)\cdot...\cdot(s - p_m)}{(n(s)) \rightarrow a_n(s - z_1)\cdot...\cdot(s - z_n)}
+      \]
+      $z_i, i = \overline{1, m}$ zeri della TdL\\
+      $p_i, i = \overline{1, n}$ poli della TdL\\
+      Possiamo ridefinire la molteplicità:\\
+      $\alpha\in\mathbb{C}$ un polo di molteplicità $k\in\mathbb{N}$ se $\displaystyle\lim_{s\to\infty}(s - \alpha)^{k - 1}H(s) = \infty\quad\lim_{s\to\infty}(s - \alpha)^kH(s) < +\infty$\\
+      $\beta\in\mathbb{C}$ uno zero di molteplicità $k\in\mathbb{N}$ se $\displaystyle\lim_{s\to\beta}\frac{1}{(s - \beta)^{k - 1}}H(s) = 0\quad\lim_{s\to\beta}\frac{1}{(s - \beta)^k}H(s) \neq 0$
+      \begin{center}
+         \begin{tabular}{lll}
+            \toprule
+            \_ & Poli & Zeri \\
+            \midrule
+            $\lambda_i$ & $\alpha$ & $\beta$ \\
+            $\mu_i$ & k & k \\
+            \bottomrule
+         \end{tabular}
+      \end{center}
+      \begin{osservazione}
+         $z_i\in\{p_1,\dots,p_n\} \Rightarrow \frac{n(s)}{d(s)}$ è riucibile\\
+         $\Rightarrow \{\mathrm{zeri\,\,}H(s)\} \subseteq \{\mathrm{zeri\,\,di\,\,}n(s)\}$\\
+         $\Rightarrow \{\mathrm{poli\,\,}H(s)\} \subseteq \{\mathrm{zeri\,\,di\,\,}d(s)\}$
+      \end{osservazione}
+      \emph{Proprietà}: Il sistema è BIBO stabile se e solo se tutti i poli hanno parte reale minore di 0 $\forall i, \Re(p_i) < 0$\\
+      \NB: I poli di $H(s)$ sono zeri di $d(s)$
+%\end{document}

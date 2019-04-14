@@ -7,8 +7,7 @@ I modelli ci danno una stima del comportamento di una sistema, in particolare il
 Studieremo le proprietà dei sistemi, di queste la più importante è la stabilità.\\
 \textbf{Modelliamo un sistema} come fosse una scatola nera, avrà un segnale come input e output (es. suono 1D, immagine 2D).\\
 I sistemi ci servono per vari motivi: possono facilitare la trasmissione di un segnale, migliorarlo accentuando alcune informazioni o eliminandone altre (filtraggio).\\
-Vogliamo vedere i sistemi come \textbf{funzioni matematiche} (pag. 69 libro "")\\
-% TODO: che libro?
+Vogliamo vedere i sistemi come \textbf{funzioni matematiche} (pag. 69 libro "Structure and Interpretation of Signals and Systems")\\
 
 \begin{figure}
 	\centering
@@ -103,6 +102,7 @@ I sistemi LTI che studieremo sono definiti da equazioni differenziali a coeffici
 Per i sistemi continui useremo il modello:
 \begin{equation*}
 \sum\limits_{i=0}^n a_{i} \frac{ d^{i} v }{ dt^{i}  } = \sum\limits_{i=0}^m b_{i} \frac{ d^{i} u }{ dt^{i}  }
+\tag{1}\label{equation 1}
 \end{equation*}
 con $u$ e $v$ funzioni con dominio uguale a $\mathbb{R}$. In generale abbiamo $n\geq m$.
 
@@ -345,6 +345,8 @@ Per $ k = 1$ avremo che $ w_{1} = cos(\frac{2 \pi}{n}) + j sen( \frac{2 \pi}{n})
 
 Tuttociò è anche dovuto al \textbf{teorema fondamentale dell'algebra} (lo vedremo fra poco) che dice che $ x^{n} = 1$ (con $ x^{n}$ visto come polinomio) avrà n soluzioni complesse. \\
 
+\pagebreak
+
 \section{ Funzioni a variabile complessa }
 
 \subsection*{Def: funzione a variabile complessa}
@@ -380,6 +382,9 @@ $ B_{\rho}(x_{0}) = $ \{ $ x \in \mathbb{R} / |x-x_{0}| < \rho $ \} $ = ( x_{0}-
 \subsection*{Esempi di insieme aperto}
 1) $ D(f) = \mathbb{C} $ cioè tutto il piano complesso.\\
 2) $ D(f) = B_{\rho}(s_{0})$ cioè il disco (visto prima).\\
+
+\pagebreak
+
 3) $ D(f) = $ \{ $ s \in \mathbb{C} : \rho_{1} < |s-s_{0}| < \rho_{2} $ \} cioè una corona circolare. \\
 \begin{figure}[h]
 	\centering
@@ -388,7 +393,6 @@ $ B_{\rho}(x_{0}) = $ \{ $ x \in \mathbb{R} / |x-x_{0}| < \rho $ \} $ = ( x_{0}-
 	\label{fig: coronaCircolare}
 \end{figure}
 
-\pagebreak
 
 4) $ D(f) = $ \{ $ s \in \mathbb{C} : Re(s)> \lambda, \lambda \in \mathbb{R} $ \} cioè il semipiano a destra (Questo è il dominio di definizione della trasformata di Laplace). \\
 
@@ -400,9 +404,11 @@ $ B_{\rho}(x_{0}) = $ \{ $ x \in \mathbb{R} / |x-x_{0}| < \rho $ \} $ = ( x_{0}-
 \end{figure}
 
 5) $D(f) = $ \{ $ s \in \mathbb{C} : Re(s)< \lambda, \lambda \in \mathbb{R} $ \} cioè il semipiano a sinistra. \\ 
-%TODO: chiedi meglio agli altri, sarà giusto il disegno? Ho cpaito bene qui?
-6) $D(f) = $ \{ $ s \in \mathbb{C} : Im(s) > Im(j\lambda ), \lambda \in \mathbb{R}, Im(j\lambda ) \in \mathbb{C} $ \} cioè ???. \\
-7) $D(f) = $ \{ $ s \in \mathbb{C} : Im(s) < Im(j\lambda ), \lambda \in \mathbb{R}, Im(j\lambda ) \in \mathbb{C} $ \} cioè ??? (Questo è il dominio di definizione della trasformata di Fourier).\\
+6) $D(f) = $ \{ $ s \in \mathbb{C} : Im(s) > Im(j\lambda ), \lambda \in \mathbb{R}, Im(j\lambda ) \in \mathbb{C} $ \} cioè il semipiano superiore. \\
+
+\pagebreak
+
+7) $D(f) = $ \{ $ s \in \mathbb{C} : Im(s) < Im(j\lambda ), \lambda \in \mathbb{R}, Im(j\lambda ) \in \mathbb{C} $ \} cioè il semipiano inferiore (Questo è il dominio di definizione della trasformata di Fourier).\\
 
 \begin{figure}[h]
 	\centering
@@ -411,10 +417,8 @@ $ B_{\rho}(x_{0}) = $ \{ $ x \in \mathbb{R} / |x-x_{0}| < \rho $ \} $ = ( x_{0}-
 	\label{fig: dominioDefFourier}
 \end{figure}
 
+8) $ D(f) = \mathbb{C} \setminus$  \{ $ s_{1},...,s_{n}  $ \}  cioè il piano complesso meno un insieme finito di punti.
 
-%TODO: chiedi meglio agli altri, a me non sembra un insieme di punti finiti. A me sembra il piano complesso tolto un insieme di numeri finiti. Potete guardare nei vostriappunti?
-
-8) $ D(f) = \mathbb{C} \setminus$  \{ $ s_{1},...,s_{n}  $ \}  cioè ??? insieme finito di punti ???
 
 \subsection*{Esempi di funzioni a variabili complesse}
 1) Funzione identità: $ f(s) = s$ con $ D(f) = \mathbb{C}$.\\
@@ -448,7 +452,7 @@ $ P^{u_{k}}(\lambda_{k}) \neq 0 $ e $ u_{1}+u_{2}+...+u_{r} = h $\\
 $ P(s) = a_{n} (s- \lambda_{1}) (s- \lambda_{2}) ... (s- \lambda_{r}) $
 
 %TODO: non ho capito questa osservazione
-\textbf{OSS2: BOOO???} Se $ a_{k} \in \mathbb{R}$ e $ k=0,...,r $ \\
+\textbf{OSS2: BOOO???} Se $ a_{k} \in \mathbb{R}$ e $ k=0,...,n $ \\
 allora $ \lambda_{k}$ sono tutte radici reali oppure complessi coniugati.\\
 
 \textbf{ES1}\\
@@ -470,9 +474,7 @@ $ f(s) = \frac{ s^{2}+1}{ s^{2} -1}= \frac{ (s-j)(s+j) }{ (s-1)(s+1)} $ con $ D(
 
 7) Funzioni come serie di potenze:\\
 $ f(s) = \sum_{k=0}^\infty a_{k} (s-s_0)^{k}$ con $ D(f)= \mathbb{C} $. \\
-Si associa $r>0$, chiamato \textbf{raggio di convergenza} tale che la serie converge $ \forall s \in Br(s_0) = $ \{ $ s \in \mathbb{C} : |s-s_0| < r$ \} con $ D(f)=Br(s_0)$. La serie non converge per $ s \notin Br(s_0)$.
-
-\pagebreak
+Si associa $r>0$, chiamato \textbf{raggio di convergenza} tale che la serie converge $ \forall s \in Br(s_0) = $ \{ $ s \in \mathbb{C} : |s-s_0| < r$ \} con $ D(f)=Br(s_0)$. La serie non converge per $ s \notin Br(s_0)$.\\
 
 \textbf{ES A): Serie geometrica}\\
 $ f(s) = \sum_{k=0}^\infty s^{k} = \sum_{k=0}^\infty (s-0)^{k}$ cioè $s_0= 0$.\\
@@ -486,34 +488,100 @@ In questo caso $r=1$ e $ D(f)=B_1(0)=$ \{ $ s \in \mathbb{C} : |s| < 1$ \}.
 	Prendiamo quest'ultima equazione, rielaborandola diventa:\\
 	$ \frac{ -(s^n -1) }{-(s-1) } = s^{n-1}+ s^{n-2}+...+1$\\
 	$ \frac{ 1-s^n }{ 1-s } = s^{n-1}+ s^{n-2}+...+1$\\
-	Sostituendo n=m+1 troviamo che:\\
-	$ \frac{ 1-s^{m+1} }{ 1-s } = s^m+ s^{m-1}+...+1 = \sum_{k=0}^m s^{k}$\\
-	Per la magia di Gregorio abbiamo che $\lim_{m \to \infty} \sum_{k=0}^N s^{k} = \lim_{m \to \infty} \frac{ 1-s^{m+1} }{ 1-s } $, questo ultimo limite dà $ \frac{1}{1-s} $ se $ |s|<1$.\\
-	% La magia di Gregorio è molto potente qui, infatti non ho capito molto i passaggi ma ho controllato su Internet e dovrebbero essere giusti
-	Il raggio di convergenza è proprio r=s=1 cioè con $ |r| < 1$ la serie converge (dà un numero finito).
+	Sostituendo n=N+1 troviamo che:\\
+	$ \frac{ 1-s^{N+1} }{ 1-s } = s^N+ s^{N-1}+...+1 = \sum_{k=0}^N s^{k}$\\
+	Quindi $ \sum_{k=0}^N s^{k} = \frac{ 1-s^{N+1} }{ 1-s } $
+	Ci basta adesso mettere il limite da entrambe le parti:\\
+	 $\lim_{N \to \infty} \sum_{k=0}^N s^{k} = \lim_{N \to \infty} \frac{ 1-s^{N+1} }{ 1-s } $, questo ultimo limite dà $ \frac{1}{1-s} $ se $ |s|<1$.\\
+	
+	Il raggio di convergenza è proprio r=s=1 cioè con $ |r| < 1$ la serie converge (dà un numero finito).\\
 	
 \end{proof}
 
-%TODO: qui mi sono persa molto
+\begin{proof}[Dim:] Spiego qui in breve perchè $\lim_{N \to \infty} \frac{ 1-s^{N+1} }{ 1-s } = \frac{1}{1-s} $ se $ |s|<1$.\\
+	
+	Andiamo per casi:\\
+	1) Se $ s>1 $:\\
+	Prendiamo come esempio la funzione $ 2^N $.\\
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[scale=0.5]{immagini/esp1}
+		\caption{ Se s>1 }
+		\label{fig: esp1}
+	\end{figure}
+	
+	Come si può vedere dal grafico il suo limite sarà $ \lim_{N \to \infty} 2^N = \infty $.\\
+	Allora in questo caso $ \lim_{N \to \infty} \frac{ 1-s^{N+1} }{ 1-s } = \infty $.\\
+	
+	2) Se $ 0<s<1 $:\\
+	Prendiamo come esempio la funzione $ (\frac{1}{2})^N $.\\
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[scale=0.5]{immagini/esp2}
+		\caption{ Se 0<s<1 }
+		\label{fig: esp2}
+	\end{figure}
+
+	Come si può vedere dal grafico il suo limite sarà $ \lim_{N \to \infty} (\frac{1}{2})^N = 0 $.\\
+	Allora in questo caso $ \lim_{N \to \infty} \frac{ 1-s^{N+1} }{ 1-s } = \frac{1}{1-s} $.\\
+	
+	3) Se $ -1<s<0 $:\\
+	Prendiamo come esempio la funzione $ (-\frac{1}{2})^N $.\\
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[scale=0.5]{immagini/esp3}
+		\caption{ Se -1<s<0 }
+		\label{fig: esp3}
+	\end{figure}
+	
+	Come si può vedere dal grafico il suo limite sarà $ \lim_{N \to \infty} (-\frac{1}{2})^N = 0 $.\\
+	Allora in questo caso $ \lim_{N \to \infty} \frac{ 1-s^{N+1} }{ 1-s } = \frac{1}{1-s} $.\\
+	
+	4) Se $ s<-1 $:\\
+	Prendiamo come esempio la funzione $ (-2)^N $.\\
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[scale=0.5]{immagini/esp4}
+		\caption{ Se s<-1 }
+		\label{fig: esp4}
+	\end{figure}
+
+	Come si può vedere dal grafico il suo limite sarà $ \lim_{N \to \infty} (-2)^N = \infty $.\\
+	Allora in questo caso $ \lim_{N \to \infty} \frac{ 1-s^{N+1} }{ 1-s } = \infty $.\\
+	
+	I casi in cui il limite è finito sono 2) e 3), che infatti danno $ |s| < 1$.\\
+	
+\end{proof}
+
 \textbf{ES B):}\\
-Se $ s -> -s$ allora $ f(s) = \sum_{k=0}^\infty (-s)^{k} = \sum_{k=0}^\infty (-1)^{k} (s)^k = 1 -s + s^2 - s^3 +...= \frac{1}{1+s}$\\
+Se $ s \longrightarrow -s$ allora $ f(s) = \sum_{k=0}^\infty (-s)^{k} = \sum_{k=0}^\infty (-1)^{k} (s)^k = 1 -s + s^2 - s^3 +...= \frac{1}{1+s}$\\
 Il raggio di convergenza è come prima $r=1$.\\
 
 \textbf{ES C):}\\
-Se $ s -> s/a$ allora $ f(s) = \sum_{k=0}^\infty \frac{s^k}{a^k} = \frac{1}{a-s}$\\
+Se $ s \longrightarrow s/a$ allora $ f(s) = \sum_{k=0}^\infty \frac{s^k}{a^k} = \frac{1}{a-s}$\\
 Con raggio di convergenza $ r = |a|$.
 %TODO: ci sarebbe un disegno qui ma non lo capisco
 
-\textbf{ES D): Serie esponenziale}\\
-$ f(s) = \sum_{k=0}^\infty \frac{s^{k}}{k!} = 1 +s + \frac{s^2}{2} + \frac{s^3}{3!} + \frac{s^4}{4!}+...= e^{s}$.\\
+\textbf{Prima di andare avanti ripassiamo Taylor e Taylor-Mc Laurin}\\
+Data una funzione sufficientemente regolare $ f(x):\mathbb{D} \longrightarrow \mathbb{R} $ con $ \mathbb{D} \subset \mathbb{R} $, è sempre possibile approssimarla in un intorno di un dato punto $ x_0 \in \mathbb{D} $, con polinomi g(x) di grado n. Perchè allora si studiano gli sviluppi di Taylor? Il motivo è che, tra tutti i polinomi di grado n, quello di Taylor è quello che meglio stima la funzione di partenza f in un intorno di $ x_0 $.\\
+Possiamo scrivere la serie di Taylor come:\\
+ $ f(x) = f(x_0) + \frac{ f'(x_0)}{1!} (x-x_0) + \frac{ f''(x_0)}{2!} (x-x_0)^2 +... = \sum_{n=0}^\infty \frac{ f^{(n)}(x_0) }{n!} (x-x_0)^n$\\
+Con sviluppo di Taylor-McLaurin si intende uno sviluppo di Taylor con centro $x_0=0$.
+In generale avremo quindi che lo sviluppo di Taylor-McLaurin è:\\
+$ f(x) = f(0) + \frac{ f'(0)}{1!} x + \frac{ f''(0)}{2!} x^2+... + \frac{ f^{n}(0)}{n!} x^n+ o(x^n)$ \\
+
+\textbf{ES D): Serie di potenze: funzione esponenziale}\\
+$ f(s) = e^{s} = \sum_{k=0}^\infty \frac{s^{k}}{k!} = 1 +s + \frac{s^2}{2} + \frac{s^3}{3!} + \frac{s^4}{4!}+... $.\\
 Il raggio di convergenza è $ r = +\infty$ e $ D(f)= \mathbb{C}$.\\
 
-\begin{proof}[Dim:] Che si dimostra qui, bo???\\
-	\textbf{Serie di Taylor:}\\
-	$ g(x) = g(a) + \frac{ g'(a)}{1!} (x-a) + \frac{ g''(a)}{2!} (x-a)^2 +... =  \sum_{k=0}^\infty \frac{ g^{(k)}(a) }{k!} (x-a)^k$\\
-	\textbf{Serie di Mc Laurin:} $ g(x) = g(0) + \frac{ g'(0)}{1!} x + \frac{ g''(0)}{2!} x^2+... + \frac{ g^{n}(0)}{n!} x^n+ o(x^n)$ \\
-	In questo caso, per $ a=0$ avrò che $ g(x) = e^x $\\ 
-	allora $ \sum_{k=0}^\infty \frac{ e^0 }{k!} (s-0)^k = \sum_{k=0}^\infty \frac{ s^k }{k!} $
+\begin{proof}[Dim:] Dimostriamo che $ e^{s} $ è proprio $\sum_{k=0}^\infty \frac{s^{k}}{k!} $\\ 
+	Avendo appena visto la serie di Taylor-McLaurin la dimostrazione è facile. Infatti lo sviluppo in serie di $ e^{s} $ è proprio:\\
+	$ e^{x} = e^0 + e^0 x + e^0 \frac{x^2}{2} + e^0 \frac{x^3}{3!} + e^0 \frac{x^4}{4!} +... $ \\
+	$ = 1 + x + \frac{x^2}{2} + \frac{x^3}{3!} + \frac{x^4}{4!}+... = \sum_{n=0}^\infty \frac{x^{n}}{n!}$ 
 \end{proof}
 
 
@@ -525,7 +593,6 @@ Svolgiamo i calcoli: $ cos(0) = 1$ , $ cos'(0)s = -sen(0) = 0 $, $\frac{ cos''(0
 
 Quindi avrò $ g(s) = cos(s) = 1 + 0 - \frac{s^2}{2!} + 0 + \frac{s^4}{4!} + 0 -... $\\
 
-\pagebreak
 
 Da notare come i segni si continuino ad alternare, questo è dovuto alle derivate del coseno e del seno:\\
 $ (cos(s))' = - sen(s)$\\
