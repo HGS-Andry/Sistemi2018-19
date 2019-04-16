@@ -2,4 +2,5 @@
 *.aux
 *.log
 *.gz
-Main.toc
+*.toc
+

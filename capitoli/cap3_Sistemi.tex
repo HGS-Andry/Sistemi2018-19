@@ -1,5 +1,4 @@
-\chapter{Sistemi}
-\section{Sistemi a tempo continuo}
+\chapter{Sistemi a tempo continuo}
 %TODO immagine e descrizione?
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -30,7 +29,7 @@
 		Ci sarà sempre un istante iniziale $t_0$ a partire da cui studieremo il sistema
 		%TODO non sono sicuro
 	\end{osservazione}
-		\[
+	\[
 		\Leftrightarrow \exists \,t_0 \in \mathbb{R} \quad t.c. \quad u(t)=0 \quad t<t_0
 		\Rightarrow v(t)=0 \quad t<t_0
 		\quad t_0 =0 \quad \text{per Tempo Invarianza (TI)}
@@ -91,7 +90,7 @@ In generale un modello SISO è descritto da un'equazione differenziale a coeffic
 \end{definizione}
 
 \begin{osservazione}
-	In generale l'uscita $v(t)$ del sistema % TODO: aggiungere link all'equazione (1) %
+	In generale l'uscita $v(t)$ del sistema (\ref{equation 1})
 	non è univoca. Se definiamo $n$ condizioni iniziali all'istante $t_0 = 0^-$ (per l'uscita $v$):
 	\begin{equation}
 		v(0^-) \,
@@ -100,12 +99,10 @@ In generale un modello SISO è descritto da un'equazione differenziale a coeffic
 		,\, \frac{d^{(n-1)}v(t)}{dt^{n-1}}\bigg\vert_{t=0^-}
 		\tag{3}\label{equation 3}
 	\end{equation}
-	$\Rightarrow$ la soluzione di % TODO: aggiungere link all'equazione (1)
-	è unica.
+	$\Rightarrow$ la soluzione di (\ref{equation 1}) è unica.
 \end{osservazione}
 
-La soluzione dell'equazione % TODO: aggiungere link all'equazione (1)
-si ottiene come somma di una soluzione che dipende soltanto dalle condizioni iniiziali (\ref{equation 3}) chiamato evoluzione libera $v_l(t)$ e da una soluzione che dipende soltanto dall'ingresso $u(t)$ con condizioni iniziali tutte nulle, chiamato evoluzione forzata $v_f(t)$ %TODO sottolineare evoluzione forzata e libera
+La soluzione dell'equazione (\ref{equation 1}) si ottiene come somma di una soluzione che dipende soltanto dalle condizioni iniiziali (\ref{equation 3}) chiamato evoluzione libera $v_l(t)$ e da una soluzione che dipende soltanto dall'ingresso $u(t)$ con condizioni iniziali tutte nulle, chiamato evoluzione forzata $v_f(t)$ %TODO sottolineare evoluzione forzata e libera
 \[
 v(t) = v_l(t) + v_f(t)
 \]
@@ -156,20 +153,18 @@ I coefficienti $c_{i,l}
 	$m(t) = e^{\lambda_i t} \frac{t^l}{l!} $ si chiama modo elementare del sistema
 	%TODO enfatizzare modo elementare del sistema
 \end{definizione}
-%TODO
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Stabilità
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Stabilità}
-%TODO
+%TODO 
 \subsection{Stabilità asintotica}
-Si studia la stabilità asintotica di sistemi descritti dall'equazione %TODO: aggiungere link all'equazione (1)
+Si studia la stabilità asintotica di sistemi descritti dall'equazione (\ref{equation 1})
 
 \begin{theorem}
-	Il sistema % TODO: aggiungere link all'equazione (1) %
-	è asintoticamente stabile se per ogni scelta delle consizioni iniziali:
+	Il sistema (\ref{equation 1}) è asintoticamente stabile se per ogni scelta delle consizioni iniziali:
 	\begin{equation*}
 		\lim_{t \to \infty}v_l(t)=0
 		\Leftrightarrow\text{tutti i modi elementari } m(t)=e^{\lambda t}\frac{t^l}{t!}\text{ sono convergenti a $0$}
@@ -196,8 +191,7 @@ Si studia la stabilità asintotica di sistemi descritti dall'equazione %TODO: ag
 \section{Risposta Impulsiva}
 
 \begin{definizione}
-	Dato un sistema descritto dall'equazione %TODO: aggiungere link all'equazione (1)
-	, inizialmente a riposo, definiamo la risposta impulsiva e indichiamo con $h(t)$ l'uscita del sistema in corrispondenza dell'impulso unitario $\delta (t)$ in ingresso.
+	Dato un sistema descritto dall'equazione (\ref{equation 1}), inizialmente a riposo, definiamo la risposta impulsiva e indichiamo con $h(t)$ l'uscita del sistema in corrispondenza dell'impulso unitario $\delta (t)$ in ingresso.
 \end{definizione}
 
 \begin{definizione}
@@ -212,7 +206,7 @@ Si studia la stabilità asintotica di sistemi descritti dall'equazione %TODO: ag
 	\begin{enumerate}
 		\item $v_1 * v_2 = v_2 * v_1 $ (commutatività)
 		\item $(v_1 * v_2) * v_3  = v_1 * (v_2 * v_3) $ (associatività)
-		\item $v_1 * (v_2 + v_3)  = v_1 * v_2 + v_1 * v_3)$ (distributività)
+		\item $v_1 * (v_2 + v_3)  = v_1 * v_2 + v_1 * v_3$ (distributività)
 	\end{enumerate}
 
 \begin{osservazione}
@@ -240,8 +234,7 @@ ponendo:  $t-\tau = s \Rightarrow d\tau = - ds
 \end{proof}
 
 proprieta:
-La risposta in uscita del sistema%TODO: aggiungere link all'equazione (1)
-, inizialmente a riposo, di risposta impulsiva $h(t)\quad t\in\mathbb{R}$ in corrispondenza a un ingresso $u(t)\quad t\in\mathbb{R}$, se esiste, è data da:
+La risposta in uscita del sistema (\ref{equation 1}), inizialmente a riposo, di risposta impulsiva $h(t)\quad t\in\mathbb{R}$ in corrispondenza a un ingresso $u(t)\quad t\in\mathbb{R}$, se esiste, è data da:
 \[
 v(t)=(h*u)(t) = \int_{0^-}^{\infty}h(\tau)u(t - \tau)\,d\tau
 = \int_{-\infty}^{t^+}h(t - \tau)u(\tau)\,d\tau
@@ -254,7 +247,7 @@ in particolare la risposta forzata ad un ingresso $u(t)\quad t\in\mathbb{R} \qua
 \]
 
 %TODO anche qui non so cosa sia
-sostituisco $\delta (t)$ in %TODO: aggiungere link all'equazione (1)
+sostituisco $\delta (t)$ in (\ref{equation 1}):
 \begin{equation}
 	a_n \frac{d^{(n)} h(t)}{dt^n}+\dots+a_0\,h(t) = b_m \frac{d^{(n+1)} \delta(t)}{dt^{n+1}}+\dots+b_0\,\delta(t) %TODO n+1 oppure m+1?
 	\tag{7}\label{equation 7}
@@ -273,8 +266,7 @@ Studiamo l'evoluzione forzata sull'orizzonte temporale $(0,+\infty)$ %TODO aggiu
 	
  %TODO controlla formula
 \begin{osservazione}
-	$\eqref{equation 8} \Rightarrow h (t)$ è una combinazione lineare di tutti i modi elementari ottenuti dalla soluzione dell'equazione caratteristica del sistema%TODO: aggiungere link all'equazione (1)
-	in cui si aggiunge un termine impulsivo soltanto nei sistemi in cui $n=m$:
+	$\eqref{equation 8} \Rightarrow h (t)$ è una combinazione lineare di tutti i modi elementari ottenuti dalla soluzione dell'equazione caratteristica del sistema (\ref{equation 1}) in cui si aggiunge un termine impulsivo soltanto nei sistemi in cui $n=m$:
 	\begin{equation}
 		h(t)=0 \text{ per } t<0 \Rightarrow h(t) = h(t)\delta_{-1} (t)
 		\Rightarrow h(t)= d_0 \delta(t) + \sum_{i=1}^{r}\sum_{l=0}^{\mu_i-1}d_{i,l} \,e^{\lambda_it}\frac{t^l}{t!}\delta_{-1} (t)
@@ -311,6 +303,7 @@ Per i sistemi LTI causali:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Stabilità BIBO dei sistemi LTI generali}
+\label{sec:BIBO}
 
 %TODO forse ripetizione
 %\emph{Generale} = non più descritti da eq.differenziale.
@@ -382,8 +375,7 @@ Un sistema a tempo continuo LTI è BIBO stabile:
 \begin{osservazione}\leavevmode
 	\begin{enumerate}
 		\item Per i sitemi LTI causali BIBO stabilità $\Leftrightarrow \int_{-\infty}^{+\infty}\lvert h(t) \rvert \,dt < +\infty$
-		\item Dato (\ref{equation 9}) per il sistema %TODO: aggiungere link all'equazione (1)
-		$\Rightarrow h(t) $ è sommabile $\Leftrightarrow$ tutti i modi sono cenvergenti (per cui $d_{i,l}\ne0)\Leftrightarrow Re(\lambda_i)<0 \Leftrightarrow $ è BIBO stabile
+		\item Dato (\ref{equation 9}) per il sistema (\ref{equation 1})	$\Rightarrow h(t) $ è sommabile $\Leftrightarrow$ tutti i modi sono cenvergenti (per cui $d_{i,l}\ne0)\Leftrightarrow Re(\lambda_i)<0 \Leftrightarrow $ è BIBO stabile
 		\item \{I modi di $h(t)$\} $\subseteq$ \{i modi di $v_l(t)$\} (alcuni modi $d_{i,l}=0$ )
 		\item  Stabilità asintotica $\Rightarrow$ BIBO stabilità (il contrario non è valido $\cancel{\Leftarrow}$ )
 	\end{enumerate}
@@ -407,6 +399,99 @@ con $A \in \mathbb{R_+}, \phi$ e $\omega_0 \in \mathbb{R}$. %TODO controlla omeg
 	= \int_{-\infty}^{+\infty}h(\tau)Ae^{j(\omega_0(t-\tau)+\phi)}\,d\tau
 	= \underbrace{Ae^{j(\omega_0 t+\phi)}}_{\in \mathbb{C}} \underbrace{\int_{-\infty}^{+\infty}h(\tau)e^{-j\omega_0 \tau}\, d\tau}_{\text{è stabile?}}
 \]
-%TODO immagine sistema 
+Data la definizione di BIBO stabilitá nel paragrafo~\ref{sec:BIBO}:
+\[
+	\Abs{\int_{-\infty}^{+\infty}h(\tau)e^{-j\omega_0 \tau}\, d\tau} 
+	\le \int_{-\infty}^{+\infty}\abs{h(\tau)e^{-j\omega_0 \tau}}\, d\tau
+	= \int_{-\infty}^{+\infty}\abs{h(\tau)}\abs{e^{-j\omega_0 \tau}}\, d\tau
+	= \int_{-\infty}^{+\infty}\abs{h(\tau)}\, d\tau < +\infty
+\]
+visto che $\abs{e^{-j\omega_0 \tau}} =1$ perché il modulo di un fasore è sempre $1$
 
-%TODO
+Ora possiamo scrivere:
+\[
+	H(j\omega_0) = \int_{-\infty}^{+\infty}h(\tau)e^{-j\omega_0 \tau}\, d\tau
+\]
+\[
+	\Rightarrow v_1(t)=H(j\omega_0) A e^{j(\omega_0 t + \phi)}, \quad t \in \mathbb{R}
+\]
+%TODO unire le due funzioni precedneti?
+
+\begin{definizione}
+	Per $ \omega \in \mathbb{R} $ definiamo
+	\[
+		H(j\omega)= \int_{-\infty}^{+\infty}h(\tau)e^{-j\omega \tau}\, d\tau
+	\]
+	e la chiamamo la risposta in frequenza del sistema (\ref{equation 10}).
+	$ \forall\omega\in\mathbb{R} \mapsto H(j\omega)\in \mathbb{C} \Rightarrow$ esistono due funzioni: $ A(\omega) $ (modulo, ampiezza), $ \Phi(\omega) $ (fase) tali che:
+	\begin{gather*}
+		A(\omega):=\abs{H(j\omega)}=\Abs{\int_{-\infty}^{+\infty}h(\tau)e^{-j\omega \tau}\, d\tau}\\
+		\Phi(\omega) := \angle H(j\omega)=arg(H(j\omega))=arg(\int_{-\infty}^{+\infty}h(\tau)e^{-j\omega \tau}\, d\tau)
+	\end{gather*}
+\end{definizione}
+
+%TODO fa parte della definizione?
+\[
+	\Rightarrow v_1(t) =(A(\omega)A)e^{j(\omega_0 t+\phi+\Phi(\omega_0))} , \quad t \in \mathbb{R}
+\]
+con $ u_2(t)= A e^{j(\omega_0 t + \phi)}$:
+\[
+	v_2(t) =h(-j\omega_0)Ae^{-j(\omega_0 t+\phi)}=A(-\omega_0)Ae^{j(\omega_0 t+\phi+\Phi(-\omega_0))} %TODO contorolla formula	
+\]
+\[
+	H(-j\omega_0)= \int_{-\infty}^{+\infty}\underbrace{h(\tau)}_{\in\mathbb{R}}e^{j\omega \tau}\, d\tau
+	= \int_{-\infty}^{+\infty}\overline{h(\tau)e^{-j\omega \tau}}\, d\tau
+	= \overline{\int_{-\infty}^{+\infty}h(\tau)e^{-j\omega \tau}\, d\tau}
+	= \overline{H(j\omega_0)}
+\]
+
+$ \Rightarrow A(j\omega) =A(-j\omega)$ (pari) stessa ampiezza tra complesso e il suo coniugato
+
+$ \Rightarrow \Phi(j\omega) =-\Phi(-j\omega)$ (dispari) fase opposta tra complesso e il suo coniugato
+
+Supponiamo un ingresso $ u(t)=A cos(\omega_0 t+\phi), \quad t \in \mathbb{R},\quad A>0, \quad \omega_0 \text{ e } \phi \in \mathbb{R} $ con formula di Eulero: %TODO aggiungere formula di Eulero?
+
+\begin{equation*}
+	u(t)=\frac{A}{2}e^{j(\omega_0 t + \phi)}+\frac{A}{2}e^{-j(\omega_0 t + \phi)} 
+		= \frac{u_1(t)+ u_2(t)}{2}
+\end{equation*}
+\begin{equation*}
+	\Rightarrow v(t)=
+		\frac{v_1(t)+ v_2(t)}{2}
+		= \frac{A e^{j(\omega_0 t + \phi) H(j\omega_0)}+ A e^{-j(\omega_0 t + \phi) H(-j\omega_0)}}{2}
+\end{equation*}
+		essendo complesso coniugato:
+\begin{equation*}
+		= \frac{A e^{j(\omega_0 t + \phi)} A(\omega_0) e^{j\Phi(\omega_0)} + A e^{-j(\omega_0 t + \phi)} A(\omega_0) e^{-j\Phi(\omega_0)}}{2}\\ %TODO controlla segni j e -j
+\end{equation*}
+Applicando la formula di Eulero al contrario:
+\begin{equation*}
+=A\,A(\omega_0)cos(\omega_0 t+\phi+\Phi(\omega_0))
+\end{equation*}
+
+La risposta di un sistema LTI reale ($ H(t) $ reale) e BIBO stabile a un segnale sinusoidale di frequenza $ \omega_0 $ è ancora un segnale dellla stessa frequenza e ampiezza data dal prodotto dell'ingfresso A e il modulo della risposta in frequenza calcolato alla frequenza  $ \omega_0 $ e la fase è data dalla somma della fase iniziale $ \phi $ sommata alla fase della risposta in frequenza alla frequenza  $ \omega_0 $
+\begin{equation*}
+	\begin{split}
+	\text{Ampiezza}\quad & A \abs{H(j\omega)}=A\,A(\omega_0)\\	
+	\text{Fase}\quad & \angle H(j\omega) = \phi + \Phi(\omega_0)\\
+\end{split}
+\end{equation*}
+
+Per il sistema (\ref{equation 1}): 
+\[
+	u(t)= e^{j\omega t}
+	\Rightarrow v(t) = e^{j\omega t} H(j\omega)
+\]
+dove  $ H(j\omega) $ è la risposta in frequenza. Ricordiamo che:
+\[
+	\frac{d^{(i)}e^{j\omega t}}{dt^i} = (j\omega)^i e^{j\omega t}
+\]
+inseriamo in (\ref{equation 1}): 
+\[
+	\sum_{i=0}^{n}a_i\, H(j\omega)(j\omega)^i \cancel{e^{j\omega t}}
+	= \sum_{i=0}^{m}b_i \, (j\omega)^i \cancel{e^{j\omega t}}
+\]
+\[
+	\Rightarrow H(j\omega) = \frac{\sum_{i=0}^{m}b_i \, (j\omega)^i}{\sum_{i=0}^{n}a_i\, (j\omega)^i}
+\]
+

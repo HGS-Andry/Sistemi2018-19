@@ -444,11 +444,16 @@ Ogni polinomio P(s) di grado n ha n radici complesse e si può decomporre in un 
 $ P(s) = a_{n} (s- \lambda_{1})^{u_{1}} (s- \lambda_{2})^{u_{2}} ... (s- \lambda_{r})^{u_{r}} $ \\
 dove $ \lambda_{1}, \lambda_{2},...,\lambda_{r} $ sono le radici ( cioè $ \forall k $ che va da 1 a r, $ P(\lambda_{k}) = 0$) e $ u_{1},...,u_{r} $ sono le molteplicità.\\
 
-\textbf{???}%TODO: cos'è questo? Titolo ?
-$ P(\lambda_{k}) = P'(\lambda_{k}) = ... = P^{(u_{k}-1)}(\lambda_{k}) = 0 $ \\
-$ P^{u_{k}}(\lambda_{k}) \neq 0 $ e $ u_{1}+u_{2}+...+u_{r} = h $\\
+\pagebreak
 
-\textbf{OSS1:} nel caso di radici semplici (cioè hanno tutte molteplicità = 1)\\
+\textbf{Da questo teorema si evince che:}\\
+Tutti i monomi del polinomio sono linearmente indipendenti perchè possiamo vedere lo spazio dei polinomi come uno spazio infinito dimensionale in cui i monomi sono dei vettori. Ogni vettore lo puoi vedere come un vettore della base canonica quindi indipendente dagli altri. Puoi vedere i vettori come coordinate e quindi un monomio del polinomio è una coordinata diversa e a se stante dalle altre. Trovo quindi che $ u_{1}+u_{2}+...+u_{r} = n $.\\
+Se prendo $ \lambda_{k} $ in quel punto il polinomio darà zero perchè è una sua radice, cioè $ P(\lambda_{k}) = 0 $. Se derivo il polinomio "gli tolgo una dimensione" ma il monomio non scompare e quindi $ \lambda_{k} $ sarà uno zero anche per la darivata. Avrò che $ P(\lambda_{k}) = P'(\lambda_{k}) = ... = P^{(u_{k}-1)}(\lambda_{k}) = 0 $. \\
+Es: $ d(x-2)^3/dx = 3(x-2)^2 $, $ \lambda = 2 $ è radice del polinomio e della sua derivata.\\
+Questo però vale fino a $ u_{k}-1 $. Es: $ d 3(x-2)^2/dx = 6(x-2) $ vale ma se derivo ancora $  d 6(x-2)/dx = 6 $ non vale più, cioè $ \lambda_{k} = 2$ non annula questa derivata essendo costante(=6). \\
+Vediamo quindi che la derivata di grado $ u_{k} $ cioè uguale alla molteplicità, è la prima derivata non nulla, cioè $ P^{u_{k}}(\lambda_{k}) \neq 0 $.\\
+
+\textbf{OSS1:} nel caso di radici semplici (cioè hanno tutte molteplicità = 1) avrò che:\\
 $ P(s) = a_{n} (s- \lambda_{1}) (s- \lambda_{2}) ... (s- \lambda_{r}) $
 
 %TODO: non ho capito questa osservazione
@@ -479,6 +484,16 @@ Si associa $r>0$, chiamato \textbf{raggio di convergenza} tale che la serie conv
 \textbf{ES A): Serie geometrica}\\
 $ f(s) = \sum_{k=0}^\infty s^{k} = \sum_{k=0}^\infty (s-0)^{k}$ cioè $s_0= 0$.\\
 In questo caso $r=1$ e $ D(f)=B_1(0)=$ \{ $ s \in \mathbb{C} : |s| < 1$ \}.
+
+\pagebreak
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.5]{immagini/raggioDiConvergenza}
+	\caption{ Graficamente la regione in cui la sommatoria converge }
+	\label{fig: raggioDiConvergenza}
+\end{figure}
+
 \begin{proof}[Dim:] voglio dimostrare che r=1 è proprio il raggio di convergenza.\\
 	Scriviamo $\sum_{k=0}^\infty s^{k} $ come $ \lim_{N \to \infty} \sum_{k=0}^N s^{k} $ per avere questa sommatoria applichiamo un po' di magia di Gregorio (che non fa mai male):\\
 	
@@ -510,6 +525,8 @@ In questo caso $r=1$ e $ D(f)=B_1(0)=$ \{ $ s \in \mathbb{C} : |s| < 1$ \}.
 		\caption{ Se s>1 }
 		\label{fig: esp1}
 	\end{figure}
+	
+	\pagebreak
 	
 	Come si può vedere dal grafico il suo limite sarà $ \lim_{N \to \infty} 2^N = \infty $.\\
 	Allora in questo caso $ \lim_{N \to \infty} \frac{ 1-s^{N+1} }{ 1-s } = \infty $.\\
@@ -550,6 +567,8 @@ In questo caso $r=1$ e $ D(f)=B_1(0)=$ \{ $ s \in \mathbb{C} : |s| < 1$ \}.
 		\label{fig: esp4}
 	\end{figure}
 
+	\pagebreak
+	
 	Come si può vedere dal grafico il suo limite sarà $ \lim_{N \to \infty} (-2)^N = \infty $.\\
 	Allora in questo caso $ \lim_{N \to \infty} \frac{ 1-s^{N+1} }{ 1-s } = \infty $.\\
 	
@@ -558,13 +577,28 @@ In questo caso $r=1$ e $ D(f)=B_1(0)=$ \{ $ s \in \mathbb{C} : |s| < 1$ \}.
 \end{proof}
 
 \textbf{ES B):}\\
-Se $ s \longrightarrow -s$ allora $ f(s) = \sum_{k=0}^\infty (-s)^{k} = \sum_{k=0}^\infty (-1)^{k} (s)^k = 1 -s + s^2 - s^3 +...= \frac{1}{1+s}$\\
+Se $ s \longrightarrow -s$ allora $ f(s) = \sum_{k=0}^\infty (-s)^{k} = \sum_{k=0}^\infty (-1)^{k} (s)^k = 1 -s + s^2 - s^3 + s^4 - s^5...$\\
+$ = 1 + s^2 + s^4+ ... - s (1 + s^2 + s^4 + ...) = *$\\
+NB: $ 1 + s^2 + s^4+ ... = \sum_{k=0}^\infty s^{2k} = \frac{1}{1+s^2}  $\\
+Quindi avrò che $* = \frac{1}{1+s^2} - s \frac{1}{1+s^2}$
+$ = \frac{1-s}{1+s^2} = \frac{1}{1+s}$\\
+Riassumendo ho che $  \sum_{k=0}^\infty (-s)^{k} = \frac{1}{1+s}$.\\
 Il raggio di convergenza è come prima $r=1$.\\
 
 \textbf{ES C):}\\
-Se $ s \longrightarrow s/a$ allora $ f(s) = \sum_{k=0}^\infty \frac{s^k}{a^k} = \frac{1}{a-s}$\\
+Se $ s \longrightarrow s/a$ allora $ f(s) = \sum_{k=0}^\infty (\frac{s}{a})^k = \frac{1}{1-\frac{s}{a}} = \frac{1}{\frac{a-s}{a}} = \frac{a}{a-s}$\\
+Il limite converge con $ |\frac{s}{a}| <1 $.\\
 Con raggio di convergenza $ r = |a|$.
+
 %TODO: ci sarebbe un disegno qui ma non lo capisco
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.75]{immagini/raggioDiConv2}
+	\caption{ Graficamente la regione in cui la sommatoria converge }
+	\label{fig: raggioDiConvergenza}
+\end{figure}
+
+\pagebreak
 
 \textbf{Prima di andare avanti ripassiamo Taylor e Taylor-Mc Laurin}\\
 Data una funzione sufficientemente regolare $ f(x):\mathbb{D} \longrightarrow \mathbb{R} $ con $ \mathbb{D} \subset \mathbb{R} $, è sempre possibile approssimarla in un intorno di un dato punto $ x_0 \in \mathbb{D} $, con polinomi g(x) di grado n. Perchè allora si studiano gli sviluppi di Taylor? Il motivo è che, tra tutti i polinomi di grado n, quello di Taylor è quello che meglio stima la funzione di partenza f in un intorno di $ x_0 $.\\
@@ -602,6 +636,8 @@ Riscrivendolo avrò che $  g(s) = cos(s) = 1 - \frac{s^2}{2!} + \frac{s^4}{4!} -
 
 Possiamo vedere anche il seno come serie:\\
 $ g(s)=sen(s)= \sum_{k=0}^\infty (-1)^k \dfrac{s^{2k+1}}{(2k+1)!} = s - \frac{s^3}{3!}+\frac{s^5}{5!}-...$
+
+\pagebreak
 
 \textbf{COMANDO MATLAB:}\\
 
