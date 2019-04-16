@@ -337,7 +337,7 @@ Un sistema a tempo continuo LTI è BIBO stabile:
 		\le \underbrace{\int_{-\infty}^{+\infty} \rvert h(\tau)\lvert\,d\tau}_{\le + \infty}
 	\]
 	\[
-		\text{scegliendo } M_v := m_u \int_{-\infty}^{+\infty} \rvert h(\tau)\lvert\,d\tau \in \mathbb{R} \Rightarrow \lvert v(t) \rvert < M_v, \forall t \in \mathbb{R}\Rightarrow \text{BIBO stabile} \qedhere
+		\text{scegliendo } M_v \coloneqq m_u \int_{-\infty}^{+\infty} \rvert h(\tau)\lvert\,d\tau \in \mathbb{R} \Rightarrow \lvert v(t) \rvert < M_v, \forall t \in \mathbb{R}\Rightarrow \text{BIBO stabile} \qedhere
 	\]
 \end{proof}
 
@@ -425,8 +425,8 @@ Ora possiamo scrivere:
 	e la chiamamo la risposta in frequenza del sistema (\ref{equation 10}).
 	$ \forall\omega\in\mathbb{R} \mapsto H(j\omega)\in \mathbb{C} \Rightarrow$ esistono due funzioni: $ A(\omega) $ (modulo, ampiezza), $ \Phi(\omega) $ (fase) tali che:
 	\begin{gather*}
-		A(\omega):=\abs{H(j\omega)}=\Abs{\int_{-\infty}^{+\infty}h(\tau)e^{-j\omega \tau}\, d\tau}\\
-		\Phi(\omega) := \angle H(j\omega)=arg(H(j\omega))=arg(\int_{-\infty}^{+\infty}h(\tau)e^{-j\omega \tau}\, d\tau)
+		A(\omega)\coloneqq\abs{H(j\omega)}=\Abs{\int_{-\infty}^{+\infty}h(\tau)e^{-j\omega \tau}\, d\tau}\\
+		\Phi(\omega) \coloneqq \angle H(j\omega)=arg(H(j\omega))=arg(\int_{-\infty}^{+\infty}h(\tau)e^{-j\omega \tau}\, d\tau)
 	\end{gather*}
 \end{definizione}
 

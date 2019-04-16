@@ -14,6 +14,7 @@
 \usepackage{amsthm}
 \usepackage{mathrsfs}
 \usepackage{cancel}
+\usepackage{tikz}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -22,8 +23,10 @@
 \newenvironment{theorem}{Teorema: }{}
 \newenvironment{exercise}{Esercizio:}{}				  
 %\newenvironment{definition}{Definizione: }{}
-%\newenvironment{oss}{Osservazione: }{}		
-\newenvironment{example}{Esempio:}{}		
+%\newenvironment{oss}{Osservazione: }{}
+\theoremstyle{remark}
+\newtheorem*{example}{Es}	
+%\newenvironment{example}{Esempio:}{}		
 %\newenvironment{proof}{Dim:}{}	
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -50,7 +53,7 @@
 \DeclarePairedDelimiter{\Abs}{\bigg\lvert}{\bigg\rvert}
 
 % voglio compilare sono cap1_Intro.tex
-%\includeonly{./capitoli/cap3_Sistemi}
+%\includeonly{./capitoli/Schemi_blocchi_flusso}
 % NB \includeonly va prima di \begin{document}
 
 
@@ -82,6 +85,7 @@
 \include{./capitoli/cap2_Segnali}
 \include{./capitoli/cap3_Sistemi}
 \include{./capitoli/cap4_TrasfDiLaplace}
+\include{./capitoli/Schemi_blocchi_flusso}
 %\include{./capitoli/Esercizi}
 
 
