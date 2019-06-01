@@ -102,7 +102,7 @@ In generale un modello SISO è descritto da un'equazione differenziale a coeffic
 	$\Rightarrow$ la soluzione di (\ref{equation 1}) è unica.
 \end{osservazione}
 
-La soluzione dell'equazione (\ref{equation 1}) si ottiene come somma di una soluzione che dipende soltanto dalle condizioni iniiziali (\ref{equation 3}) chiamato evoluzione libera $v_l(t)$ e da una soluzione che dipende soltanto dall'ingresso $u(t)$ con condizioni iniziali tutte nulle, chiamato evoluzione forzata $v_f(t)$ %TODO sottolineare evoluzione forzata e libera
+La soluzione dell'equazione (\ref{equation 1}) si ottiene come somma di una soluzione che dipende soltanto dalle condizioni iniziali (\ref{equation 3}) chiamato evoluzione libera $v_l(t)$ e da una soluzione che dipende soltanto dall'ingresso $u(t)$ con condizioni iniziali tutte nulle, chiamato evoluzione forzata $v_f(t)$ %TODO sottolineare evoluzione forzata e libera
 \[
 v(t) = v_l(t) + v_f(t)
 \]
@@ -133,7 +133,7 @@ Per il toerema fondamentale dell'algebra, (\ref{equation 5}) ha $r$ radici  dist
 
 La soluzione di (\ref{equation 4}) sarà:
 \begin{equation}
-	v_l(t)=  \sum_{i=1}^{r}\sum_{l=0}^{\mu_i-1}c_{i,l} \,e^{\lambda_it}\frac{t^l}{t!}
+	v_l(t)=  \sum_{i=1}^{r}\sum_{l=0}^{\mu_i-1}c_{i,l} \,e^{\lambda_it}\frac{t^l}{l!}
 	\tag{6}\label{equation 6}
 \end{equation}
 I coefficienti $c_{i,l}
@@ -167,7 +167,7 @@ Si studia la stabilità asintotica di sistemi descritti dall'equazione (\ref{equ
 	Il sistema (\ref{equation 1}) è asintoticamente stabile se per ogni scelta delle consizioni iniziali:
 	\begin{equation*}
 		\lim_{t \to \infty}v_l(t)=0
-		\Leftrightarrow\text{tutti i modi elementari } m(t)=e^{\lambda t}\frac{t^l}{t!}\text{ sono convergenti a $0$}
+		\Leftrightarrow\text{tutti i modi elementari } m(t)=e^{\lambda t}\frac{t^l}{l!}\text{ sono convergenti a $0$}
 		\Leftrightarrow Re(\lambda_i)<0,\forall i = \overline{1,r}
 	\end{equation*}
 \end{theorem}
@@ -222,7 +222,7 @@ Tenendo conto che $h(t)=0$ per $t<0$ (causalità) avremo:
 \end{equation*}
 \begin{proof}[Dim]
 ponendo:  $t-\tau = s \Rightarrow d\tau = - ds 
-\qquad \tau = 0^-  \Rightarrow s+t^+ 
+\qquad \tau = 0^-  \Rightarrow s = t^+ 
 \qquad \tau=\infty \Rightarrow s = -\infty$
 \[
 %TODO controllare gil estremi dell'integrale
@@ -239,10 +239,12 @@ La risposta in uscita del sistema (\ref{equation 1}), inizialmente a riposo, di 
 v(t)=(h*u)(t) = \int_{0^-}^{\infty}h(\tau)u(t - \tau)\,d\tau
 = \int_{-\infty}^{t^+}h(t - \tau)u(\tau)\,d\tau
 \]
-in particolare la risposta forzata ad un ingresso $u(t)\quad t\in\mathbb{R} \quad u(t)=0 , t<0$ è:
+in particolare la risposta forzata ad un ingresso $u(t)\quad t\in\mathbb{R} \quad u(t)=0 ,\quad t<0$ è:
+%TODO contollare se va bene formulata così
 \[
+v\!_f(t) =
 \int_{0^-}^{t^+}h(t - \tau)u(\tau)\,d\tau 
-\quad\text{oppure}\quad
+ \,= 
 \int_{0^-}^{t^+}h(\tau)u(t - \tau)\,d\tau 
 \]
 
@@ -252,17 +254,17 @@ sostituisco $\delta (t)$ in (\ref{equation 1}):
 	a_n \frac{d^{(n)} h(t)}{dt^n}+\dots+a_0\,h(t) = b_m \frac{d^{(n+1)} \delta(t)}{dt^{n+1}}+\dots+b_0\,\delta(t) %TODO n+1 oppure m+1?
 	\tag{7}\label{equation 7}
 \end{equation}
-Studiamo l'evoluzione forzata sull'orizzonte temporale $(0,+\infty)$ %TODO aggiungere disegno?
-\[ %TODO controlla formula, soprattutto t = 0-
-	h(0) = \frac{dh(t)}{dt}\bigg\vert_{t=0^-}
+Studiamo l'evoluzione forzata sull'orizzonte temporale $(0,+\infty)$ (da notare che va da $0$ a $n-1$) %TODO aggiungere disegno?
+
+\begin{multline} %TODO controlla formula, soprattutto t = 0-
+	h(0) = \frac{dh(t)}{dt}\bigg\vert_{t=0^-} = \dots %TODO controlla se si parla di tutte o solo delle prime due e dell'ultima
 	=\frac{d^{(n-1)}h(t)}{dt^{n-1}}\bigg\vert_{t=0^-}
-	= 0
-	\delta(t) = 0 \qquad\text{per } t>0
-\]
-\begin{equation}
+	= 0,\quad
+	\delta(t) = 0 \\
 	\overset{\eqref{equation 7}}{\Rightarrow}a_n \frac{d^{(n)} h(t)}{dt^n}+\dots+a_0\,h(t) = 0 
+	\qquad\text{per } t>0
 	\tag{8}\label{equation 8}
-\end{equation}
+\end{multline}
 	
  %TODO controlla formula
 \begin{osservazione}
@@ -313,9 +315,9 @@ Per i sistemi LTI causali:
 %TODO come gestiamo le proprietà?
 %proprietà:
 
-Un sistema a tempo continuo LTI è BIBO stabile:
+Un sistema a tempo continuo LTI è BIBO stabile sse:
 \[
-	\Leftrightarrow \int_{-\infty}^{+\infty}\lvert h(t) \rvert \,dt < +\infty
+	\int_{-\infty}^{+\infty}\lvert h(t) \rvert \,dt < +\infty
 \]
 (La risposta impulsiva è sommabile oppure assolutamente integrabile)
 
@@ -337,7 +339,7 @@ Un sistema a tempo continuo LTI è BIBO stabile:
 		\le \underbrace{\int_{-\infty}^{+\infty} \rvert h(\tau)\lvert\,d\tau}_{\le + \infty}
 	\]
 	\[
-		\text{scegliendo } M_v \coloneqq m_u \int_{-\infty}^{+\infty} \rvert h(\tau)\lvert\,d\tau \in \mathbb{R} \Rightarrow \lvert v(t) \rvert < M_v, \forall t \in \mathbb{R}\Rightarrow \text{BIBO stabile} \qedhere
+		\text{scegliendo } M_v \coloneqq M_u \int_{-\infty}^{+\infty} \rvert h(\tau)\lvert\,d\tau \in \mathbb{R} \Rightarrow \lvert v(t) \rvert < M_v, \forall t \in \mathbb{R}\Rightarrow \text{BIBO stabile} \qedhere
 	\]
 \end{proof}
 
