@@ -1,5 +1,6 @@
 \documentclass[a4paper, 12pt, italian]{book}
 \usepackage{mathptmx}
+%\usepackage{newtxmath}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[italian]{babel}
@@ -18,40 +19,57 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Definizione caption
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{caption}
+\captionsetup{tableposition=top,figureposition=bottom,font=small}
+\captionsetup{format=hang,labelfont={sf,bf}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Definizione struttura
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newenvironment{theorem}{Teorema: }{}
-\newenvironment{exercise}{Esercizio:}{}				  
+\newenvironment{theorem}{Teorema: }{}	% Teorema
+\newenvironment{exercise}{Esercizio:}{}	% esercizio					  
 %\newenvironment{definition}{Definizione: }{}
 %\newenvironment{oss}{Osservazione: }{}
 \theoremstyle{remark}
-\newtheorem*{example}{Es}	
+\newtheorem*{example}{Es}				% esempio non numerato
+\newtheorem{nexample}{Es}{\itshape}		% esempio numerato secondo il capitolo e sezione
+\numberwithin{nexample}{section}
+\theoremstyle{definition}				% definizione
+\newtheorem*{definizione}{Def}
+\theoremstyle{remark}					% osservazione
+\newtheorem*{osservazione}{Oss}	
 %\newenvironment{example}{Esempio:}{}		
 %\newenvironment{proof}{Dim:}{}	
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Preamboli Ivan
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \newcommand{\AdC}{ascisse di convergenza }
 \newcommand{\RdC}{regione di convergenza }
-\newcommand{\LA}{\mathscr{L}T}
-\newcommand{\intZeroInfinity}{\int_{0^-}^{+\infty}}
-\newcommand{\gradino}{\delta_{-1}}
-\newcommand{\derN}[2]{\frac{d^{#2}#1}{dt^{#2}}}
-\newcommand{\der}[1]{\frac{d#1}{dt}}
 \newcommand{\NB}{I nota bene della zia wilma}
 
-\theoremstyle{definition}
-\newtheorem*{definizione}{Def}
-\theoremstyle{remark}
-\newtheorem*{osservazione}{Oss}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Preamboli Andrea
+%% Funzioni frequenti
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
-\DeclarePairedDelimiter{\Abs}{\bigg\lvert}{\bigg\rvert}
-
+\renewcommand{\l}{\ell}										% simbolo elle come indice
+\renewcommand{\d}{\, d}										% simbolo per fiire la derivata, aggiunge automaticamente uno spazio
+\newcommand{\N}{\mathbb{N}} 								% insieme numeri naturali
+\newcommand{\Z}{\mathbb{Z}}									% insieme numeri interi
+\newcommand{\R}{\mathbb{R}} 								% insieme numeri reali
+\newcommand{\C}{\mathbb{C}} 								% insieme numeri complessi
+%\renewcommand{\Re}{Re} 									% parte reale di un numero immaginario
+\newcommand{\LA}{\mathscr{L}T} 								% trasformata di Laplace
+\newcommand{\FO}{\mathcal{F}} 								% trasformata di Fourier
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}			 	% assoluto normale
+\DeclarePairedDelimiter{\Abs}{\bigg\lvert}{\bigg\rvert} 	% assoluto grande
+\newcommand{\intZeroInfinity}{\int_{0^-}^{+\infty}}			% integrale da 0- a +infinito
+\newcommand{\gradino}{\delta_{-1}}							% gradino
+\newcommand{\derN}[2]{\frac{d^{#2}#1}{dt^{#2}}}				% derivata n
+\newcommand{\der}[1]{\frac{d#1}{dt}}						% derivata
+%\DeclarePairedDelimiter{\pBig}{\Bigl (}{\Bigr )}			 	% Parentesi dim 2
+%\DeclarePairedDelimiter{\pbigg}{\biggl}{\biggr}			 	% Parentesi dim 3
 % voglio compilare sono cap1_Intro.tex
 %\includeonly{./capitoli/Schemi_blocchi_flusso}
 % NB \includeonly va prima di \begin{document}
@@ -85,6 +103,7 @@
 \include{./capitoli/cap2_Segnali}
 \include{./capitoli/cap3_Sistemi}
 \include{./capitoli/cap4_TrasfDiLaplace}
+\include{./capitoli/cap6_Bode}
 \include{./capitoli/Schemi_blocchi_flusso}
 %\include{./capitoli/Esercizi}
 
