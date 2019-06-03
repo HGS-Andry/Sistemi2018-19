@@ -1,3 +1,4 @@
+
 \chapter{Diagrammi di Bode}
 \section{Rappresentazione della funzione di trasferimento}
 
@@ -24,12 +25,12 @@ dato uno specifico $\omega$ abbiamo un risultato nel piano complesso:
 
 La rappresentazione su grafici rende più facile l'interpretazione della funzione di trasferimento. Per semplicità si può dividere il segnale nel modulo e nella fase.
 
-\begin{equation*}
+
 \begin{align}
  A(\omega)&=\abs{H(j\omega)}=\Abs{\int_{-\infty}^{+\infty} \! h(t)e^{-j\omega t} \d t} &\text{funzione pari}\\	
  \Phi (\omega)&= \arg(H(j\omega)) & \text{funzione dispari}
 \end{align}
-\end{equation*}
+
 
 Rappresentiamo un numero complesso $z=a+jb$
 
@@ -122,7 +123,7 @@ Considerando un punto nella decade tra $ 0 $ e $ 1 $ specifichaimo per gli eserc
 \end{figure}
 
 \[ 
-	\ln (H(j\omega)) = \underbrace{\ln (A(\omega))}_{\text{daigramma Ampiezze}} + j\,\underbrace{\Phi (\omega)}_{\text{diagramma Fase}}
+	\ln \big(H(j\omega)\big) = \underbrace{\ln (A(\omega))}_{\text{daigramma Ampiezze}} + j\,\underbrace{\Phi (\omega)}_{\text{diagramma Fase}}
  \]
  
  In caso di un sistema:
@@ -151,8 +152,8 @@ Considerando un punto nella decade tra $ 0 $ e $ 1 $ specifichaimo per gli eserc
  
  Possiamo avere tre casi:
  \begin{enumerate}
- 	\item $ z_1=0 $ e/o $ p_i = 0 $ cioè poli nell' \\
- 	\item $ (s-z_i) $ e/o $ (s-p_i) $ non nulli ($ \ne 0  \wedge \in \R$)\\
+ 	\item $ z_1=0 $ e/o $ p_i = 0 $ cioè poli nell' 
+ 	\item $ (s-z_i) $ e/o $ (s-p_i) $ non nulli ($ \ne 0  \wedge \in \R$)
  	\item poli complessi coniugati: $ (s-z_i)(s-\overline{z_i}) $ e/o  $ (s-p_i)(s-\overline{p_i}) $
  \end{enumerate}
 
@@ -161,8 +162,8 @@ Avremo un termine di questo tipo al denominatore:
  $ \frac{1}{s^\nu}  $
 con 
 \begin{itemize}
-	\item $ \nu =0 $ Se $ H(s) $ non ha poli o zeri nell'origine\\
-	\item $ \nu >0 $ Se $ H(s) $ ha polo nell'origine di molteplicità $ \nu $\\
+	\item $ \nu =0 $ Se $ H(s) $ non ha poli o zeri nell'origine
+	\item $ \nu >0 $ Se $ H(s) $ ha polo nell'origine di molteplicità $ \nu $
 	\item $ \nu <0 $ Se $ H(s) $ ha zeri nell'origine di molteplicità $\nu$
 \end{itemize}
 
@@ -182,6 +183,7 @@ Zeri: $ s-z_i \quad z_i \ne 0 $
  \[ (s-p_i) \rightarrow e^{p_i t} \rightarrow e^{-\frac{t}{\tau_1}} \, \text{decadimento esponenziale}\]
  
  \subsubsection{Caso 3}
+ 
  \[ 
  	(s-z_k)(s-\overline{z_k}) = s^2-z_ks-\overline{z_k}s+z_k \,\overline{z_k} = \Re(z_k) s+\abs{z_k}^2 = \abs{z_k}^2\Big(1-\frac{2 \Re(z_k)}{\abs{z_k}}\frac{s}{\abs{z_k}}+\frac{s^2}{\abs{z_k}} \Big)
  \]
@@ -196,7 +198,256 @@ Zeri: $ s-z_i \quad z_i \ne 0 $
   (s-p_k)(s-\overline{p_k}) = \abs{p_k}^2\Big(1+2\zeta_k\frac{s}{\omega_{nk}}+\frac{s^2}{\omega^{2}_{nk}} \Big)
   \]
   
-  Ora possiamo riscrivere la funzione di trasferimento in $ s $:
+  Ora possiamo riscrivere la funzione di trasferimento in $ s $ e in$ j\omega $:
   \[ 
   	H(s) = K_B \, \frac{\prod_i (1+s\tau'_i)^{\mu'_i}\,  \prod_k \Big(1+2\zeta'_k\frac{s}{\omega'_{nk}}+\frac{s^2}{\omega^{'2}_{nk}} \Big)^{\mu'_k}}{s^\nu\, \prod_i (1+s\tau_i)^{\mu_i}\,  \prod_k \Big(1+2\zeta_k\frac{s}{\omega_{nk}}+\frac{s^2}{\omega^{2}_{nk}} \Big)^{\mu_k} }
    \]
+     \[ 
+   H(j\omega) = K_B \, \frac{\prod_i (1+j\omega\tau'_i)^{\mu'_i}\,  \prod_k \Big(1+j2\zeta'_k\frac{\omega}{\omega'_{nk}}+\frac{\omega^2}{\omega^{'2}_{nk}} \Big)^{\mu'_k}}{(j\omega)^\nu\, \prod_i (1+j\omega\tau_i)^{\mu_i}\,  \prod_k \Big(1+j2\zeta_k\frac{\omega}{\omega_{nk}}+\frac{\omega^2}{\omega^{2}_{nk}} \Big)^{\mu_k} }
+   \]
+  
+\section{Diagrammi base}
+   
+   Nei diagrammi di Bode posso rappresentare i diagrammi della funzione di trasferimento come combinazione di diagrammi elementari delle varie componenti base :
+\[ %TODO-perché tau ha l'indice mentre zeta no?
+	K_B \qquad 
+	\frac{1}{(j\omega)^\nu} \qquad 
+	(1+j\omega\tau_i)^{\mu} \qquad 
+	\Big(1+j2\zeta\frac{\omega}{\omega_{n}}+\frac{\omega^2}{\omega^{2}_{n}} \Big)^{\mu}
+\]
+In cui $ \omega_n > 0 \quad ,\abs{\zeta}<1 \quad,\mu \in \R $ con $ \mu > 0 \rightarrow$ zeri e $ \mu < 0 \rightarrow$ poli.
+
+\subsection{Termine Costante $ K_B $} 
+\[ H(j\omega) = K_B \rightarrow \abs{H(j\omega)}_{dB} = 20 \log \abs{K_B} \]
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{immagini/cap6_Bode/bodeCost}
+	\caption{ Diagramma dell'ampiezza e della fase della costante $  K_B $ }
+	\label{fig:bodeCost}
+\end{figure}
+
+\subsection{Poli / Zeri in origine}
+
+\begin{gather*}
+	H(j\omega) = \frac{1}{(j\omega)^\nu}\\
+	\abs{H(j\omega)}_{dB} = 20 \log \Abs{\frac{1}{(j\omega)^\nu}} = 20 ( -\nu) \log \abs{\omega} \\
+	\arg \bigg(\frac{1}{(j\omega)^\nu}\bigg) = \arg \big((j\omega)^{\nu}\big) = -\nu \cdot \ang{90} 
+\end{gather*}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{immagini/cap6_Bode/bodeZPOrig}
+	\caption{ Diagramma dell'ampiezza e della fase dei poli e degli zeri in origine}
+	\label{fig:bodeZPOrig}
+\end{figure}
+
+\begin{nexample}
+	\[ H(j\omega) = \frac{1}{(j\omega)^2} \rightarrow \nu = 2 \rightarrow \abs{H(j\omega)}_{dB} = -40 \log \abs{\omega}\]
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{immagini/cap6_Bode/es1}
+	\label{fig:Bode_es1}
+\end{figure}
+\end{nexample}
+
+\begin{nexample}
+	\[ H(j\omega) =j\omega = \frac{1}{(j\omega)^{-1}} \rightarrow \nu = -1 \rightarrow \abs{H(j\omega)}_{dB} = 20 \log \abs{\omega}\]
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{immagini/cap6_Bode/es2}
+	\label{fig:Bode_es2}
+\end{figure}
+\end{nexample}
+
+\subsection{Poli / Zeri reali}
+
+\[ H(j\omega) = (1+j\omega\tau)^{\mu} \quad \tau \in \R \backslash \{0\} \quad \mu \in \Z \backslash \{0\}  \]
+$ \mu>0 $ \emph{Zero Reale} di molteplicità $ \mu $\\
+$ \mu<0 $ \emph{Polo Reale} di molteplicità $ -\mu $
+\begin{gather*}
+	\abs{H(j\omega)}_{dB} = 20 \mu \log \abs{1+j\omega\tau} = 20 \mu \log \sqrt{1+(\omega\tau)^2} \\
+	\arg \big(H(j\omega)\big) = \mu \arg(1+j\omega\tau) = \mu \arctan(\omega\tau)
+\end{gather*}
+
+Con $ \frac{1}{\abs{\tau}} $ \emph{Pulsazione di Taglio}
+\begin{itemize}
+	\item $ \abs{\omega\tau} \ll 1 \rightarrow \omega \ll \frac{1}{\abs{\tau}}$
+	\item $ \abs{\omega\tau} \gg 1 \rightarrow \omega \gg \frac{1}{\abs{\tau}}$
+\end{itemize}
+
+Per l'Ampiezza:
+\begin{itemize}
+	\item $ \omega \ll \frac{1}{\abs{\tau}} \rightarrow \abs{H(j\omega)}_{dB} \simeq 20\mu \log 1 \simeq 0 $
+	\item $ \omega \gg \frac{1}{\abs{\tau}} \rightarrow \abs{H(j\omega)}_{dB} \simeq 20\mu \log \abs{\omega\tau} \simeq 20 \mu \log \abs{\omega} +20 \mu \log \abs{\tau} $
+\end{itemize}
+
+Per la Fase:
+\begin{itemize}
+	\item $ \omega \ll \frac{1}{\abs{\tau}} \rightarrow \arg \big(H(j\omega)\big) \simeq \mu \arg 1 \simeq \ang{0} $ 
+	\item $ \omega \gg \frac{1}{\abs{\tau}} \rightarrow \arg \big(H(j\omega)\big) \simeq \mu \arg (j\omega\tau) \simeq \mu sng(\tau)\ang{90} $ 
+\end{itemize}
+
+Viene più facile disegnare la funzione asintotica del segnale rispetto a quella reale.Per l'ampiezza il segnale rimane a $ 0 $ fino alla pulsazione di taglio $ \frac{1}{\abs{\tau}} $ per poi avere una pendenza di $ 20 \mu \dbdec $. La funzione reale, agli estremi, tende a quella asintotica mentre il punto di maggior differenza tra le due è di $ \pm 3 \dbdec $ nella pulsazione di taglio $ \frac{1}{\abs{\tau}} $.
+\[ 20\log \abs{1+j\omega\tau} = 20\log \abs{1+j1} = 20\log \sqrt{2} \simeq 3 dB \] 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{immagini/cap6_Bode/bodeZPR-Amp}
+	\caption{Grafico per le ampiezze di un zero o polo reale}
+	\label{fig:bodezpr-amp}
+\end{figure}
+
+Per la fase possiamo approssimare con i punti speciali $ \frac{0.1}{\abs{\tau}} $ e $ \frac{10}{\abs{\tau}} $ per l'\emph{approssimazione semplice} oppure con $ \frac{1}{5\abs{\tau}} $ e $ \frac{5}{\abs{\tau}} $ per l'\emph{approssimazione ++} (in quest'ultima l'asisntoto è tangente alla funzione reale).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{immagini/cap6_Bode/bodeZPR-Fas}
+	\caption{Grafico della fase di un zero o polo reale, a destra approssimazione semplice, a sinistra approssimazione ++}
+	\label{fig:bodezpr-fas}
+\end{figure}
+
+\begin{nexample}
+	\[ H(j\omega) = 1-j\omega2 \qquad\tau<0, \, \mu = 1 \]
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{immagini/cap6_Bode/es3}
+	\label{fig:Bode_es3}
+\end{figure}	
+\end{nexample}
+
+\begin{nexample}
+	\[ H(j\omega) = \frac{1}{1-j\omega2} = (1-j\omega2)^2 \qquad\tau = 2, \, \mu = -1 \]
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{immagini/cap6_Bode/es4}
+	\label{fig:Bode_es4}
+\end{figure}	
+\end{nexample}
+
+\subsection{Termine Binomio}
+\begin{gather*}
+	\Big(1+j2\zeta\frac{\omega}{\omega_{n}}-\frac{\omega^2}{\omega^{2}_{n}} \Big)^{\mu}\\
+	\abs{H(j\omega)}_{dB} = 20 \mu \log \Abs{\underbrace{1-\frac{\omega^2}{\omega^{2}_{n}}}_{\text{\scriptsize Parte Reale}}+\underbrace{j2\zeta\frac{\omega}{\omega_{n}}}_{\text{\scriptsize Parte Immaginaria}}} = 20\mu \log \sqrt{\bigg(1-\frac{\omega^2}{\omega^{2}_{n}} \bigg)^2+\bigg(j2\zeta\frac{\omega}{\omega_{n}}\bigg)^2}\\
+	\arg\big(H(j\omega)\big) = \arg(a+jb) = 
+	\begin{cases}
+		\arctan\big(\frac{b}{a}\big) & ,a>0\\
+		sng(b)\frac{\pi}{2} & ,a=0,\, b \ne 0\\
+		\arctan\big(\frac{b}{a}\big) + sng(b)\pi & ,a<0,\, b \ne 0 
+	\end{cases} 
+\end{gather*}
+
+Studiamo i vari casi:
+\[ 
+	1-\frac{\omega^2}{\omega^{2}_{n}}>0 \rightarrow \frac{\omega^2}{\omega^{2}_{n}} <1 \rightarrow \omega^2 < \omega^2_n \rightarrow 
+	\begin{cases}
+		\omega < \omega_n &a>0\\
+		\omega > \omega_n &a<0\\
+		\omega = \omega_n &a=0
+	\end{cases}
+\]
+
+Quindi:
+\[ 
+ 	\arg\big(H(j\omega)\big) = 
+ 	\begin{cases}
+	 	\arctan\Bigg(\frac{2\zeta\frac{\omega}{\omega_n}}{1-\frac{\omega^2}{\omega^{2}_{n}}}\Bigg) & \omega < \omega_n\\
+	 	sng(\zeta)\frac{\pi}{2} &	\omega = \omega_n\\
+	 	\arctan\Bigg(\frac{2\zeta\frac{\omega}{\omega_n}}{1-\frac{\omega^2}{\omega^{2}_{n}}}\Bigg)+ sng(\zeta)\pi & \omega > \omega_n\\
+ 	\end{cases}
+\]
+  
+Guardiamo ora l'ampiezza. Anche qui calcoliamo il segnale asintotico:
+\begin{gather*}
+  	\omega \ll \omega_n \rightarrow \abs{H(j\omega)}_{dB}\simeq 20\mu \log(1) = 0\\
+  	\omega \gg \omega_n \rightarrow \abs{H(j\omega)}_{dB}\simeq 20\mu \sqrt{	\bigg(\frac{\omega^2}{\omega^2_n}\bigg)^2} = 40\mu \log(\omega)-40 \mu \log(\omega_n)
+\end{gather*}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{immagini/cap6_Bode/bodeBin-Amp}
+	\caption{Grafico dell'Ampiezza di un termine binomio, la parte reale è al variare di $ \zeta $}
+	\label{fig:bodeBin-Amp}
+\end{figure}
+
+Guardiamo adesso la fase:
+\begin{equation*}
+	\omega \ll \omega_n \rightarrow \arg \big(H(j\omega)\big) = \arg(1)
+\end{equation*}
+\begin{multline*}
+	\omega \gg \omega_n \rightarrow \arg \big(H(j\omega)\big) = \mu \Bigg(\arctan\Bigg(\overbrace{\frac{2\zeta\frac{\omega}{\omega_n}}{1-\frac{\omega^2}{\omega^{2}_{n}}}}^{\parbox{7
+			em}{\scriptsize Il denominatore tende a infinito prima del numeratore quindi tende a 0}}\Bigg)+ sng(\zeta)\pi\Bigg) \\= \mu \arctan(0) + \mu sng(\zeta)\pi = \mu sng(\zeta)\pi
+\end{multline*}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{immagini/cap6_Bode/bodeBin-Fas}
+	\caption{Grafico della fase di un termine binomio al variare di $ \zeta $}
+	\label{fig:bodeBin-Fas}
+\end{figure}
+dove: $\displaystyle \omega_a \simeq \frac{1}{5^{\abs{\zeta}}}\omega_n \qquad \omega_b \simeq 5^{\abs{\zeta}}\omega_n$
+
+
+	Con $\displaystyle \abs{\zeta}=1 \rightarrow \zeta =\frac{\Re (Z_K)}{\abs{Z_K}} \equiv \Big(1+sng(\zeta)j \omega \frac{1}{\omega_n}\Big)^{2\mu} $  In questo caso la differenza tra reale e asintotico è di $ 6 dB $
+	
+	Con $ \displaystyle \abs{\zeta} = 0 \rightarrow H(j\omega) = \Big(1-\frac{\omega^2}{\omega2_n}\Big)^\mu $ abbiamo, quindi, 2 poli complessi coniugati con $ \Re =0 $ (completamente immaginari). Di conseguenza:
+	\begin{gather*}
+		H(j\omega)=
+		\begin{cases}
+			20\mu \log(1)=0 &\omega \ll \omega_n\\
+			40\mu\log\big(\frac{\omega}{\omega_n}\big) &\omega \gg \omega_n
+		\end{cases}\\
+		\arg \big(H(j\omega)\big) = 
+		\begin{cases}
+			0 &\omega \ll \omega_n\\
+			\pm \mu \ang{180} 0 &\omega \gg \omega_n
+		\end{cases}
+	\end{gather*}
+Si può scegliere come convenzione se fare + o - \ang{180}, noi useremo +\ang{180}.
+
+Per comodità, negli esercizi si vuole approssimare la funzione reale. È bene precisare dove la funzione reale si trova, in confronto a quella asintotica, sul punto $ \omega_n $:
+\begin{align*}
+	0<\abs{\zeta}<\frac{1}{2} &\rightarrow \, \text{interseca l'asse delle ascisse a destra di $ \omega_n $}
+		\begin{cases}
+			\text{sotto a }\omega_n &,\mu >0\\
+			\text{sopra a }\omega_n &,\mu <0
+		\end{cases}\\
+	\abs{\zeta} =\frac{1}{2} &\rightarrow\, \text{passa per $ \omega_n $}\\
+	\frac{1}{2}<\abs{\zeta}<\frac{\sqrt{2}}{2} &\rightarrow \, \text{interseca l'asse delle ascisse a sinistra di $ \omega_n $}\\
+	\frac{\sqrt{2}}{2}<\abs{\zeta}<1 &\rightarrow \,
+		\begin{cases}
+			\text{sopra a }\omega_n &,\mu >0\\
+			\text{sotto a }\omega_n &,\mu <0
+		\end{cases}
+\end{align*}
+
+
+
+\section{Esempi di esercizi}
+\begin{nexample}
+	\[ H(s) = \frac{\overbrace{10}^{K} \, (s+1)}{(s+0,1)\,(s-1)} \]
+	Trasformiamo:
+	\begin{gather*}
+		s+1\rightarrow z_1 =-1\rightarrow\tau'_1 = \frac{1}{-z_1}= \frac{1}{-(-1)}=1 \quad \mu'_1 = 1 \\
+		s+0,1\rightarrow p_1 =-0,1\rightarrow\tau_1 = \frac{1}{-p_1} = \frac{1}{-(-0,1)}=10 \quad \mu_1 = -1 \\
+		s-1\rightarrow p_2 =-0,1\rightarrow\tau_1 = \frac{1}{-p_2}= \frac{1}{-1}=-1 \quad \mu_2 = -1 \\
+	\end{gather*}
+	\[
+		H(s) = \frac{10\overbrace{(+1)}^{-z_1} \, (1+s\tau'_1)}{\underbrace{(+0,1)}_{-p_1}(1+s\tau_1)\,\underbrace{(-1)}_{-p_2}(1+s\tau_2)} =
+		\frac{100 \, (1+s\tau'_1)}{(1+s\tau_1)\,(1+s\tau_2)}
+	\]
+	In forma di Bode:
+	\[  H(j\omega) = \frac{100 \, (1+j\omega\tau'_1)}{(1+j\omega\tau_1)\,(1+j\omega\tau_2)}\]
+	
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{immagini/cap6_Bode/es5-amp}
+	\caption{Diagramma totale delle ampiezze, la risultante è la somma di tutti i diagrammi base}
+	\label{fig:es5-amp}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{immagini/cap6_Bode/es5-fas}
+	\caption{Diagramma totale delle fasi, la risultante è la somma di tutti i diagrammi base}
+	\label{fig:es5-fas}
+\end{figure}
+\end{nexample}
