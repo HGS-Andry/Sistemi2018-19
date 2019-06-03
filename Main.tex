@@ -1,6 +1,5 @@
 \documentclass[a4paper, 12pt, italian]{book}
 \usepackage{mathptmx}
-%\usepackage{newtxmath}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[italian]{babel}
@@ -16,9 +15,8 @@
 \usepackage{mathrsfs}
 \usepackage{cancel}
 \usepackage{tikz}
-\usepackage{siunitx}
-\usepackage{textcomp}
 \usepackage{booktabs}
+\usepackage{siunitx}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Definizione caption
@@ -55,14 +53,17 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Funzioni frequenti
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \renewcommand{\l}{\ell}										% simbolo elle come indice
 \renewcommand{\d}{\, d}										% simbolo per fiire la derivata, aggiunge automaticamente uno spazio
 \newcommand{\N}{\mathbb{N}} 								% insieme numeri naturali
 \newcommand{\Z}{\mathbb{Z}}									% insieme numeri interi
 \newcommand{\R}{\mathbb{R}} 								% insieme numeri reali
 \newcommand{\C}{\mathbb{C}} 								% insieme numeri complessi
-%\renewcommand{\Re}{Re} 									% parte reale di un numero immaginario
-\newcommand{\LA}{\mathscr{L}T} 								% trasformata di Laplace
+\renewcommand{\Re}{Re} 										% parte reale di un numero immaginario
+\renewcommand{\Im}{Im} 										% parte immaginaria di un numero immaginario
+\newcommand{\LA}{\mathscr{L}} 								% trasformata di Laplace
+\newcommand{\TdL}{\mathscr{L}} 								% trasformata di Laplace
 \newcommand{\FO}{\mathcal{F}} 								% trasformata di Fourier
 \DeclarePairedDelimiter{\abs}{\lvert}{\rvert}			 	% assoluto normale
 \DeclarePairedDelimiter{\Abs}{\bigg\lvert}{\bigg\rvert} 	% assoluto grande
@@ -70,18 +71,16 @@
 \newcommand{\gradino}{\delta_{-1}}							% gradino
 \newcommand{\derN}[2]{\frac{d^{#2}#1}{dt^{#2}}}				% derivata n
 \newcommand{\der}[1]{\frac{d#1}{dt}}						% derivata
-\newcommand{\dbdec}{\, \si{dB/dec}}							% unità di misura dB/dec
-%\DeclarePairedDelimiter{\pBig}{\Bigl (}{\Bigr )}			 	% Parentesi dim 2
-%\DeclarePairedDelimiter{\pbigg}{\biggl}{\biggr}			 	% Parentesi dim 3
-% voglio compilare sono cap1_Intro.tex
-%\includeonly{./capitoli/Schemi_blocchi_flusso}
-% NB \includeonly va prima di \begin{document}
+\newcommand{\dbdec}{\, \si{dB/dec}} 						% unità di misura dB/dec
+\newcommand{\sng}{sng} 										% funzione segno
 
+% voglio compilare sono cap1_Intro.tex
+%\includeonly{./capitoli/cap4_TrasfDiLaplace, ./capitoli/cap5_TrasfDiFourier}
+% NB \includeonly va prima di \begin{document}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%Inizio documento
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 
 \begin{document}
 
@@ -106,9 +105,10 @@
 \include{./capitoli/cap2_Segnali}
 \include{./capitoli/cap3_Sistemi}
 \include{./capitoli/cap4_TrasfDiLaplace}
+\include{./capitoli/cap5_TrasfDiFourier}
 \include{./capitoli/cap6_Bode}
 \include{./capitoli/Schemi_blocchi_flusso}
-%\include{./capitoli/Esercizi}
-
+\include{./capitoli/Esercizi}
+\include{./capitoli/AppB_Complessi}
 
 \end{document}

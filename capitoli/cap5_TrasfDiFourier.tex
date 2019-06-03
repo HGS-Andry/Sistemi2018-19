@@ -1,0 +1,468 @@
+\chapter{Trasformata di Fourier}
+
+	% Giorno: 17/4
+\section{La serie di Fourier e la trasformata di Fourier}
+
+	\subsubsection{La serie di Fourier}
+	\textbf{Wikipedia:}\\
+	La serie di Fourier è una rappresentazione di una \textbf{funzione periodica} mediante una combinazione lineare di funzioni sinusoidali.\\
+	\textbf{Prof:}\\
+	I sistemi LTI e BIBO stabili trasformano i fasori (esponenziali con esponente immaginario puro) in fasori con la stessa frequenza ma cambiando ampiezza e fase in base alla \textbf{funzione di trasferimento (fdT)}.
+	La fdT è $ H(s) |_{s=j \omega}$ valutata in $ j \omega $ oppure in $ j 2 \pi f$.\\
+	\subsubsection{La trasformata di Fourier}
+	\textbf{Wikipedia:}\\
+	La trasformata di Fourier è uno degli strumenti matematici maggiormente utilizzati nell'ambito delle scienze pure e applicate. Essa permette di scrivere una \textbf{funzione dipendente dal tempo} nel dominio delle frequenze, e per fare ciò decompone la funzione nella base delle funzioni esponenziali con un prodotto scalare. Questa rappresentazione viene chiamata spesso \textbf{spettro della funzione}.\\
+	La trasformata è invertibile: a partire dalla trasformata di una funzione ${\hat x}$ è possibile risalire alla funzione $x$ tramite il teorema di inversione di Fourier.\\
+	Grazie alla trasformata di Fourier è possibile individuare un criterio per compiere un \textbf{campionamento} in grado di digitalizzare un segnale senza ridurne il contenuto informativo: ciò è alla base dell'intera teoria dell'informazione che si avvale, inoltre, della trasformata di Fourier (in particolare della sua variante discreta) per l'elaborazione di segnali numerici.\\
+	La trasformata di Fourier $ \FO[ x(t)] (f) $ di una funzione $ x ( t ) $ è equivalente al valutare la trasformata di Laplace bilatera $ \LA $ di $x $ ponendo $ s=j\omega $, e tale definizione è valida se e solo se la regione di convergenza della trasformata di Laplace contiene l'asse immaginario.\\
+	\textbf{Prof:}\\
+	La serie di Fourier ci permette di rappresentare qualsiasi segnale continuo come serie (o integrale) di fasori.\\
+	Useremo f al posto di $ \omega (\omega = 2 \pi f)$, i fasori quindi saranno $ e^{j2\pi ft}$ con $ t \in \mathbb{R}$.\\
+	$ H(j \omega) = H(2\pi f) := H(f) $ sarà la nostra fdT.\\
+	Dividiamo quindi i segnali in:\\
+	1) \textbf{periodici} $\Rightarrow$ possiamo usare la \textbf{serie di Fourier}.\\
+	2) \textbf{non periodici} $\Rightarrow$ possiamo usare la \textbf{trasformata di Fourier}.\\
+	Domande:\\
+	1) La somma dei segnali seriodici è anch'essa periodica?\\
+	2) I segnali periodici come si possono scrivere come somma di fasori?\\
+	3) Possiamo rappresentare i segnali non periodici con funzioni elementari periodiche (cioè con i fasori)?\\
+	
+	Iniziamo con rispondere alla prima domanda usando un'esempio.\\
+	\textbf{ES1: la somma è periodica?}\\
+	$ v(t) 
+	= 2 \cos ( 400 \pi t + \phi_1) + 3 \cos ( 600 \pi t + \phi_2)$ 
+	con $ t \in \mathbb{R}$.\\
+	Abbiamo che $ \omega_1 = 400 \pi $ e $ \omega_2 = 600 \pi $.\\
+	Ricordiamo che $ \omega = 2 \pi f = \frac{2 \pi }{T}$, quindi $ T_1 = \frac{1}{200}$ e $ T_2 = \frac{1}{300} $.\\
+	\textbf{Il segnale $ v(t)$ è periodico se il rapporto $ \frac{T_1}{T_2}$ è un numero razionale diverso da 1.}\\
+	In questo caso, $ \frac{T_1}{T_2} = \frac{ 300 }{ 200 } = \frac{3}{2}$.\\
+	Ora che sappiamo che è periodica vogliamo trovare il periodo di $ v(t)$.\\
+	\textbf{Il periodo di una somma di segnali periodici è il minimo comune multiplo dei periodi dei singoli segnali}.\\
+	In questo caso,
+	$
+		T
+		= mcm(\frac{1}{200},\frac{1}{300})
+		= mcm(\frac{3}{600},\frac{2}{600})
+		= \frac{1}{600} mcm(3,2)
+		= \frac{6}{600}
+		= \frac{1}{100}
+	$.\\
+	\textbf{ES2: la somma è periodica?}\\
+	$ v(t) 
+	= 2 \sin ( \sqrt{2} t + \phi_1) + 3 \cos ( 2 t + \phi_2)$.\\
+	Abbiamo che $ \omega_1 = \sqrt{2} $ e $ \omega_2 = 2 \pi $ e quindi $ T_1 = \frac{ 2 \pi}{ \sqrt{2} }$ e $ T_2 = \frac{ 2 \pi}{ 2} $.\\
+	In questo caso, $ \frac{T_1}{T_2} = \frac{ 2 }{ \sqrt{2} } $ è un rapporto irrazionale quindi $ v(t)$ non è periodico.\\
+	
+	\subsection{Segnale periodico}
+	$
+		v(t)
+		= \sum_{k= -\infty}^{\infty} v_k \cos ( 2 \pi f_0 kt + \phi_k)
+		= \sum_{k= -\infty}^{\infty} v_k e^{ j 2 \pi f_0 t}
+	$ è periodico con $ v_k \in \mathbb{C}$ per ogni $ k \in \mathbb{Z}, \phi_k \in \mathbb{R} $ e $ t \in \mathbb{R}$ se:\\
+	$
+		\frac{ 2 \pi f_0 k_1}{2 \pi f_0 k_2}
+		= \frac{k_1}{k_2}
+		\in \mathbb{Q}
+	$ con $k_1,k_2 \in \mathbb{Z}$.\\
+	
+	\textbf{OSS1:} Se $ v_k \in \mathbb{C}$ per ogni $ k \in \mathbb{Z}$ allora $ v_k = |v_k|e^{j arg(v_k)} $.\\
+	Posso quindi riscrivere il segnale $ v(t) = \sum_{k= -\infty}^{\infty} |v_k| e^{j(2 \pi f_0 t + arg(v_k) )}$.\\
+	\textbf{OSS2:} Le frequenze sono $f_0,2f_0,3f_0,... $ ma anche $-f_0,-2f_0,-3f_0,... $.\\
+	Proviamo ora a rispondere alla seconda domanda cioè: il segnale periodico $ v(t)$ come si può scrivere come somma di fasori?\\
+	Per rispondere a questa domanda enunciamo un teorema.
+	
+	\subsection{Teorema: Se un segnale è periodico posso scriverlo come somma di fasori}
+	Sia $ v(t) $, con $t \in \mathbb{R} $, un segnale periodico con $T_0=\frac{1}{f_0} $.\\
+	Se:\\
+	1) $ v(t) $ è generalmente continua ( cioè ha un numero finito di discontinuità)\\
+	2) $ v(t) $ è generalmente derivabile con la derivata continua e limitata su $ [t_0,t_0+T_0] $ con $ t_0 \in \mathbb{R}$\\
+	Allora soddisfa:\\
+	i) $ \int_{t_0}^{ t_0+T_0} |v(t)| dt < +\infty $, cioè l'integrale converge.\\
+	Si dice che $ v(t) $ è sommabile su un periodo.\\
+	ii) $ \int_{t_0}^{ t_0+T_0} |v(t)|^2 dt < +\infty $, cioè $ v(t) $ è al quadrato sommabile.\\
+	iii) $ \sum_{k= -\infty}^{\infty} v_k e^{j 2 \pi k f_0 t} $ \textbf{ equazione di sintesi}\\
+	per ogni $t \in \mathbb{R} $ e dove\\
+	$ \frac{1}{T_0}\int_{t_0}^{ t_0+T_0} v(t) e^{-j 2 \pi f_0 t} dt $ \textbf{ equazione di analisi}\\
+	dove $ k \in \mathbb{Z}$.\\
+	$ v_k $ si chiamano \textbf{ i coefficienti dello sviluppo in serie di Fourier}.\\
+	Se $ v(t) $ non è continua in t allora:\\
+	$ \frac{v(t^-)+v(t^+)}{2}= \sum_{k= -\infty}^{\infty} v_k e^{- j 2 \pi k f_0 t} $.\\
+	
+	\textbf{OSS1:}\\
+	Con $ k=0$, $ 
+		v_0
+		= \frac{1}{T_0}\int_{t_0}^{ t_0+T_0} v(t) e^0 dt
+		=\int_{t_0}^{ t_0+T_0} v(t) dt
+	$ cioè il valor medio di un periodo.\\ % è sparito \frac{1}{T_0} non so perchè
+	\textbf{OSS2:}\\
+	Se $ v(t) $ è reale, cioè $ v(t) \in \mathbb{R}$, allora:\\
+	$ v_{-k} =\frac{1}{T_0} \int_{t_0}^{ t_0+T_0} v(t) e^{-j 2 \pi(-k) f_0 t} dt =\overline{v_k}  $ con $ k \in \mathbb{Z}$.\\
+	NB: $ k \in \left \{ ...,-3,-2,-1,0,1,2,3,... \right \} = \mathbb{Z} $\\
+	Allora $|v_k|=|v_{-k}| $ e $arg(v_k)= - arg(v_{-k}) $.\\
+	%TODO: immagine coniugato complesso
+	Possiamo quindi riscrivere l'equazione di sintesi come:\\
+	%TODO: nell'equazione sotto manca un segno?
+	$
+		v(t)
+		=\sum_{k= -\infty}^{-1} |v_{-k}| e^{ -? j arg(v_{-k})} e^{2 \pi j k f_0 t}+ v_0+ \sum_{k= 1}^{ \infty} |v_{k}| e^{j arg(v_{k})} e^{2 \pi j k f_0 t}
+		= v_0+ 2\sum_{k= 1}^{ \infty} |v_{k}| \cos( 2 \pi k f_0 t + arg(v_{k}))
+	$\\
+	NB: qui sopra abbiamo usato Eurelo.\\
+	Scriviamo $ A_k = 2 \Re(v_k) = 2 |v_k| \cos (arg(v_k))$ e
+	$ B_k = -2 \Im(v_k) = -2 |v_k| \sin (arg(v_k))$
+	con per ogni $ k \in \mathbb{Z}$ e $ A_k,B_k \in \mathbb{R}$\\
+	NB: $ \cos(a+b) = \cos a \cos b -\sin a\sin b$\\
+	L'equazione quindi diventa:\\
+	$
+		v(t)
+		= v_0+ \sum_{k= 1}^{ \infty} A_k \cos( 2 \pi k f_0 t)+ \sum_{k= 1}^{ \infty} B_k \sin ( 2 \pi k f_0 t)
+	$\\
+	
+	\textbf{OSS3:}\\
+	Se $ v(t) $ è pari allora $ \overline{v_k} = v_k = v_{-k} $, ciò significa che $ v_k $ ha la parte immaginaria nulla. Quindi $ B_k=0 $ per ogni k, l'equazione sarà quindi:\\
+	$
+		v(t)
+		= v_0+ \sum_{k= 1}^{ \infty} A_k \cos( 2 \pi k f_0 t)
+	$\\
+	con v reale e pari.\\
+	
+	\textbf{OSS4:}\\ 
+	Se $ v(t) $ è dispari allora $ v_0=0 $ e quindi:\\
+	$
+		v(t)
+		= \sum_{k= 1}^{ \infty} B_k \sin( 2 \pi k f_0 t)
+	$\\
+	
+	\textbf{OSS5:}\\
+	Nelle applicazioni pratiche useremo la serie troncata:\\
+	$ v_L(t) = \sum_{k= -L}^{ L} V_k e^{j 2 \pi k f_0 t}$\\
+	Si può dimostrare che i coefficienti $ V_k = v_k $ sono quelli che minimizzano l'errore quadratico medio (MSE) dove:\\ 
+	$
+	MSE(V_L(t), v(t))
+	= \frac{1}{T_0} \int_{t_0}^{ t_0+T_0} |v(t) - v_L(t)|^2 dt
+	$ dove $ |v(t) - v_L(t)|^2 $ è l'energia di $ v(t) - v_L(t)$ .\\
+	Abbiamo anche che $ \lim_{L \to \infty}  MSE(V_L(t), v(t)) = 0$.
+	
+\section{Potenza di un segnale}
+	
+	Sia $ v(t) $ al quadrato sommabile, di periodo $ T_0$.\\
+	Allora definiamo la sua potenza come:\\
+	$
+		P_v
+		:= \lim_{T \to \infty} \frac{1}{ 2 T} \int_{-T}^{ T} |v(t)|^2 dt
+		= \frac{1}{T_0} \int_{t_0}^{t_0+T_0} |v(t)|^2 dt
+	$\\
+	Si può dimostrare (teorema di Parseval) che:\\
+	$
+		P_v
+		= \sum_{k= -\infty}^{ \infty}  |v_k|^2
+	$\\
+
+\section{Risposta di un sistema LTI ad un segnale periodico}
+	Se $ H(2 \pi fj) $ è la risposta in frequenza e $ u(t) = A \cos (2 \pi k f_0 t + \phi) $ è l'ingresso allora:\\
+	$
+		v(t)
+		= A |H(f)| \cos ( 2 \pi k f_0 t + \phi + arg( H(f)))
+	$.\\
+	Se $ u(t) = u_0 + \sum_{k= 1}^{ \infty} |u_k| \cos ( 2 \pi k f_0 t + arg(u_k)) $ allora:\\
+	$
+	v(t)
+	= H(0)u_0 + 2 \sum_{k= 1}^{ \infty} |H(k f_0)| |u_k| \cos ( 2 \pi k f_0 t + arg(u_k) + arg(H(kf_0)))
+	$.\\
+
+\section{Condizioni di esistenza della trasformata di Fourier}
+	
+	Queste condizioni sono differenti ma alternative.\\
+	
+	%TODO: nell'eq sotto di va un modulo?
+	i) $ \int_{- \infty}^{ \infty} v(t) dt < +\infty$ (sommabile) e v è a variazione limitata (si può esprimere come differenza di funzioni limitate e non decrescenti).\\
+	
+	ii) $ \int_{- \infty}^{ \infty} |v(t)|^2 dt < \infty$ (al quadrato sommabile), v è un segnale di energia.\\
+	%TODO: cosa si intende con un segnale di energia?
+	
+	iii) $ \int_{- \infty}^{ \infty} |v(t)|^2 dt = +\infty$ ma $ \lim_{T \to \infty} \frac{1}{2T}   \int_{- T}^{ T} |v(t)|^2 dt < +\infty $, v è un segnale di potenza (ha energia finita). In questo caso per calcolare la trasformata di Fourier di v(t) bisogna "finestrare" il segnale.\\
+	
+\section{Trasformate di Fourier notevoli $ \rightarrow $ sotto le condizioni i) e ii) }
+	
+	\subsubsection{a) TdF dell'impulso}
+	
+	$ \FO [ \delta(t) ] = \int_{- \infty}^{ \infty} \delta (t) e^{-2 \pi j f t} dt = e^{-2 \pi j f  0} = 1 $\\
+	
+	%TODO: immagine, dall'impulso al grafico di v(f)=1
+	
+	\subsubsection{b) TdF dell'esponenziale complesso causale}
+	
+	$ v(t) = A e^{ j \phi} e^{ \lambda t} \delta_{-1}(t) $ con $ A \in \mathbb{R}^*_+, \phi \in \mathbb{R}, \lambda \in \mathbb{C}, \Re (\lambda ) < 0 $ (quest'ultima mi dà la stabilità quindi l'integrale converge).\\
+	
+	$ \FO [ v(t) ] = \int_{- \infty}^{ \infty} A e^{ j \phi} e^{ \lambda t} \delta_{-1}(t) e^{-2 \pi jft} dt $\\
+	Notiamo qui che "possiamo portare fuori" $ A e^{ j \phi} $ e che l'integrale può andare da 0 a $ + \infty$ perchè ho $\delta_{-1}(t) $, la trasformata così diventa:\\
+	$ A e^{ j \phi} \int_{ 0 }^{ \infty}  e^{ \lambda t -2 \pi jft} dt = \frac{A e^{j \phi}}{j2 \pi f - \lambda} $\\
+	OSS: invece che svolgere l'integrale posso:\\
+	$ \LA [ e^{\lambda t} \delta_{-1}(t)] |_{s=j \omega} = \frac{1}{s-\lambda} |_{s=j \omega} = \frac{1}{j2 \pi f-\lambda}$
+	
+	\subsubsection{c) TdF dell'esponenziale complesso anticausale (non posso usare la TdL)}
+	
+	%TODO: immagine, grafico della delta anticausale 
+	
+	$ \FO [ A e^{ j \phi} e^{ \lambda t} \delta_{-1}(-t) ] =  \frac{ -Ae^{j \phi}}{j2 \pi f-\lambda} $\\
+	
+	
+	\subsubsection{d) TdF della finestra di ampiezza A e base T}
+	$ A, T \in \mathbb{R}^*_+ $.\\
+	$ v(t) = A \prod (\frac{t}{T}) $\\
+	
+	%TODO: immagine -> funzione rettangolo
+	
+	$ \FO [  A \prod (\frac{t}{T}) ] = A \int_{- \frac{T}{2}}^{ \frac{T}{2}} e^{-2 \pi jft} dt = \frac{-A}{j2 \pi f} e^{-2 \pi jft} |^{\frac{T}{2}}_{-\frac{T}{2}}  = - \frac{A}{j2 \pi f} [ e^{- \pi jf T } - e^{\pi jf T }]  $\\
+	Possiamo usare qui la formula di Eurelo (sezione A dell'appendice: ripasso dei numeri complessi).\\
+	$ = + \frac{A}{ \pi f} \sin ( \pi f T) $\\
+	Moltiplico e divido per T, così da aver la funzione sinc.\\
+	$ = + A T \frac{ \sin ( \pi f T) }{ \pi f T } = AT sinc(f T) $\\
+	
+	%TODO: dalla funzione rettangolo alla sinc
+
+\section{Trasformate di Fourier di segnali di potenza $ \rightarrow $ sotto la condizione iii), cioè $ \Re ( \lambda ) < 0$ }
+
+	Il segnale va moltiplicato per la finestra $ \prod (\frac{t}{T} )$, facciamo la trasformata e poi facciamo il limite per T che tende a $ \infty$.\\
+	
+	\subsubsection{a) TdF di un segnale continuo A}
+	1) Finestriamo: $ v(t) = A$, lo finestriamo con $ \prod (\frac{t}{T} )$.\\
+	NB: definiamo $ v_T(t)$ come il segnale già finestrato.\\
+	$ v_T(t) = A \prod (\frac{t}{T} )$\\
+	%TODO: immagine della funzione finestrata
+	2) Facciamo la trasformata: $ \FO [ v_T(t) ] = AT sinc(fT)$.\\
+	3) Facciamo il limite: $ \lim_{T \to \infty} AT sinc(fT) = A \delta (t)$.\\
+	
+	%TODO: immagine della funzione sinc quando T tende a infinito
+	
+	%TODO: immagine trasformata dalla costante alla delta
+	
+	NB: in pratica non ho mai un segnale costante perchè i segnali nella realtà sono sempre causali e che prima o poi finiscono.\\
+	OSS: v(t)=A ha un'energia limitata e frequenza nulla.\\
+	
+	\subsubsection{b) TdF di un esponenziale complesso}
+	$ v(t) = A e^{j2\pi f_0 t}$\\
+	%TODO: da controllare i calcoli
+	1) e 2) Finestriamo e facciamo la trasformata:\\
+	 $ \FO [ v_T(t)  ] = A \int_{- \frac{T}{2}}^{ \frac{T}{2}} e^{-j2\pi (f-f_0) t} dt  = AT sinc( (f-f_0) t) $.\\
+	3) Facciamo il limite: $ \lim_{T \to \infty} \FO [ v_T(t)  ]  = \lim_{T \to \infty} AT sinc( (f-f_0) t) = A \delta (f-f_0)$.\\
+	
+	\subsubsection{c) TdF del coseno}
+	$ v(t) = A \cos (2 \pi f_0 t) = A \frac{e^{j 2 \pi f_0 t} + e^{-j 2 \pi f_0 t}}{ 2}$\\
+	In questo caso possiamo ricondurci a b) perchè è la somma di due esponenziali, quindi:\\
+	$ \lim_{T \to \infty} \FO [ v_T(t)  ]  = \frac{A}{2} \delta (f-f_0) + \frac{A}{2} \delta (f+f_0)$.\\
+	
+	%TODO: immagine della trasformata
+	
+	\subsubsection{d) TdF del seno}
+	$ v(t) = A \sin (2 \pi f_0 t) $\\
+	Possiamo di nuovo ricondurci a b) perchè è la somma di due esponenziali (Eurelo), quindi:\\
+	$ \lim_{T \to \infty} \FO [ v_T(t)  ]  = \frac{A}{2}j[ \delta (f+f_0) - \delta (f-f_0) ]$.\\
+	
+	%TODO: immagine della trasformata
+	
+	%TODO: come rendere carino questo riassunto?
+	\subsubsection{Riassunto}
+	
+	TdF dell'impulso:\\
+	$ \quad \FO [ \delta(t) ] = 1 $\\
+	TdF dell'esponenziale complesso causale:\\
+	$ \FO [  A e^{ j \phi} e^{ \lambda t} \delta_{-1}(t) ] = \frac{A e^{j \phi}}{j2 \pi f - \lambda} $\\
+	TdF dell'esponenziale complesso anticausale:\\
+	$ \FO [ A e^{ j \phi} e^{ \lambda t} \delta_{-1}(-t) ] =  \frac{ -Ae^{j \phi}}{j2 \pi f-\lambda} $\\
+	TdF della finestra di ampiezza A e base T:\\
+	$ \FO [  A \prod (\frac{t}{T}) ] = AT sinc(f T) $\\
+	TdF di un segnale continuo A:\\
+	$ v(t) = A $\\
+	$ \lim_{T \to \infty} \FO [  v(t) \prod (\frac{t}{T}) ] = A \delta(t) $\\
+	TdF di un esponenziale complesso:\\
+	$ v(t) = A e^{j2\pi f_0 t}$\\
+	$ \lim_{T \to \infty} \FO [  v(t) \prod (\frac{t}{T}) ] = A \delta (f-f_0)$.\\
+	TdF del coseno:\\
+	$ v(t) = A \cos (2 \pi f_0 t) = A \frac{e^{j 2 \pi f_0 t} + e^{-j 2 \pi f_0 t}}{ 2}$\\
+	$ \lim_{T \to \infty} \FO [  v(t) \prod (\frac{t}{T}) ] = \frac{A}{2} \delta (f-f_0) + \frac{A}{2} \delta (f+f_0)$.\\
+	TdF del seno:\\
+	$ v(t) = A \sin (2 \pi f_0 t)$\\
+	$ \lim_{T \to \infty} \FO [  v(t) \prod (\frac{t}{T}) ] = \frac{A}{2}j[ \delta (f+f_0) - \delta (f-f_0) ]$.\\
+
+\section{ Proprietà della trasformata di Fourier }
+
+	\subsubsection{1) Linearità}
+	
+	$ a_1 v_1 (t) + a_2 v_2 (t) \xrightarrow{ \FO} a_1 v_1 (f) + a_2 v_2 (f) $
+	
+	\subsubsection{2) Riflesso, coniugato ed entrambi insieme }
+	
+	Riflesso: $ v(-t) \xrightarrow{ \FO} v(-f) $\\
+	Coniugato: $ \overline{v(t)} \xrightarrow{ \FO} \overline{v(-f)} $\\
+	Riflesso e coniugato: $ \overline{v(-t)} \xrightarrow{ \FO} \overline{v(f)} $\\
+	
+	\subsubsection{3) Cambiamento di scala}
+	
+	$ v(rt) \xrightarrow{ \FO} \frac{1}{r} v(\frac{f}{r}) $ con $ r \neq 0 $\\
+	Estensione $ \xrightarrow{ \FO}$ Compressione
+	
+	%TODO: immagine grafico delle delta nel dominio delle frequenze
+	
+	\subsubsection{4) Convoluzione}
+	
+	$ [ v_1 * v_2 ](t) \xrightarrow{ \FO} v_1(f)v_2(f) $\\
+	Convoluzione $ \xrightarrow{ \FO}$ Moltiplicazione
+	
+	\subsubsection{5) Modulazione generalizzata}
+	
+	$ v_1(t)v_2(t) \xrightarrow{ \FO} [ v_1 * v_2 ](f) $\\
+	Moltiplicazione $ \xrightarrow{ \FO}$ Convoluzione
+	
+	\subsubsection{6) Ritardo temporale}
+	
+	$ v(t-t_0) \xrightarrow{ \FO} e^{-2 \pi f t_0} v(f) $\\
+	Ritardo $ \xrightarrow{ \FO}$ Moltiplicazione per un'esponenziale
+	
+	\subsubsection{7) Traslazione sul dominio delle frequenze (o delle trasformate), proprietà di modulazione}
+	
+	$ v(t) e^{ j 2 \pi f_0 t} \xrightarrow{ \FO}  v(f-f_0)$\\
+	Moltiplicazione per un'esponenziale $ \xrightarrow{ \FO}$ Ritardo nelle frequenze\\
+	OSS: usiamo la proprietà 5) \\
+	$ v(t) e^{ j 2 \pi f_0 t} \xrightarrow{ \FO } v(f) * \delta(f-f_0) = v(f-f_0)$\\
+	NB: moltiplichiamo per il coseno (vale la linearità)\\
+	$ v(t) \cos ( 2 \pi f_0 t) \xrightarrow{ \FO}  \frac{1}{2}v(f-f_0) + \frac{1}{2}v(f+f_0)$\\
+	
+	%TODO: immagine del coseno X immagine delle due delta = immagine di due piccoli coseni
+	
+	\subsubsection{8) Derivazione}
+	
+	Derivata prima:\\
+	$ \frac{d v(t)}{dt} \xrightarrow{ \FO} (j2\pi f) v(f) $\\
+	Derivata generalizzata:\\
+	$ \frac{d^k v(t)}{dt} \xrightarrow{ \FO} (j2\pi f)^k v(f) $\\
+	Derivata $ \xrightarrow{ \FO}$ Moltiplicazione
+	
+	\subsubsection{9) Integrazione}
+	
+	$ \int_{- \infty}^{ t} v( \tau) d\tau \xrightarrow{ \FO} \frac{v(f)}{j2\pi f} + \frac{1}{2} v(0) \delta(f) $\\
+	Integrazione $ \xrightarrow{ \FO}$ Somma ???
+	%TODO: non sapevo esattamente cosa mettere qui
+
+	% Giorno: 8/5
+\section{ Replicazione e campionamento }
+
+	\subsubsection{Def. Treno campionatore ideale}
+	
+	Si definisce $  \tilde{\delta}_T (t) = \sum_{k= -\infty}^{\infty} \delta (t - kT) $ e lo chiamiamo treno campionatore ideale con $ k \in \mathbb{Z} $.\\
+	E' una serie di impulsi localizzati in $kT$ con $T>0$.\\
+	%TODO: immagine del treno
+	Consideriamo gli impulsi come distribuzioni e quindi come una serie di box.\\
+	Perciò $ \tilde{\delta}_T (t) $ si può scrivere come:\\
+	
+	$  \lim_{ \tau \to \infty} \sum_{k= -\infty}^{\infty} \frac{1}{\tau} \prod (\frac{t-kT}{\tau}) $\\
+	
+	Sia $ v_\tau (t) = \sum_{k= -\infty}^{\infty} \frac{1}{\tau} \prod (\frac{t-kT}{\tau}) $, è periodico, quindi si può esprimere usando la serie di Fourier:\\
+	
+	$
+		v_\tau (t)
+		= \frac{1}{T}\sum_{k= -\infty}^{\infty} sinc(\frac{k \tau}{T}) e^{j \frac{2\pi}{T} kt}
+	$\\
+	
+	%TODO: qua secondo me qualcosa non torna
+	Da notare come:
+	$
+		v_k
+		= \int_{- \infty}^{ \infty} v_r(t) e^{ -j \frac{2 \pi}{T} t} dt
+		= \frac{1}{T}sinc(\frac{k \tau}{T})
+	$\\
+	
+	$
+		\tilde{\delta}_T (t)
+		= \lim_{ \tau \to \infty} v_r(t)
+		= \lim_{ \tau \to \infty} \frac{1}{T} \sum_{k= -\infty}^{\infty} sinc(\frac{k \tau}{T}) e^{j \frac{2 \pi}{T}k t}
+		= \frac{1}{T} \sum_{k= -\infty}^{\infty} e^{j \frac{2 \pi}{T}k t}
+	$\\
+
+	%TODO: immagine lo stesso treno ma con le box
+	
+	Ora lo trasformiamo con Fourier:\\
+	$ \FO [ \tilde{\delta}_T (t) ] = \frac{1}{T} \sum_{k= -\infty}^{\infty} \delta (f-\frac{k}{T}) $\\
+	La TdF del treno compianatore ideale è un treno campionatore ideale (nelle frequenze) in cui gli impulsi hanno area $ \frac{1}{T}$ e sono equiserparati di $ \frac{1}{T} $.\\
+	
+	%TODO: immagine dal dominio del tempo a quello delle frequenze
+	
+	\subsubsection{Replicazione di un segnale}
+	
+	%TODO: immagine della box replicata
+	
+	Scelgo un segnale semplice che voglio replicare:\\
+	$ [rep_T v](t) = \sum_{k= -\infty}^{\infty} v(t-kT) = \sum_{k= -\infty}^{\infty} v(t)* \delta(t-kT)$\\
+	In parole povere: "sposto il segnale", prendo tutti i grafici del segnale spostato e li sommo insieme.\\
+	
+	%TODO: immagine del segnale sospostato
+	
+	\subsubsection{Campionamento - sampling in inglese}
+	
+	%TODO: immagine di un segnale campionato
+	
+	$ [samp_T v](t) \overset{\mathit{def}}{=} \sum_{k= -\infty}^{\infty} v(kT) = \sum_{k= -\infty}^{\infty} v(t)\delta(t-kT)= v(t)\tilde{\delta}_T (t)$\\
+	NB: l'ultimo passaggio è possibile grazie ala proprietà di campionamento dell'impulso.\\
+	Siamo passati da un segnale discreto ad avere un segnale continuo.\\
+	
+	Applicando le proprietà della TdF possiamo vedere che:\\
+	$ [rep_T v](t) = [v*\tilde{\delta}_T](t) $\\
+	usando la quarta proprietà (convoluzione) viene fuori che:\\
+	$ v(f) = \frac{1}{T} \tilde{\delta}_{\frac{1}{T}} (f) = \frac{1}{T} [samp_{\frac{1}{T}} v](f)$\\
+	$ [samp_T v](t) =  v(t)  \tilde{\delta}_T (t)$\\
+	usando la quinta proprietà (modulazione) viene fuori che:\\
+	$ v(f) * \frac{1}{T} \tilde{\delta}_{\frac{1}{T}} (f) = \frac{1}{T} [rep_{\frac{1}{T}} v](f) $\\
+	
+	%TODO: immagine, segnale nel dominio delle frequenze (una sola gobba di cammello)
+	
+	Usando il segnale campionato che grafico viene fuori?\\
+	
+	%TODO: immagine, tante gobbe di cammello
+	
+	Come posso ricostruire un segnale campionato senza perdere l'informazione? Posso "finestrare" con una box l'unico segnale nell'origine.\\
+	Ho due problemi:\\
+	1) un segnale reale è limitato\\
+	2) può capitare che il segnale centrale sia troppo vicino al suo successivo e al suo predecessore. Essi quindi si sofrappongono \textbf{(Aliasing)}\\
+	
+	%TODO: immagine sovrapposizione del segnale
+	
+	Per ovviare a quest'ultimo problema enunciamo il prossimo teorema.
+	
+	\subsubsection{Teorema di campionamento (Shannon)}
+	
+	Dato un segnale continuo $ v_a(t)$ (la "a" sta per analogico) e la sua versione campionata $ v(k) = v_a(kT)$ con $ k \in \mathbb{Z} $. La fraquenza di campionamento è $ f_c= \frac{1}{T} $.\\
+	Se:\\
+	1) $ v_a(t) $ è limitato in banda cioè $ V_a(f) = \FO [v_a(t)]$ e $ \exists B>0 $ (il più piccolo) tale che $ V_a(f) =0 $ per ogni f tale che $ |f|>B$.\\
+	Se non ho B (banda) ho aliasing (ciò però non basta).\\
+	2) $ f_c > 2B $, $ 2B $ è chiamata \textbf{frequenza di Nyquist}.\\
+	Allora:\\
+	il segnale $ v_a(t) $ può essere ricostruito a partire da $ v(k) $, cioè la sua versione campionata. Possiamo fare ciò usando il \textbf{filtro di ricostruzione (la box)}:\\
+	$ H_r(f) = T \prod (\frac{f}{2 f_L}) = \frac{1}{f_c} \prod (\frac{f}{2 f_L})$\\
+	a condizione che $ f_L $ sia $ B \leq f_L \leq f_c - B$.\\
+	NB: sto finestrando nelle frequenze.
+	
+	%TODO: immagini con i vari casi, guarda video Youtube
+	
+	Con questo teorema possiamo ricostruire il segnale nel continuo senza timori.\\
+		$ [samp_T v_a](t)
+		= \sum_{k= -\infty}^{\infty} v_a(kT) \delta(t-kT)
+		= \sum_{k= -\infty}^{\infty} v(k) \delta(t-kT) $.\\
+		$ h_r(t)
+		= \FO^{-1} [\frac{1}{f} \prod (\frac{f}{2 f_L})]
+		= sinc(\frac{t}{T})$
+	 con $ f_L = \frac{f_c}{2}$.\\
+	allora avrò ricostruito il segnale analogico:\\
+		$ v_a(t)
+		= [samp_T v_a * h_r] (t)
+		= [ \sum_{k= -\infty}^{\infty} v(k) \delta(t-kT) * h_r](t)
+		= \sum_{k= -\infty}^{\infty} v(k) sinc(\frac{t-kT}{T})$\\
+	
+	\textbf{Formula di interpolazione ideale (o di Shannon):}
+	$ v_a(t) = \sum_{k= -\infty}^{\infty} v(k) sinc(\frac{t-kT}{T})$\\
+	
+	Problemi nella pratica:\\
+	1) sinc non è causale perchè ha supporto infinito.\\
+	2) la sommatoria è infinita (va da $ $ a $ $).\\
+	3) un segnale limitato nel tempo non è limitato in banda.\\
+	
+	%TODO: immagine, sinc sovrapposte
