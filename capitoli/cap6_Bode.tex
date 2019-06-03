@@ -284,7 +284,7 @@ Per l'Ampiezza:
 Per la Fase:
 \begin{itemize}
 	\item $ \omega \ll \frac{1}{\abs{\tau}} \rightarrow \arg \big(H(j\omega)\big) \simeq \mu \arg 1 \simeq \ang{0} $ 
-	\item $ \omega \gg \frac{1}{\abs{\tau}} \rightarrow \arg \big(H(j\omega)\big) \simeq \mu \arg (j\omega\tau) \simeq \mu sng(\tau)\ang{90} $ 
+	\item $ \omega \gg \frac{1}{\abs{\tau}} \rightarrow \arg \big(H(j\omega)\big) \simeq \mu \arg (j\omega\tau) \simeq \mu \sng(\tau)\ang{90} $ 
 \end{itemize}
 
 Viene più facile disegnare la funzione asintotica del segnale rispetto a quella reale.Per l'ampiezza il segnale rimane a $ 0 $ fino alla pulsazione di taglio $ \frac{1}{\abs{\tau}} $ per poi avere una pendenza di $ 20 \mu \dbdec $. La funzione reale, agli estremi, tende a quella asintotica mentre il punto di maggior differenza tra le due è di $ \pm 3 \dbdec $ nella pulsazione di taglio $ \frac{1}{\abs{\tau}} $.
@@ -331,8 +331,8 @@ Per la fase possiamo approssimare con i punti speciali $ \frac{0.1}{\abs{\tau}} 
 	\arg\big(H(j\omega)\big) = \arg(a+jb) = 
 	\begin{cases}
 		\arctan\big(\frac{b}{a}\big) & ,a>0\\
-		sng(b)\frac{\pi}{2} & ,a=0,\, b \ne 0\\
-		\arctan\big(\frac{b}{a}\big) + sng(b)\pi & ,a<0,\, b \ne 0 
+		\sng(b)\frac{\pi}{2} & ,a=0,\, b \ne 0\\
+		\arctan\big(\frac{b}{a}\big) + \sng(b)\pi & ,a<0,\, b \ne 0 
 	\end{cases} 
 \end{gather*}
 
@@ -351,8 +351,8 @@ Quindi:
  	\arg\big(H(j\omega)\big) = 
  	\begin{cases}
 	 	\arctan\Bigg(\frac{2\zeta\frac{\omega}{\omega_n}}{1-\frac{\omega^2}{\omega^{2}_{n}}}\Bigg) & \omega < \omega_n\\
-	 	sng(\zeta)\frac{\pi}{2} &	\omega = \omega_n\\
-	 	\arctan\Bigg(\frac{2\zeta\frac{\omega}{\omega_n}}{1-\frac{\omega^2}{\omega^{2}_{n}}}\Bigg)+ sng(\zeta)\pi & \omega > \omega_n\\
+	 	\sng(\zeta)\frac{\pi}{2} &	\omega = \omega_n\\
+	 	\arctan\Bigg(\frac{2\zeta\frac{\omega}{\omega_n}}{1-\frac{\omega^2}{\omega^{2}_{n}}}\Bigg)+ \sng(\zeta)\pi & \omega > \omega_n\\
  	\end{cases}
 \]
   
@@ -375,7 +375,7 @@ Guardiamo adesso la fase:
 \end{equation*}
 \begin{multline*}
 	\omega \gg \omega_n \rightarrow \arg \big(H(j\omega)\big) = \mu \Bigg(\arctan\Bigg(\overbrace{\frac{2\zeta\frac{\omega}{\omega_n}}{1-\frac{\omega^2}{\omega^{2}_{n}}}}^{\parbox{7
-			em}{\scriptsize Il denominatore tende a infinito prima del numeratore quindi tende a 0}}\Bigg)+ sng(\zeta)\pi\Bigg) \\= \mu \arctan(0) + \mu sng(\zeta)\pi = \mu sng(\zeta)\pi
+			em}{\scriptsize Il denominatore tende a infinito prima del numeratore quindi tende a 0}}\Bigg)+ \sng(\zeta)\pi\Bigg) \\= \mu \arctan(0) + \mu \sng(\zeta)\pi = \mu \sng(\zeta)\pi
 \end{multline*}
 
 \begin{figure}[H]
@@ -387,7 +387,7 @@ Guardiamo adesso la fase:
 dove: $\displaystyle \omega_a \simeq \frac{1}{5^{\abs{\zeta}}}\omega_n \qquad \omega_b \simeq 5^{\abs{\zeta}}\omega_n$
 
 
-	Con $\displaystyle \abs{\zeta}=1 \rightarrow \zeta =\frac{\Re (Z_K)}{\abs{Z_K}} \equiv \Big(1+sng(\zeta)j \omega \frac{1}{\omega_n}\Big)^{2\mu} $  In questo caso la differenza tra reale e asintotico è di $ 6 dB $
+	Con $\displaystyle \abs{\zeta}=1 \rightarrow \zeta =\frac{\Re (Z_K)}{\abs{Z_K}} \equiv \Big(1+\sng(\zeta)j \omega \frac{1}{\omega_n}\Big)^{2\mu} $  In questo caso la differenza tra reale e asintotico è di $ 6 dB $
 	
 	Con $ \displaystyle \abs{\zeta} = 0 \rightarrow H(j\omega) = \Big(1-\frac{\omega^2}{\omega2_n}\Big)^\mu $ abbiamo, quindi, 2 poli complessi coniugati con $ \Re =0 $ (completamente immaginari). Di conseguenza:
 	\begin{gather*}
@@ -433,7 +433,8 @@ Per comodità, negli esercizi si vuole approssimare la funzione reale. È bene p
 	\end{gather*}
 	\[
 		H(s) = \frac{10\overbrace{(+1)}^{-z_1} \, (1+s\tau'_1)}{\underbrace{(+0,1)}_{-p_1}(1+s\tau_1)\,\underbrace{(-1)}_{-p_2}(1+s\tau_2)} =
-		\frac{100 \, (1+s\tau'_1)}{(1+s\tau_1)\,(1+s\tau_2)}
+		\frac{100 \, (1+s\tau'_1)}{(1+s\tau_1)\,(1+s\tau_2)} = 
+		\frac{100 \, (1+s)}{(1+10s)\,(1-s)} 
 	\]
 	In forma di Bode:
 	\[  H(j\omega) = \frac{100 \, (1+j\omega\tau'_1)}{(1+j\omega\tau_1)\,(1+j\omega\tau_2)}\]
@@ -451,3 +452,18 @@ Per comodità, negli esercizi si vuole approssimare la funzione reale. È bene p
 	\label{fig:es5-fas}
 \end{figure}
 \end{nexample}
+
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{immagini/cap6_Bode/untitled}
+	\caption{}
+	\label{fig:untitled}
+\end{figure}
+
+
+
+
+
+
