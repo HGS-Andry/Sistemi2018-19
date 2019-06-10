@@ -1,17 +1,453 @@
-\documentclass[a4paper]{report}
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-%\usepackage[]{babel}
-\usepackage{mathrsfs}
-\usepackage{amsthm}
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\begin{document}
+
+%\begin{document}
 	\section{Esercizi}
 	
 	\subsection{Esercizio 1}
-	\begin{equation}
-		\ddot{v}(t) + 3\dot{v}(t)+2v(t) = \frac{1}{3}u(t)
-	\end{equation}
-	
-\end{document}
+	Calcolare la risposta libera
+		\[
+		\begin{split}
+		&\ddot{v}(t) + 3\dot{v}(t)+2v(t) = \frac{1}{3}u(t)\\
+		&\mathrm{condizioni \,\, iniziali:}\\
+		&\dot{v}(0)=2\\
+		&v(0)=1
+		\end{split}		
+		\]
+		Equazione omogenea:
+		\[s^2 + 3s + 2 = 0\]
+		\[s_{1,2} = \frac{-3\pm\sqrt{9-4(1)(2)}}{2} =
+		\begin{cases}
+		-1 = \lambda_1\\
+		-2 = \lambda_2
+		\end{cases}
+		\]
+		Risposta libera, sostituire le radici trovate
+		\[
+		\begin{split}
+		V_l(t)&=C_1e^{\lambda_1t} + C_2e^{\lambda_2t}\\
+		&=C_1e^{-t}+C_2e^{-2t}
+		\end{split}
+		\]
+		Ora per trovare $C_1$ e $C_2$, mettere a sistema la risposta libera con la propria derivata prima e porle uguali alle condizioni iniziali.\\
+		Per $t=0 \quad e^t = e^0 = 1$
+		\[
+		%\begin{split}
+		\begin{cases}
+		C_1+C_2= 1\\
+		-C_1-2C_2=2 
+		\end{cases}
+		\begin{cases}
+		C_1 = 1-C_2\\
+		-1+C_2-2C_2 = 2
+		\end{cases}
+		\begin{cases}
+		C_1 = 1+3 = 4\\
+		C_2 = -3
+		\end{cases}
+		\begin{cases}
+		C_1=4\\
+		C_2 =-3
+		\end{cases}
+		%\end{split}
+		\]
+		Sostituire $C_1$ e $C_2$ nella risposta libera
+		\[V_l(t) = 4e^{-t}-3e^{-2t}\]
+		Dalle due radici trovate notiamo che entrambe hanno parte reale negativa quindi abbiamo stabilità asintotica e BIBO stabilità.
+		\newpage
+	\subsection{Esercizio 2}
+	Calcolare la risposta libera
+		\[
+		\begin{split}
+		&\ddot{v}(t)-\dot{v}(t)-2v(t) = \ddot{u}(t)\\
+		&\mathrm{condizioni \,\, iniziali:}\\
+		&\dot{v}(0)=-1\\
+		&v(0)=1
+		\end{split}
+		\]
+		Equazione omogenea:
+		\[s^2 - s - 2 = 0\]
+		\[s_{1,2} = \frac{1\pm\sqrt{1-4(1)(-2)}}{2} =
+		\begin{cases}
+		2 = \lambda_1\\
+		-1 = \lambda_2
+		\end{cases}
+		\]
+		Risposta libera, sostituire le radici trovate
+		\[
+		\begin{split}
+		V_l(t)&=C_1e^{\lambda_1t} + C_2e^{\lambda_2t}\\
+		&=C_1e^{2t}+C_2e^{-t}
+		\end{split}
+		\]
+		Ora per trovare $C_1$ e $C_2$, mettere a sistema la risposta libera con la propria derivata prima e porle uguali alle condizioni iniziali.\\
+		Per $t=0 \quad e^t = e^0 = 1$
+		\[
+		%\begin{split}
+		\begin{cases}
+		C_1 + C_2 = 1\\
+		2C_1 - C_2= -1 
+		\end{cases}
+		\begin{cases}
+		C_1 = 1-C_2\\
+		2-2C_2-C_2 = -1
+		\end{cases}
+		\begin{cases}
+		C_1 = 1-1\\
+		-3C_2 = -3
+		\end{cases}
+		\begin{cases}
+		C_1=0\\
+		C_2 =1
+		\end{cases}
+		%\end{split}
+		\]
+		Sostituire $C_1$ e $C_2$ nella risposta libera
+		\[V_l(t) = 0e^{2t}+1e^{-t}\]
+		Dalle due radici trovate notiamo che una è negativa e una positiva quindi il sistema NON è asintoticamente stabile, sulla BIBO stabilità per ora non possiamo dire nulla.
+		\newpage
+	\subsection{Esercizio 3}
+	Calcolare risposta impulsiva
+		\[
+		\begin{split}
+		&\dot{v}(t)+2v(t) = \dot{u}(t)+u(t)\\
+		&\mathrm{condizioni \,\, iniziali:}\\
+		&u(0)=\delta(t)
+		\end{split}
+		\]
+		Equazione omogenea:
+		\[s + 2 = 0\]
+		\[s = -2\]
+		Risposta impulsiva, sostituire le radici trovate\\
+		Se n = m sommo $d_0 \delta(t)$
+		\[
+		\begin{split}
+		h(t) = d_0 \delta(t) + d_1e^{-2t}\gradino(t)
+		\end{split}
+		\]
+		Ora per trovare $d_0$ e $d_1$, fare la derivata della risposta impulsiva per ogni grado corrispondente all'equazione iniziale.\\
+		Per $t=0 \quad e^t = e^0 = 1$
+		\[
+		\frac{dh(t)}{dt} = d_0\frac{d\delta(t)}{dt}-2d_1e^{-2t}\gradino(t)+d_1e^{-2t}\delta(t)
+		\]
+		Sostituire la derivata prima e la risposta impulsiva nell'equazione iniziale
+		\[
+		\begin{split}
+		&\underbrace{d_0\frac{d\delta(t)}{dt}-2d_1e^{-2t}\gradino(t)+d_1e^{-2t}\delta(t)}_{\dot{v}(t)} + 
+		2[\underbrace{d_0 \delta(t) + d_1e^{-2t}\gradino(t)}_{v(t)}] = \underbrace{\frac{d\delta(t)}{dt}}_{\dot{u}(t)} + \underbrace{\delta(t)}_{u(t)}\\
+		&d_0\frac{d\delta(t)}{dt}\cancel{-2d_1e^{-2t}\gradino(t)}+d_1e^{-2t}\delta(t)+2d_0 \delta(t) + \cancel{2d_1e^{-2t}\gradino(t)} -\frac{d\delta(t)}{dt} - \delta(t) = 0\\
+		&(d_0 - 1)\frac{d\delta(t)}{dt} + (d_1 + 2d_0 -1)\delta = 0
+		\end{split}
+		\]
+		Per $t=0 \quad e^t = e^0 = 1$\\
+		Metto a sistema le due soluzioni per trovare i due coefficienti della risposta impulsiva
+		\[
+		\begin{cases}
+		d_0 -1 = 0\\
+		d_1 + 2d_0 -1 = 0
+		\end{cases}
+		\begin{cases}
+		d_0 = 1\\
+		d_1 = -1
+		\end{cases}
+		\]
+		La risposta impulsiva è:\\
+		\[h(t) = \delta(t) - e^{-2t} \gradino(t)\]
+		\newpage
+	\subsection{Esercizio 4}
+	Calcolare la risposta libera, la risposta impulsiva e la risposta forzata
+		\[
+		\begin{split}
+		&\ddot{v}(t)+4v(t) = 2\dot{u}(t)\\
+		&\mathrm{condizioni \,\, iniziali:}\\
+		&\dot{v}(0)=0\\
+		&v(0)=2\\
+		&u(t)=\gradino(t)
+		\end{split}
+		\]
+		Equazione omogenea:
+		\[s^2 + 4 = 0\]
+		\[s_{1,2} = \pm2j =
+		\begin{cases}
+		2j = \lambda_1\\
+		-2j = \lambda_2
+		\end{cases}
+		\]
+		
+		Modi elementari:\\
+		Rappresentazione esponenziale di un numero complesso:\\
+		\[
+		\begin{split}
+		&1. e^{j2t}\\
+		&2. e^{-j2t}\\
+		\end{split}
+		\]
+		Rappresentazione polare:\\
+		\[
+		\begin{split}
+		&1. e^{j\omega} = \cos(\omega)+j\sin(\omega)\\
+		&2. e^{-j\omega} = -\cos(\omega)-j\sin(\omega)\\
+		\end{split}
+		\]
+		Risposta libera, sostituire le radici trovate
+		\[
+		\begin{split}
+		V_l(t)&=C_1\cos(2t)+C_2\sin(2t)
+		\end{split}
+		\]
+		Ora per trovare $C_1$ e $C_2$, mettere a sistema la risposta libera con la propria derivata prima e porle uguali alle condizioni iniziali.\\
+		Per $t=0 \quad \cos(2t) = \cos(0) = 1 \quad e \quad \sin(2t) = \sin(0) = 0$
+		\[
+		%\begin{split}
+		\begin{cases}
+		C_1\cos(0)+C_2\sin(0) = 2\\
+		-2C_1\sin(0)+C_2\cos(0) = 0 
+		\end{cases}
+		\begin{cases}
+		C_1 = 2\\
+		C_2 = 0
+		\end{cases}
+		%\end{split}
+		\]
+		Sostituire $C_1$ e $C_2$ nella risposta libera
+		\[V_l(t) = 2\cos(2t)+0\sin(2t)\]
+		Dalle due radici trovate notiamo che la parte reale una è negativa e una positiva quindi il sistema NON è asintoticamente stabile, sulla BIBO stabilità per ora non possiamo dire nulla.\\
+		Risposta impulsiva:\\
+		\[
+		h(t)= \underbrace{d_0\delta_0}_{\Leftrightarrow n=m}  + \gradino(t)[\sum_{i = 1}^{r}\sum_{l=0}^{\mu_0-1}d_{i,l}e^{\lambda_it}\frac{t^l}{t!}]
+		\]
+		\[ h(t)=[d_1\cos(2t) + d_2\sin(2t)] \gradino(t)\]
+		Per trovare $d_1$ e $d_2$, i coefficienti, fare la derivata della risposta impulsiva per ogni grado corrispondente all'equazione iniziale.\\
+		\[
+		\begin{split}
+		\dot{h}(t) =& [-2d_1\sin(2t)+2d_2\cos(2t)]\gradino(t)+[d_1\cos(2t)+d_2\sin(2t)]\delta(t)\\
+		\ddot{h}(t) =& -4[d_1\cos(2t)+d_2\sin(2t)]\gradino(t)+[d_1\cos(2t)+d_2\sin(2t)]\frac{d\delta(t)}{dt}\\
+		&+4[-d_1\sin(2t)+d_2\cos(2t)]\delta(t)\\
+		\end{split}
+		\]
+		Sostituire nell'equazione iniziale tutte le derivate trovate e al posto dell'entrata sostituisco l'impulso
+		\[
+		\begin{split}
+		&\cancel{-4[d_1\cos(2t)+d_2\sin(2t)]\gradino(t)}
+		+[d_1\cos(2t)+d_2\sin(2t)]\frac{d\delta(t)}{dt}\\
+		&+4[-d_1\sin(2t)+d_2\cos(2t)]\delta(t)\\&+\cancel{4[d_1\cos(2t) + d_2\sin(2t)] \gradino(t)}  = 2\frac{d\delta(t)}{dt}\\
+		\\
+		&4[-d_1\sin(2t)+d_2\cos(2t)]\delta(t) + [d_1\cos(2t)+d_2\sin(2t)-2]\frac{d\delta(t)}{dt} = 0
+		\end{split}
+		\]
+		Mettere a sistema le due soluzioni per trovare $d_1$ e $d_2$ uguagliate a 0 e con t=0, quindi $\sin(0)=0$ e $\cos(0)=1$
+		\[
+		\begin{cases}
+		-d_1\sin(0)+d_2cos(0) = 0\\
+		d_1\cos(0)+d_2\sin(0)-2 = 0
+ 		\end{cases}
+		\begin{cases}
+		d_2 = 0\\
+		d_1 = 2
+		\end{cases}
+		\]
+		Sostituire nel h(t) $d_1$ e $d_2$\\
+		Risposta Impulsiva:
+		\[
+		h(t)=2\cos(2t)\gradino(t)
+		\]
+		Per trovare la Risposta Forzata\\
+		\[
+		\begin{split}
+		v_f(t)=&\int_{0}^{t}(h(\tau)u(t-\tau)d\tau)\\
+		&\int_{0}^{t}(2\cos(2\tau)\underbrace{\gradino(\tau)\gradino(t-\tau)}_{per l'intervallo dato = 1}d\tau)\\
+		&\int_{0}^{t}(2\cos(2\tau)d\tau) = \sin(2t)\\
+		\end{split}
+		\]
+		Risposta Forzata:
+		\[
+		v_f(t) = \sin(2t)
+		\]
+	\newpage
+	\subsection{Esercizio 5}
+		Calcolare la risposta libera, risposta impulsiva e risposta forzata
+		\[
+		\begin{split}
+		&\ddot{v}(t)+3\dot{v}(t)+2v(t) = \frac{1}{3}u(t)\\
+		&\mathrm{condizioni \,\, iniziali:}\\
+		&\dot{v}(0)=2\\
+		&v(0)=1\\
+		&u(t)=e^{-2t}\gradino(t)
+		\end{split}
+		\]
+		Equazione omogenea:
+		\[s^2 + 3s +2 = 0\]
+		\[s_{1,2} = \frac{-3 \pm \sqrt{9-(4*2)}}{2}=
+		\begin{cases}
+		-1 = \lambda_1\\
+		-2 = \lambda_2
+		\end{cases}
+		\]
+		Risposta libera, sostituire le radici trovate
+		\[
+		\begin{split}
+		V_l(t)&=C_1e^{-t}+C_2e^{-2t}
+		\end{split}
+		\]
+		Ora per trovare $C_1$ e $C_2$, mettere a sistema la risposta libera con la propria derivata prima e porle uguali alle condizioni iniziali.\\
+		Per $t=0 e^t = 0$
+		\[
+		%\begin{split}
+		\begin{cases}
+		C_1+C_2 = 1\\
+		-C_1-2C_2 = 2 
+		\end{cases}
+		\begin{cases}
+		C_1 = 1-C_2\\
+		-1+C_2-2C_2 = 2
+		\end{cases}
+		\begin{cases}
+		C_1 = 4\\
+		C_2 = -3
+		\end{cases}
+		%\end{split}
+		\]
+		Sostituire $C_1$ e $C_2$ nella risposta libera
+		\[V_l(t) = 4e^{-t}-3e^{-2t}\]
+		Dalle due radici trovate notiamo che le parti reali sono entrambe negative quindi il sistema NON è asintoticamente stabile, sulla BIBO stabilità per ora non possiamo dire nulla.\\
+		Risposta impulsiva:\\
+		\[
+		h(t)= \underbrace{d_0\delta_0}_{\Leftrightarrow n=m}  + \gradino(t)[\sum_{i = 1}^{r}\sum_{l=0}^{\mu_0-1}d_{i,l}e^{\lambda_it}\frac{t^l}{t!}]
+		\]
+		\[ h(t)=[d_1e^{-t} + d_2e^{-2t}] \gradino(t)\]
+		Per trovare $d_1$ e $d_2$, i coefficienti, fare la derivata della risposta impulsiva per ogni grado corrispondente all'equazione iniziale.\\
+		\[
+		\begin{split}
+		\dot{h}(t) =& [-d_1e^{-t}-2d_2e^{-2t}]\gradino(t)+[d_1e^{-t}+d_2e^{-2t}]\delta(t)\\
+		\ddot{h}(t) =& [d_1e^{-t}+4d_2e^{-2t}]\gradino(t)-2[d_1e^{-t}+2d_2e^{-2t}]\delta(t)+[d_1e^{-t}+d_2e^{-2t}]\frac{d\delta(t)}{dt}\\
+		\end{split}
+		\]
+		Sostituire nell'equazione iniziale tutte le derivate trovate e al posto dell'entrata sostituisco l'impulso
+		\[
+		\begin{split}
+		&\cancel{[d_1e^{-t}+4d_2e^{-2t}]\gradino(t)}
+		-2[d_1e^{-t}+2d_2e^{-2t}]\delta(t)+[d_1e^{-t}+d_2e^{-2t}]\frac{d\delta(t)}{dt}\\
+		&\cancel{-3[d_1e^{-t}+2d_2e^{-2t}]\gradino(t)}+3[d_1e^{-t}+d_2e^{-2t}]\delta(t)+\cancel{2[d_1e^{-t} + d_2e^{-2t}]}  = \frac{1}{3}\delta(t)\\
+		\\
+		&[-2d_1e^{-t}-4d_2e^{-2t}+3d_1e^{-t}+3d_2e^{-2t}]\delta(t)+[d_1e^{-t}+d_2e^{-2t}]\frac{d\delta(t)}{dt} = \frac{1}{3}\delta(t)\\
+		\\
+		&[d_1e^{-t}-d_2e^{-2t}-\frac{1}{3}]\delta(t)+[d_1e^{-t}+d_2e^{-2t}]\frac{d\delta(t)}{dt}=0
+		\end{split}
+		\]
+		Mettere a sistema le due soluzioni per trovare $d_1$ e $d_2$ uguagliate a 0 e con t=0, quindi $e^t = 1$
+		\[
+		\begin{cases}
+		d_1-d_2-\frac{1}{3} = 0\\
+		d_1+d_2 = 0
+		\end{cases}
+		\begin{cases}
+		-d_2-d_2-\frac{1}{3} = 0\\
+		d_1 = -d_2
+		\end{cases}
+		\begin{cases}
+		d_2=-\frac{1}{3}*\frac{1}{2} = -\frac{1}{6}\\
+		d_1 = \frac{1}{6}
+		\end{cases}
+		\]
+		Sostituire nel h(t) $d_1$ e $d_2$\\
+		Risposta Impulsiva:
+		\[
+		h(t)=[\frac{1}{6}e^{-t}-\frac{1}{6}e^{-2t}]\gradino(t)
+		\]
+		Per trovare la Risposta Forzata\\
+		\[
+		\begin{split}
+		v_f(t)=&\int_{0}^{t}(h(\tau)u(t-\tau)d\tau)\\
+		&\int_{0}^{t}((\frac{1}{6}e^{-\tau}-\frac{1}{6}e^{-2\tau})\underbrace{\gradino(\tau)\gradino(t-\tau)}_{per l'intervallo dato = 1}e^{-2(t-\tau)})d\tau\\
+		&\int_{0}^{t}((\frac{1}{6}e^{-\tau}-\frac{1}{6}e^{-2\tau})e^{-2(t-\tau)}d\tau)\\
+		&\frac{1}{6}e^{-2t}\int_{0}^{t}((e^{-\tau}-e^{-2\tau})e^{2\tau}d\tau)\\
+		&\frac{1}{6}e^{-2t}\int_{0}^{t}(e^{\tau}-1)d\tau\\
+		&\frac{1}{6}e^{-2t}\int_{0}^{t}(e^{-\tau})d\tau-\int_{0}^{t}(1)d\tau\\
+		&\frac{1}{6}e^{-2t}[-e^{-\tau}]_0^t-[\tau]_0^t = \frac{1}{6}e^{-2t}(-e^{-t}-1-t)
+		\\
+		\end{split}
+		\]
+		\\
+		Risposta Forzata:
+		\[
+		v_f(t) = \frac{1}{6}e^{-2t}(-e^{-t}-1-t)
+		\]
+		\newpage
+	\subsection{Esercizio 6}
+		Dire se il sistema è asintoticamente stabile, se è BIBO stabile, trovare la funzione di trasferimento, la risposta libera, forzata e totale
+		\[
+		\begin{split}
+		&\ddot{v}(t)+3\dot{v}(t)+2v(t)=\dot{u}(t)+3u(t)\\
+		&\mathrm{condizioni \,\, iniziali:}\\
+		&v(0) = 1 \qquad u(0)=1\\
+		&\dot{v}(0)=0 \qquad \dot{u}(0)=1\\
+		&u(t)=e^{-4t}\delta(t)
+		\end{split}
+		\]
+		Studiare la stabilità
+		\[
+		\begin{split}
+		s^2+3s+2=0
+		s_1,2=\frac{-3\pm\sqrt{9-4*2}}{2} = 
+		\begin{cases}
+		-1 = \lambda_1\\
+		-2 = \lambda_2
+		\end{cases} 
+		\end{split}
+		\]
+		Re($\lambda_1$) e Re($\lambda_2$) < 0 , quindi il sistema è Asintoticamente stabile e implica la BIBO stabilità
+		Faccio le Trasformate di Laplace e sostituisco le condizioni iniziali
+		\[
+		\begin{split}
+		&\TdL[\ddot{v}(t)]=s^2V(s)-(v(0)s+\dot{v}(0)) = s^2V(s)-s\\
+		&\TdL[3\dot{v}(t)]=3(sV(s)-v(0))=3sV(s)-3\\
+		&\TdL[2v(t)]=2V(s)\\
+		&\TdL[\dot{u}(t)]=sU(s)-u(0)=sU(s)-1\\
+		&\TdL[3u(t)]=3U(s)
+		\end{split}
+		\]
+		Riscrivo tutte le Trasformate di Laplace sommandole tra di loro
+		\[
+		\begin{split}
+		&s^2V(s)-s+3sV(s)-3+2V(s)=sU(s)-1+3U(s)\\
+		&V(s)(s^2+3s+2) = U(s)(s+3)+s+2\\
+		&V(s)=\underbrace{\frac{(s+3)}{(s^2+3s+2)}U(s)}_{Risposta\,Forzata:\, V_f(s)=H(s)U(s)}+\underbrace{\frac{(s+2)}{(s^2+3s+2)}}_{Risposta\, Libera}
+		\end{split}
+		\]
+		Se il sistema non fosse Asintoticamente stabile non avrei potuto dire nulla sulla BIBO stabilità, ora potrei studiarla grazie al denominatore della funzione di trasferimento trovando le radici chiamati poli.
+		Per trovare la Risposta Forzata devo fare la Trasformata di Laplace dell'ingresso e moltiplicarlo per H(s)
+		\[
+		\begin{split}
+		&H(s)=\frac{(s+3)}{(s^2+3s+2)}= \frac{(s+3)}{(s+2)(s+1)}\\
+		&U(s)=\TdL[e^{-4t}\delta(t)]=\frac{1}{s+4}\\
+		&V_f(s)=\frac{(s+3)}{(s+2)(s+1)}\frac{1}{s+4}=\frac{(s+3)}{(s+2)(s+1)(s+4)}
+		\end{split}
+		\]
+		Per trovare la Risposta totale sommo la Risposta Forzata con la Risposta Libera
+		\[
+		\begin{split}
+		V(s)=V_l(s)+V_f(s)
+		&=\frac{(s+3)}{(s+2)(s+1)(s+4)} + \frac{(s+2)}{(s+2)(s+1)}\\
+		&=\frac{s+3+(s+2)(s+4)}{(s+1)(s+2)(s+4)}
+		=\frac{s^2+7s+11}{(s+1)(s+2)(s+4)}\\
+		&=\frac{A}{s+1}+\frac{B}{s+2}+\frac{C}{s+4}
+		\end{split}
+		\]
+		\[
+		\begin{split}
+		&A=\cancel{(s+1)}\frac{s^2+7s+11}{\cancel{(s+1)}(s+2)(s+4)}\Bigg|_{s=-1}=\frac{5}{3}\\
+		&B=\cancel{(s+2)}\frac{s^2+7s+11}{(s+1)\cancel{(s+2)}(s+4)}\Bigg|_{s=-2}=-\frac{1}{2}\\
+		&C=\cancel{(s+4)}\frac{s^2+7s+11}{(s+1)(s+2)\cancel{(s+4)}}\Bigg|_{s=-4}=\frac{1}{2}
+		\end{split}
+		\]
+		Sostituendo troviamo la Risposta totale nel dominio delle frequenze, facendo l'anti-trasformata di Laplace torniamo nel dominio del tempo
+		\[
+		\begin{split}
+		&V(s)=\frac{5}{3}\Bigg(\frac{1}{s+1}\Bigg)-\frac{1}{2}\Bigg(\frac{1}{s+2}\Bigg)+\frac{1}{2}\Bigg(\frac{1}{s+4}\Bigg)\\
+		&\TdL^{-1}[V(s)]=\frac{5}{3}e^{-t}-\frac{1}{2}e^{-2t}+\frac{1}{2}e^{-4t}
+		\end{split}
+		\]
+		Quindi la Risposta totale nel dominio del tempo è:
+		\[
+		v(t)=\Bigg(\frac{5}{3}e^{-t}-\frac{1}{2}e^{-2t}+\frac{1}{2}e^{-4t}\Bigg)\gradino(t)
+		\]
+		\newpage
+%\end{document}

@@ -29,26 +29,29 @@
 %% Definizione struttura
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newenvironment{theorem}{Teorema: }{}	% Teorema
-\newenvironment{exercise}{Esercizio:}{}	% esercizio					  
+\newenvironment{exercise}{Esercizio:}{}	% esercizio
 %\newenvironment{definition}{Definizione: }{}
 %\newenvironment{oss}{Osservazione: }{}
-\theoremstyle{remark}
+\theoremstyle{definition}
 \newtheorem*{example}{Es}				% esempio non numerato
+\theoremstyle{definition}
 \newtheorem{nexample}{Es}{\itshape}		% esempio numerato secondo il capitolo e sezione
 \numberwithin{nexample}{section}
 \theoremstyle{definition}				% definizione
 \newtheorem*{definizione}{Def}
-\theoremstyle{remark}					% osservazione
-\newtheorem*{osservazione}{Oss}	
-%\newenvironment{example}{Esempio:}{}		
-%\newenvironment{proof}{Dim:}{}	
+\theoremstyle{plain}					% osservazione
+\newtheorem*{osservazione}{Oss}
+\theoremstyle{remark}					% Nota bene
+\newtheorem*{NB}{NB}
+%\newenvironment{example}{Esempio:}{}
+%\newenvironment{proof}{Dim:}{}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Preamboli Ivan
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\AdC}{ascisse di convergenza }
 \newcommand{\RdC}{regione di convergenza }
-\newcommand{\NB}{I nota bene della zia wilma}
+%\newcommand{\NB}{I nota bene della zia wilma}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Funzioni frequenti
@@ -63,10 +66,13 @@
 \renewcommand{\Re}{Re} 										% parte reale di un numero immaginario
 \renewcommand{\Im}{Im} 										% parte immaginaria di un numero immaginario
 \newcommand{\LA}{\mathscr{L}} 								% trasformata di Laplace
+\newcommand{\AL}{\mathscr{L}T^{-1}}
 \newcommand{\TdL}{\mathscr{L}} 								% trasformata di Laplace
 \newcommand{\FO}{\mathcal{F}} 								% trasformata di Fourier
 \DeclarePairedDelimiter{\abs}{\lvert}{\rvert}			 	% assoluto normale
 \DeclarePairedDelimiter{\Abs}{\bigg\lvert}{\bigg\rvert} 	% assoluto grande
+\DeclarePairedDelimiter{\BRP}{\bigg(}{\bigg)}
+\DeclarePairedDelimiter{\BSP}{\bigg(}{\bigg)}
 \newcommand{\intZeroInfinity}{\int_{0^-}^{+\infty}}			% integrale da 0- a +infinito
 \newcommand{\gradino}{\delta_{-1}}							% gradino
 \newcommand{\derN}[2]{\frac{d^{#2}#1}{dt^{#2}}}				% derivata n

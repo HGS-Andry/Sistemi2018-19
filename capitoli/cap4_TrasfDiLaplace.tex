@@ -202,7 +202,7 @@ Se $v_1(t)$, $v_2(t)$ sono nulle per $t < 0$ e hanno TdL $V_1(s)$, $V_2(s)$ $\Ri
       \begin{split}
          &\LA[(v_1 * v_2)(t)] =\\
          & = \LA\Biggl[\intZeroInfinity \underbrace{v_1(\tau)}_{=\, 0\, per\, t < 0}v_2(t - \tau)\,d\tau\Biggr] = \intZeroInfinity\Biggl[\intZeroInfinity v_1(\tau)v_2(t - \tau)\,d\tau\Biggr]e^{-st}\,dt\\
-         & = \intZeroInfinity v_2(\tau)\Biggl[\intZeroInfinity v_2(t - \tau)e^{-st}\,dt\Biggr]\,d\tau \rightarrow \intZeroInfinity v_1(\tau)\Biggl[\intZeroInfinity v_2(\lambda)e^{-s(\lambda + \tau)}\,d\lambda\Biggr]\,d\tau \\ 
+         & = \intZeroInfinity v_2(\tau)\Biggl[\intZeroInfinity v_2(t - \tau)e^{-st}\,dt\Biggr]\,d\tau \rightarrow \intZeroInfinity v_1(\tau)\Biggl[\intZeroInfinity v_2(\lambda)e^{-s(\lambda + \tau)}\,d\lambda\Biggr]\,d\tau \\
          & t - \tau = \lambda \\
          & t = \lambda + \tau \\
          & dt = d\lambda \\
@@ -328,4 +328,86 @@ Se $v_1(t)$, $v_2(t)$ sono nulle per $t < 0$ e hanno TdL $V_1(s)$, $V_2(s)$ $\Ri
       \end{osservazione}
       \emph{Proprietà}: Il sistema è BIBO stabile se e solo se tutti i poli hanno parte reale minore di 0 $\forall i, \Re(p_i) < 0$\\
       \NB: I poli di $H(s)$ sono zeri di $d(s)$
+\begin{osservazione}
+  Stabilità asintotica $\cancel{\Leftarrow}\Rightarrow$ BIBO stabilità\\
+  alcuni poli non stabili si possono ridurre\\
+  \[
+    e^{-5t} \Rightarrow \frac{1}{s + 5}
+  \]
+  \NB: I poli di $H(s)$ sono zeri di $d(s)$
+\end{osservazione}
+\section{L'antitrasformata di Laplace}
+  $\displaystyle V(s) = \frac{n(s)}{d(s)} = k + \frac{q(s)}{d(s)}$, dove $k$ è il quoziente, $q(s)$ è il resto, il grado di $q(s) < n$\\
+  \[
+      k = \lim_{s\to\infty}V(s)\Rightarrow\BRP{k = \frac{b_m}{a_n}}\Rightarrow V(s) = k + V_{sp}(s)
+  \]
+  Dove $V_{sp}$ è strettamente propria (funzione razionale)
+  \[
+      \AL[V(s)] = \AL[V_{sp}(s)] + \AL[k] = \AL[V_{sp}(s)] + k\delta(t)
+  \]
+  Vediamo ora come calcolare $\AL[V_{sp}(s)]$ dove $V_{sp}(s)$ è una funzione razionale strettamente propria\\
+  \textbf{1o Caso}: Tutti i polinomi sono semplici: $\lambda_1, ..., \lambda_n$
+  \[
+      V_{sp}(s) = \frac{q(s)}{(s - \lambda_1)\cdot...\cdot(s - \lambda_n)} \rightarrow V_{sp}(s) = \sum_{i = 1}^n\frac{c_i}{s - \lambda_i}
+  \]
+  I coefficienti $c_i$ si determinano moltiplicando per $(s - \lambda_1)\cdot...\cdot(s - \lambda_n)$ confrontando i coefficienti dei poli risultanti
+  \[
+      q(s) = \sum_{i = 1}^n\BSP{\frac{c_i}{(s - \lambda_i)}\underbrace{(s - \lambda_1)\cdot...\cdot(s - \lambda_n)}_{d(s)}} = \sum_{i = 1}^n\BRP{c_i\prod_{j\ne i}(s - \lambda_j)}
+  \]
+  Una volta che abbiamo $c_i$:\\ $\displaystyle v(t) = \AL[V(s)] = \AL[k] + \AL[V_{sp}(s)] = k\delta(t) + \AL\BSP{\sum_{i = 1}^n\frac{c_i}{s - \lambda_i}} = k\delta(t) + \sum_{i = 1}^nc_ie^{\lambda_it}\gradino(t)$ (causale)\\
+  Possiamo calcolare $c_i$ come:\\ $\displaystyle c_i = \lim_{s\to\lambda_i}V_{sp}(s)(s - \lambda_i)$\\\\
+\textbf{Esempio}
+\[
+   \begin{split}
+      V_{sp}(s) = & \frac{3(s + 2 + j) (s + 2 - j)}{s(s + 3)(s + 1 + j)(s + 1 - j)} = \frac{c_1}{s} + \frac{c_2}{s + 3} + \frac{c_3}{s + 1 + j} + \frac{c_4}{s + 1 - j}\\
+      c_1 = & \\
+      c_2 = & \\
+      c_3 = & \\
+      c_4 = & \\
+      &\AL[V_{sp}(s)] = \frac{5}{2}\gradino(t) - \frac{2}{5}e^{-3t}\gradino(t) + Xe^{-(1 + j)t}\gradino(t) + Ye^{-(1 - j)t}\gradino(t)
+   \end{split}
+\]
+\textbf{2o caso}: poli multipli $\lambda_i$ di molteplicità $\mu_i\quad i = \overline{1,r}$
+\[V_{sp}(s) = \frac{n(s)}{(s - \lambda_i)^{\mu_1}\cdot...\cdot(s - \lambda_n)^{\mu_r}}\]
+Per ogni polo $\lambda_i$ di molteplicità $\mu_i$ avremmo nella sommatoria:
+\[
+   \begin{split}
+      \frac{c_{i,1}}{s - \lambda_i} & + \rightarrow c_{i,1}e^{\lambda_it}\\
+      \frac{c_{i,2}}{(s - \lambda_i)^2} & + \rightarrow c_{i,2}e^{\lambda_it}t\\
+      ... & ... \\
+      \frac{c_{i,\mu_i}}{(s - \lambda_i)^{\mu_i}} & \rightarrow c_{i,\mu_i}e^{\lambda_it}\frac{t^{\mu_i-1}}{(\mu_i-1)!}
+   \end{split}
+\]
+\[
+   V_{sp}(s) = \sum_{i = 1}^r\sum_{\l = 0}^{\mu_i - 1}\frac{c_{i, \l}}{(s - \lambda_i)^{\l + 1}}\xRightarrow{\AL} v(t) = \underbrace{\BRP{\lim_{s\to\infty}V(s)}}_{k}\delta(t) + \underbrace{\sum_{i = 1}^r\sum_{\l = 0}^{\mu_i - 1}c_{i,\l}\frac{t^\l}{\l!}e^{\lambda_it}\gradino(t)}_{\AL(V_{sp}(s))}
+\]
+\textbf{Esempio}
+\[
+   \begin{split}
+      V_{sp}(s) & = \frac{s - 1}{s^2(s + 1)} = \frac{A}{s} + \frac{B}{s^2} + \frac{C}{s + 1} = \frac{As(s + 1) + B(s + 1) + Cs^2}{s^2(s + 1)}\\
+      & = \frac{As^2 + Cs^2 + As + Bs + B}{s^2(s + 1)}\\
+   \end{split}
+\]
+\[
+   \begin{cases}
+      A + B & = 1 \\
+      B     & = -1\\
+      A + C & = 0
+   \end{cases}
+   \qquad
+   \begin{cases}
+      A     & = 2 \\
+      B     & = -1\\
+      A + C & = 0
+   \end{cases}
+   \qquad
+   \begin{cases}
+      A & = 2 \\
+      B & = -1\\
+      C & = -2
+   \end{cases}
+\]
+\[
+      V_{sp}(s) = \frac{2}{s} - \frac{1}{s^2} - \frac{2}{s + 1} \xRightarrow{\AL} v(t) = 2\gradino(t) - t\gradino(t) - 2e^{-t}\gradino(t)
+\]
 %\end{document}
