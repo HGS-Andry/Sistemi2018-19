@@ -1,0 +1,23 @@
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+		
+		\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+		%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+		
+		%Shape: Rectangle [id:dp6464909345742553] 
+		\draw   (285,103) -- (355,103) -- (355,143) -- (285,143) -- cycle ;
+		%Straight Lines [id:da3909182970545064] 
+		\draw    (220.25,123) -- (283,123) ;
+		\draw [shift={(285,123)}, rotate = 180] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+		
+		%Straight Lines [id:da20464322978360183] 
+		\draw    (355,123) -- (417.75,123) ;
+		\draw [shift={(419.75,123)}, rotate = 180] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+		
+		
+		% Text Node
+		\draw (320,123) node   {$\frac{1}{k+sb+s^{2} M}$};
+		% Text Node
+		\draw (253,111.25) node   {$F_{ext}$};
+		% Text Node
+		\draw (385,111.25) node   {$X( s)$};
+		\end{tikzpicture}

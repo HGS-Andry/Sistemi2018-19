@@ -1,0 +1,24 @@
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,59.33332824707031); %set diagram left start at 0, and has height of 59.33332824707031
+
+%Shape: Rectangle [id:dp9183683659728177] 
+\draw   (288,6) -- (358,6) -- (358,46) -- (288,46) -- cycle ;
+%Straight Lines [id:da4783012359570893] 
+\draw    (358,26) -- (410.5,26) ;
+\draw [shift={(412.5,26)}, rotate = 180] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+
+%Straight Lines [id:da8992957067336038] 
+\draw    (212.5,26) -- (284.5,26) ;
+\draw [shift={(286.5,26)}, rotate = 180] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+
+
+% Text Node
+\draw (323,26) node   {$\frac{d}{dt}$};
+% Text Node
+\draw (249,12.32) node   {$u$};
+% Text Node
+\draw (386,12.32) node   {$y$};
+
+\end{tikzpicture}

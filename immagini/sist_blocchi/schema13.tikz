@@ -1,0 +1,100 @@
+	
+	\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+	
+	\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+	%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+	
+	%Shape: Rectangle [id:dp5584805448505255] 
+	\draw   (133.5,55.07) -- (203.5,55.07) -- (203.5,95.07) -- (133.5,95.07) -- cycle ;
+	%Shape: Rectangle [id:dp4639169675813819] 
+	\draw   (133.5,125.07) -- (203.5,125.07) -- (203.5,165.07) -- (133.5,165.07) -- cycle ;
+	%Straight Lines [id:da8973299402509956] 
+	\draw    (35.5,75.07) -- (79.5,75.07) ;
+	\draw [shift={(81.5,75.07)}, rotate = 180] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+	
+	%Straight Lines [id:da21170135088038822] 
+	\draw    (203.8,75.07) -- (268.5,75.07) ;
+	\draw [shift={(270.5,75.07)}, rotate = 180] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+	
+	%Straight Lines [id:da5723083322077416] 
+	\draw    (113.8,75.07) -- (131.5,75.07) ;
+	\draw [shift={(133.5,75.07)}, rotate = 180] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+	
+	%Flowchart: Connector [id:dp7852522645677837] 
+	\draw   (81.5,75.07) .. controls (81.5,66.15) and (88.73,58.92) .. (97.65,58.92) .. controls (106.57,58.92) and (113.8,66.15) .. (113.8,75.07) .. controls (113.8,83.99) and (106.57,91.22) .. (97.65,91.22) .. controls (88.73,91.22) and (81.5,83.99) .. (81.5,75.07) -- cycle ;
+	%Straight Lines [id:da6466686716461845] 
+	\draw    (97.65,145.07) -- (97.65,93.22) ;
+	\draw [shift={(97.65,91.22)}, rotate = 450] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+	
+	%Straight Lines [id:da05815677457067303] 
+	\draw    (203.5,145.07) -- (238.5,145.07) ;
+	
+	
+	%Straight Lines [id:da3233505457901875] 
+	\draw    (97.65,145.07) -- (133.5,145.07) ;
+	
+	
+	%Straight Lines [id:da01361016899977252] 
+	\draw    (238.5,145.07) -- (238.5,75.07) ;
+	
+	
+	
+	%Straight Lines [id:da9489064314757574] 
+	\draw    (335.35,79.58) -- (367.54,79.58) ;
+	\draw [shift={(369.54,79.58)}, rotate = 180] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+	
+	%Straight Lines [id:da023992851870582532] 
+	\draw    (369.54,79.58) -- (397,79.58) ;
+	
+	
+	%Flowchart: Connector [id:dp18813000644471334] 
+	\draw  [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ,fill opacity=1 ] (394.39,79.58) .. controls (394.39,78.14) and (395.56,76.98) .. (397,76.98) .. controls (398.44,76.98) and (399.61,78.14) .. (399.61,79.58) .. controls (399.61,81.02) and (398.44,82.19) .. (397,82.19) .. controls (395.56,82.19) and (394.39,81.02) .. (394.39,79.58) -- cycle ;
+	%Straight Lines [id:da04318951705463547] 
+	\draw    (397,79.58) -- (461,79.58) ;
+	\draw [shift={(463,79.58)}, rotate = 180] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+	
+	%Straight Lines [id:da1911166961256583] 
+	\draw    (463,79.58) -- (516,79.58) ;
+	
+	
+	%Flowchart: Connector [id:dp14709331014549343] 
+	\draw  [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ,fill opacity=1 ] (513.39,79.58) .. controls (513.39,78.14) and (514.56,76.98) .. (516,76.98) .. controls (517.44,76.98) and (518.61,78.14) .. (518.61,79.58) .. controls (518.61,81.02) and (517.44,82.19) .. (516,82.19) .. controls (514.56,82.19) and (513.39,81.02) .. (513.39,79.58) -- cycle ;
+	%Straight Lines [id:da9901825078822903] 
+	\draw    (516,79.58) -- (551.18,79.58) ;
+	\draw [shift={(553.18,79.58)}, rotate = 180] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+	
+	%Straight Lines [id:da9417777255935527] 
+	\draw    (553.18,79.58) -- (583.03,79.58) ;
+	
+	
+	%Curve Lines [id:da8849773075030309] 
+	\draw    (457.38,138.28) .. controls (495.83,137.65) and (516,121.5) .. (516,82.19) ;
+	
+	\draw [shift={(455,138.3)}, rotate = 0] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+	%Curve Lines [id:da11116878216013837] 
+	\draw    (455,138.3) .. controls (419,136.3) and (397,122.3) .. (397,82.19) ;
+	
+	
+	
+	
+	% Text Node
+	\draw (168.5,75.07) node   {$G_{1}$};
+	% Text Node
+	\draw (168.5,145.07) node   {$H$};
+	% Text Node
+	\draw (71.5,59.57) node   {$+$};
+	% Text Node
+	\draw (84.5,95.57) node   {$\pm $};
+	% Text Node
+	\draw (45.82,61.9) node   {$u$};
+	% Text Node
+	\draw (251.18,61.9) node   {$y$};
+	% Text Node
+	\draw (456,58.42) node   {$G$};
+	% Text Node
+	\draw (457.6,155.72) node   {$\pm H$};
+	% Text Node
+	\draw (304,98) node   {$\equiv $};
+	
+	
+	\end{tikzpicture}

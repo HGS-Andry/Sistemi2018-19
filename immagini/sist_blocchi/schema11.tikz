@@ -1,0 +1,63 @@
+	
+	
+	\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+	
+	\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+	%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+	
+	%Straight Lines [id:da2645604679508091] 
+	\draw    (100,127) -- (164,127) ;
+	\draw [shift={(166,127)}, rotate = 180] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+	
+	%Straight Lines [id:da5282887023752798] 
+	\draw    (166,127) -- (219,127) ;
+	
+	
+	%Flowchart: Connector [id:dp24093442897466288] 
+	\draw  [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ,fill opacity=1 ] (97.39,127) .. controls (97.39,125.56) and (98.56,124.39) .. (100,124.39) .. controls (101.44,124.39) and (102.61,125.56) .. (102.61,127) .. controls (102.61,128.44) and (101.44,129.61) .. (100,129.61) .. controls (98.56,129.61) and (97.39,128.44) .. (97.39,127) -- cycle ;
+	%Flowchart: Connector [id:dp09137978863303431] 
+	\draw  [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ,fill opacity=1 ] (216.39,127) .. controls (216.39,125.56) and (217.56,124.39) .. (219,124.39) .. controls (220.44,124.39) and (221.61,125.56) .. (221.61,127) .. controls (221.61,128.44) and (220.44,129.61) .. (219,129.61) .. controls (217.56,129.61) and (216.39,128.44) .. (216.39,127) -- cycle ;
+	%Straight Lines [id:da5682374240056367] 
+	\draw    (263,127) -- (327,127) ;
+	\draw [shift={(329,127)}, rotate = 180] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+	
+	%Straight Lines [id:da9888198098011782] 
+	\draw    (329,127) -- (382,127) ;
+	
+	
+	%Flowchart: Connector [id:dp31773307782267945] 
+	\draw  [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ,fill opacity=1 ] (260.39,127) .. controls (260.39,125.56) and (261.56,124.39) .. (263,124.39) .. controls (264.44,124.39) and (265.61,125.56) .. (265.61,127) .. controls (265.61,128.44) and (264.44,129.61) .. (263,129.61) .. controls (261.56,129.61) and (260.39,128.44) .. (260.39,127) -- cycle ;
+	%Flowchart: Connector [id:dp04076917753662146] 
+	\draw  [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ,fill opacity=1 ] (379.39,127) .. controls (379.39,125.56) and (380.56,124.39) .. (382,124.39) .. controls (383.44,124.39) and (384.61,125.56) .. (384.61,127) .. controls (384.61,128.44) and (383.44,129.61) .. (382,129.61) .. controls (380.56,129.61) and (379.39,128.44) .. (379.39,127) -- cycle ;
+	%Straight Lines [id:da09323604628620097] 
+	\draw    (382,127) -- (446,127) ;
+	\draw [shift={(448,127)}, rotate = 180] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+	
+	%Straight Lines [id:da08735784921599854] 
+	\draw    (448,127) -- (501,127) ;
+	
+	
+	%Flowchart: Connector [id:dp6288301261150899] 
+	\draw  [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ,fill opacity=1 ] (498.39,127) .. controls (498.39,125.56) and (499.56,124.39) .. (501,124.39) .. controls (502.44,124.39) and (503.61,125.56) .. (503.61,127) .. controls (503.61,128.44) and (502.44,129.61) .. (501,129.61) .. controls (499.56,129.61) and (498.39,128.44) .. (498.39,127) -- cycle ;
+	
+	% Text Node
+	\draw (162.33,150.83) node   {$A_{ij}$};
+	% Text Node
+	\draw (100.5,109.5) node   {$x_{i}$};
+	% Text Node
+	\draw (222,109.5) node   {$x_{j}$};
+	% Text Node
+	\draw (325.33,150.83) node   {$A_{21}$};
+	% Text Node
+	\draw (263.5,109.5) node   {$x_{1}$};
+	% Text Node
+	\draw (382.92,109.5) node   {$x_{2}$};
+	% Text Node
+	\draw (502.33,109.5) node   {$x_{3}$};
+	% Text Node
+	\draw (440,150.83) node   {$A_{32}$};
+	% Text Node
+	\draw (387,172) node   {$A=A_{32} \cdotp A_{21}$};
+	
+	
+	\end{tikzpicture}

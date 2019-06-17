@@ -1,0 +1,74 @@
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+	
+	\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+	%uncomment if require: \path (0,292); %set diagram left start at 0, and has height of 292
+	
+	%Shape: Rectangle [id:dp3155084585495189] 
+	\draw   (324.5,123) -- (394.5,123) -- (394.5,163) -- (324.5,163) -- cycle ;
+	%Straight Lines [id:da11063592261012656] 
+	\draw    (260.25,143) -- (323,143) ;
+	\draw [shift={(325,143)}, rotate = 180] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+	
+	%Straight Lines [id:da8163995279030745] 
+	\draw    (395,143) -- (487.3,143) ;
+	\draw [shift={(489.3,143)}, rotate = 180] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+	
+	%Flowchart: Connector [id:dp7546342860954656] 
+	\draw   (227.95,143) .. controls (227.95,134.08) and (235.18,126.85) .. (244.1,126.85) .. controls (253.02,126.85) and (260.25,134.08) .. (260.25,143) .. controls (260.25,151.92) and (253.02,159.15) .. (244.1,159.15) .. controls (235.18,159.15) and (227.95,151.92) .. (227.95,143) -- cycle ;
+	%Straight Lines [id:da6036888305055024] 
+	\draw    (163.2,143) -- (225.95,143) ;
+	\draw [shift={(227.95,143)}, rotate = 180] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+	
+	%Straight Lines [id:da10222491957386626] 
+	\draw    (244.1,219.75) -- (244.1,161.15) ;
+	\draw [shift={(244.1,159.15)}, rotate = 450] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+	
+	%Shape: Rectangle [id:dp3211173615588092] 
+	\draw   (324.5,202) -- (394.5,202) -- (394.5,242) -- (324.5,242) -- cycle ;
+	%Straight Lines [id:da42233637174500327] 
+	\draw    (244.1,219.75) -- (324.3,219.75) ;
+	
+	
+	%Straight Lines [id:da9688852904709178] 
+	\draw    (396.5,219.75) -- (451.3,219.75) ;
+	
+	\draw [shift={(394.5,219.75)}, rotate = 0] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+	%Straight Lines [id:da49473026564794287] 
+	\draw    (451.3,143) -- (451.3,219.75) ;
+	
+	
+	%Curve Lines [id:da6898335310358139] 
+	\draw    (285.5,102) .. controls (288.37,113.46) and (287.58,121.27) .. (289.25,134.15) ;
+	\draw [shift={(289.5,136)}, rotate = 261.87] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]  [draw opacity=0] (10.72,-5.15) -- (0,0) -- (10.72,5.15) -- (7.12,0) -- cycle    ;
+	
+	%Curve Lines [id:da7097329155318699] 
+	\draw    (458.5,106) .. controls (451.92,117.28) and (454.18,123.26) .. (452.81,133.07) ;
+	\draw [shift={(452.5,135)}, rotate = 280.3] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]  [draw opacity=0] (10.72,-5.15) -- (0,0) -- (10.72,5.15) -- (7.12,0) -- cycle    ;
+	
+	%Curve Lines [id:da6339380725476107] 
+	\draw    (169.5,233) .. controls (172.43,187.17) and (193.41,169.87) .. (214.85,159.76) ;
+	\draw [shift={(216.5,159)}, rotate = 515.56] [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]  [draw opacity=0] (10.72,-5.15) -- (0,0) -- (10.72,5.15) -- (7.12,0) -- cycle    ;
+	
+	
+	% Text Node
+	\draw (359.5,143) node   {$G$};
+	% Text Node
+	\draw (359.5,222) node   {$H$};
+	% Text Node
+	\draw (177.5,124) node   {$u$};
+	% Text Node
+	\draw (482.5,123) node   {$y$};
+	% Text Node
+	\draw (220.5,129) node   {$+$};
+	% Text Node
+	\draw (233.5,163) node   {$-$};
+	% Text Node
+	\draw (192,246) node  [align=left] {{\small Nodo (sommatore/sotrattore)}};
+	% Text Node
+	\draw (459,95) node  [align=left] {punto di diramazione};
+	% Text Node
+	\draw (293,87) node  [align=left] {segnale attuatore};
+	% Text Node
+	\draw (305.5,127) node   {$e$};
+	
+	\end{tikzpicture}

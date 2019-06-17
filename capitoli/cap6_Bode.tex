@@ -221,7 +221,7 @@ In cui $ \omega_n > 0 \quad ,\abs{\zeta}<1 \quad,\mu \in \R $ con $ \mu > 0 \rig
 \[ H(j\omega) = K_B \rightarrow \abs{H(j\omega)}_{dB} = 20 \log \abs{K_B} \]
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\linewidth]{immagini/cap6_Bode/bodeCost}
+	\includegraphics[width=0.8\linewidth]{immagini/cap6_Bode/bodeCost.eps}
 	\caption{ Diagramma dell'ampiezza e della fase della costante $  K_B $ }
 	\label{fig:bodeCost}
 \end{figure}
@@ -236,7 +236,7 @@ In cui $ \omega_n > 0 \quad ,\abs{\zeta}<1 \quad,\mu \in \R $ con $ \mu > 0 \rig
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\linewidth]{immagini/cap6_Bode/bodeZPOrig}
+	\includegraphics[width=0.8\linewidth]{immagini/cap6_Bode/bodeZPOrig.eps}
 	\caption{ Diagramma dell'ampiezza e della fase dei poli e degli zeri in origine}
 	\label{fig:bodeZPOrig}
 \end{figure}
@@ -245,7 +245,7 @@ In cui $ \omega_n > 0 \quad ,\abs{\zeta}<1 \quad,\mu \in \R $ con $ \mu > 0 \rig
 	\[ H(j\omega) = \frac{1}{(j\omega)^2} \rightarrow \nu = 2 \rightarrow \abs{H(j\omega)}_{dB} = -40 \log \abs{\omega}\]
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\linewidth]{immagini/cap6_Bode/es1}
+	\includegraphics[width=0.7\linewidth]{immagini/cap6_Bode/es1.eps}
 	\label{fig:Bode_es1}
 \end{figure}
 \end{nexample}
@@ -254,7 +254,7 @@ In cui $ \omega_n > 0 \quad ,\abs{\zeta}<1 \quad,\mu \in \R $ con $ \mu > 0 \rig
 	\[ H(j\omega) =j\omega = \frac{1}{(j\omega)^{-1}} \rightarrow \nu = -1 \rightarrow \abs{H(j\omega)}_{dB} = 20 \log \abs{\omega}\]
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\linewidth]{immagini/cap6_Bode/es2}
+	\includegraphics[width=0.7\linewidth]{immagini/cap6_Bode/es2.eps}
 	\label{fig:Bode_es2}
 \end{figure}
 \end{nexample}
@@ -317,6 +317,7 @@ Per la fase possiamo approssimare con i punti speciali $ \frac{0.1}{\abs{\tau}} 
 
 \begin{nexample}
 	\[ H(j\omega) = \frac{1}{1-j\omega2} = (1-j\omega2)^2 \qquad\tau = 2, \, \mu = -1 \]
+	%TODO controlla elevato alla 2?
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\linewidth]{immagini/cap6_Bode/es4}
@@ -431,6 +432,7 @@ Per comodità, negli esercizi si vuole approssimare la funzione reale. È bene p
 		s+0,1\rightarrow p_1 =-0,1\rightarrow\tau_1 = \frac{1}{-p_1} = \frac{1}{-(-0,1)}=10 \quad \mu_1 = -1 \\
 		s-1\rightarrow p_2 =-0,1\rightarrow\tau_1 = \frac{1}{-p_2}= \frac{1}{-1}=-1 \quad \mu_2 = -1 \\
 	\end{gather*}
+	%TODO non é -100?
 	\[
 		H(s) = \frac{10\overbrace{(+1)}^{-z_1} \, (1+s\tau'_1)}{\underbrace{(+0,1)}_{-p_1}(1+s\tau_1)\,\underbrace{(-1)}_{-p_2}(1+s\tau_2)} =
 		\frac{100 \, (1+s\tau'_1)}{(1+s\tau_1)\,(1+s\tau_2)} = 
@@ -439,29 +441,27 @@ Per comodità, negli esercizi si vuole approssimare la funzione reale. È bene p
 	In forma di Bode:
 	\[  H(j\omega) = \frac{100 \, (1+j\omega\tau'_1)}{(1+j\omega\tau_1)\,(1+j\omega\tau_2)}\]
 	
+%\begin{figure}[H]
+%	\centering
+%	\includegraphics[width=0.7\linewidth]{immagini/cap6_Bode/es5-amp.eps}
+%	\caption{Diagramma totale delle ampiezze, la risultante è la somma di tutti i diagrammi base}
+%	\label{fig:es5-amp}
+%\end{figure}
+%\begin{figure}[H]
+%	\centering
+%	\includegraphics[width=0.7\linewidth]{immagini/cap6_Bode/es5-fas.eps}
+%	\caption{Diagramma totale delle fasi, la risultante è la somma di tutti i diagrammi base}
+%	\label{fig:es5-fas}
+%\end{figure}
+
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\linewidth]{immagini/cap6_Bode/es5-amp}
-	\caption{Diagramma totale delle ampiezze, la risultante è la somma di tutti i diagrammi base}
-	\label{fig:es5-amp}
+	\includegraphics[width=0.7\linewidth]{immagini/cap6_Bode/es5.eps}
+	\caption{Diagramma totale delle ampiezze e delle fasi, la risultante è la somma di tutti i diagrammi base}
+	\label{fig:es5}
 \end{figure}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.7\linewidth]{immagini/cap6_Bode/es5-fas}
-	\caption{Diagramma totale delle fasi, la risultante è la somma di tutti i diagrammi base}
-	\label{fig:es5-fas}
-\end{figure}
+
 \end{nexample}
-
-
-
-\begin{figure}
-	\centering
-	\includegraphics[width=0.7\linewidth]{immagini/cap6_Bode/untitled}
-	\caption{}
-	\label{fig:untitled}
-\end{figure}
-
 
 
 
