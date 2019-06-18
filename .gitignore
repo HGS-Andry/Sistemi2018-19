@@ -1,4 +1,5 @@
-*.pdf
+Main.pdf
+*eps-converted-to.pdf
 *.aux
 *.log
 *.gz
