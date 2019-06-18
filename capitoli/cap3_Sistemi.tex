@@ -19,9 +19,9 @@
 			
 			\begin{figure}[H]
 				\centering
-				\includegraphics[scale=0.5]{immagini/esp3}
+				\includegraphics[scale=0.5]{immagini/cap3_Sistemi/sistEquilib.pdf}
 				\caption{ Grafico che descrive l'andamento nel tempo del pendolo, come si può vedere tende a zero infatti il sistema è in equilibrio. }
-				\label{fig: esp3}
+				\label{fig: funzpendolo}
 			\end{figure}
 			
 		\end{nexample}
@@ -30,20 +30,24 @@
 
 	\begin{nexample}
 			Una palla che cade in una buca è un altro esempio di sistema stabile, l'input è sempre la gravità e la posizione x è l'output. 
-		
+%			\includegraphics[scale=0.5]{immagini/cap3_Sistemi/pallaBuca.pdf}
+%			\caption{ Sistema semplice: palla che cade in una buca. }		
 		\begin{figure}[H]
 			\centering
-			\includegraphics[scale=0.5]{immagini/cap3_Sistemi/pallaBuca}
+			\subfloat[][\emph{Palla che cade in una buca}]
+			{\includegraphics[width=.45\textwidth]{immagini/cap3_Sistemi/pallaBuca.pdf}} \quad
+			\subfloat[][\emph{Grafico che descrive l'andamento della palla, come si può vedere tende a zero infatti il sistema è in equilibrio.}]
+			{\includegraphics[width=.45\textwidth]{immagini/cap3_Sistemi/sistEquilib.pdf}} 
 			\caption{ Sistema semplice: palla che cade in una buca. }
 			\label{fig: pallaBuca}
 		\end{figure}
 		
-		\begin{figure}[H]
-			\centering
-			\includegraphics[scale=0.5]{immagini/esp3}
-			\caption{ Grafico che descrive l'andamento della palla, come si può vedere tende a zero infatti il sistema è in equilibrio. }
-			\label{fig: esp3}
-		\end{figure}
+%		\begin{figure}[H]
+%			\centering
+%			\includegraphics[scale=0.5]{immagini/cap3_Sistemi/sistEquilib.pdf}
+%			\caption{ Grafico che descrive l'andamento della palla, come si può vedere tende a zero infatti il sistema è in equilibrio. }
+%			\label{fig: funzbuca}
+%		\end{figure}
 	\end{nexample}
 	
 	\begin{nexample}
@@ -51,17 +55,22 @@
 	
 		\begin{figure}[H]
 			\centering
-			\includegraphics[scale=0.5]{immagini/cap3_Sistemi/pallaScivola}
-			\caption{ Sistema semplice: pendolo. }
+%			\includegraphics[scale=0.5]{immagini/cap3_Sistemi/pallaScivola.pdf}
+%			\caption{ Sistema semplice: pendolo. }
+			\subfloat[][\emph{Palla che scivola }]
+			{\includegraphics[width=.45\textwidth]{immagini/cap3_Sistemi/pallaScivola.pdf}} \quad
+			\subfloat[][\emph{Grafico che descrive l'andamento della velocità di una palla che scivola, come si vede la velocità continuerà ad aumentare.}]
+			{\includegraphics[width=.45\textwidth]{immagini/cap3_Sistemi/sistNonEquilib.pdf}} 
+			\caption{ Sistema semplice: palla che scivola. }
 			\label{fig: pallaScivola}
 		\end{figure}
 	
-		\begin{figure}[H]
-			\centering
-			\includegraphics[scale=0.5]{immagini/cap3_Sistemi/esp1Causale}
-			\caption{ Grafico che descrive l'andamento della velocità di una palla che scivola, come si vede la velocità continuerà ad aumentare. }
-			\label{fig: esp1Causale}
-		\end{figure}
+%		\begin{figure}[H]
+%			\centering
+%			\includegraphics[scale=0.5]{immagini/cap3_Sistemi/esp1Causale}
+%			\caption{ Grafico che descrive l'andamento della velocità di una palla che scivola, come si vede la velocità continuerà ad aumentare. }
+%			\label{fig: esp1Causale}
+%		\end{figure}
 
 	\end{nexample}
 %%\pagebreak
@@ -102,6 +111,7 @@
 			\begin{osservazione}
 				Ci sarà sempre un istante iniziale $t_0$ a partire da cui studieremo il sistema.
 			\end{osservazione}
+		
 			\[
 				\exists \,t_0 \in \R \text{ tale che } u(t)=0 \text{ per } t<t_0
 				\text{, allora } v(t)=0 \text{ per } t<t_0
@@ -112,17 +122,20 @@
 		
 			\begin{figure}[H]
 				\centering
-				\includegraphics[scale=0.5]{immagini/esp1}
-				\caption{ Sistema non causale. }
-				\label{fig: esp1}
+				\subfloat[][\emph{Sistema non causale}]
+				{\includegraphics[width=.45\textwidth]{immagini/cap3_Sistemi/espNonCausale.pdf}} \quad
+				\subfloat[][\emph{Sistema causale}]
+				{\includegraphics[width=.45\textwidth]{immagini/cap3_Sistemi/espCausale.pdf}} 
+				\caption{ Esempio di sistema non causale e causale  }
+				\label{fig: sistcausncaus}
 			\end{figure}
 			
-			\begin{figure}[H]
-				\centering
-				\includegraphics[scale=0.5]{immagini/cap3_Sistemi/esp1Causale}
-				\caption{ Sistema causale con $ t_0 = 0$. }
-				\label{fig: esp1Causale}
-			\end{figure}
+%			\begin{figure}[H]
+%				\centering
+%				\includegraphics[scale=0.5]{}
+%				\caption{ Sistema causale con $ t_0 = 0$. }
+%				\label{fig: esp1Causale}
+%			\end{figure}
 	
 	\subsection{Proprietà richieste: stabilità BIBO e stabilità asintotica}
 
@@ -185,7 +198,7 @@
 	
 		\begin{figure}[H]
 			\centering
-			\includegraphics{immagini/cap3_Sistemi/massa_molla_smorzatore}
+			\includegraphics{immagini/cap3_Sistemi/massa_molla_smorzatore.pdf}
 			\caption{ Sistema massa-molla-smorzatore. }
 			\label{fig: massa_molla_smorzatore}
 		\end{figure}
