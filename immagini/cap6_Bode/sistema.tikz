@@ -1,0 +1,59 @@
+
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,66.19999694824219); %set diagram left start at 0, and has height of 66.19999694824219
+
+%Shape: Rectangle [id:dp07340500568100361] 
+\draw   (67.09,15) -- (125.82,15) -- (125.82,48.56) -- (67.09,48.56) -- cycle ;
+%Shape: Rectangle [id:dp9167664477954778] 
+\draw   (164.41,15) -- (223.14,15) -- (223.14,48.56) -- (164.41,48.56) -- cycle ;
+%Straight Lines [id:da3580760526551523] 
+\draw    (125.82,31.78) -- (162.41,31.78) ;
+\draw [shift={(164.41,31.78)}, rotate = 180] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+
+%Straight Lines [id:da11851581153449464] 
+\draw    (223.14,31.78) -- (259.73,31.78) ;
+\draw [shift={(261.73,31.78)}, rotate = 180] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+
+%Straight Lines [id:da8552805925980624] 
+\draw    (28.5,31.78) -- (65.09,31.78) ;
+\draw [shift={(67.09,31.78)}, rotate = 180] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+
+%Shape: Rectangle [id:dp044934607642187485] 
+\draw   (349.69,15) -- (408.42,15) -- (408.42,48.56) -- (349.69,48.56) -- cycle ;
+%Straight Lines [id:da7531929098228589] 
+\draw    (408.42,31.78) -- (445.01,31.78) ;
+\draw [shift={(447.01,31.78)}, rotate = 180] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+
+%Straight Lines [id:da6978811593610801] 
+\draw    (311.1,31.78) -- (347.69,31.78) ;
+\draw [shift={(349.69,31.78)}, rotate = 180] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+
+%Shape: Rectangle [id:dp06235003242262893] 
+\draw   (534.98,15) -- (593.71,15) -- (593.71,48.56) -- (534.98,48.56) -- cycle ;
+%Straight Lines [id:da8921643364002274] 
+\draw    (593.71,31.78) -- (630.3,31.78) ;
+\draw [shift={(632.3,31.78)}, rotate = 180] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+
+%Straight Lines [id:da7745120738778979] 
+\draw    (496.39,31.78) -- (532.98,31.78) ;
+\draw [shift={(534.98,31.78)}, rotate = 180] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+
+
+% Text Node
+\draw (96.46,31.78) node   {$A$};
+% Text Node
+\draw (193.77,31.78) node   {$B$};
+% Text Node
+\draw (379.06,31.78) node   {$AB$};
+% Text Node
+\draw (287.52,31.78) node   {$\Rightarrow $};
+% Text Node
+\draw (564.34,31.78) node   {$H$};
+% Text Node
+\draw (472.59,31.78) node   {$\Rightarrow $};
+
+
+\end{tikzpicture}

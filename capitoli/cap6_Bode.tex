@@ -34,17 +34,18 @@ La rappresentazione su grafici rende più facile l'interpretazione della funzion
 
 Rappresentiamo un numero complesso $z=a+jb$
 
-\begin{equation*}
-	\includegraphics[width=0.3\linewidth]{immagini/cap6_Bode/argCompl}\quad
-	\arg(z) =
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.4\linewidth, valign=c]{immagini/cap6_Bode/argCompl.pdf}\quad
+	$ \displaystyle \arg(z) =
 	\begin{cases}
 		\arctan \big(\frac{b}{a}\big) &,a>0, b\in \R\\
 		\frac{\pi}{2}&,a=0, b>0\\
 		-\frac{\pi}{2}&,a=0, b<0\\
 		\arctan \big(\frac{b}{a}\big)+\pi &,a<0, b\ge 0\\
 		\arctan \big(\frac{b}{a}\big)-\pi &,a<0, b< 0
-	\end{cases}
-\end{equation*}
+	\end{cases} $
+\end{figure}
 
 Vista l'ampiezza delle possibili frequenze, usualmente si usa una scala logaritmica per esse. Vediamo come usare il logaritmo nei numeri complessi.
 
@@ -127,11 +128,14 @@ Considerando un punto nella decade tra $ 0 $ e $ 1 $ specifichaimo per gli eserc
  \]
  
  In caso di un sistema:
- \begin{figure}[H]
- 	\centering
- 	\includegraphics[width=0.7\linewidth]{immagini/cap6_Bode/sist1}
- 	\label{fig:sist1}
- \end{figure}
+% \begin{figure}[H]
+% 	\centering
+% 	\includegraphics[width=0.7\linewidth]{immagini/cap6_Bode/sist1}
+% 	\label{fig:sist1}
+% \end{figure}
+\begin{center}
+	\input{immagini/cap6_Bode/sistema.tikz}
+\end{center}
 
 \[ 
 	H(j \omega)=A(j \omega)B(j \omega)
