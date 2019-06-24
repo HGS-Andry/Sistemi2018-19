@@ -16,12 +16,12 @@ dato uno specifico $\omega$ abbiamo un risultato nel piano complesso:
 
 %TODO non so dove piazzare questo diagramma nel contesto
 %TODO: fare immagine
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.7\linewidth]{immagini/cap6_Bode/diagNyquist}
-	\caption{ Diagramma di nyquist: la funzione di trasferimento viene rappresentata come una curva parametrica al variare di $\omega$.  }
-	\label{fig:diagNyquist}
-\end{figure}
+%\begin{figure}[H]
+%	\centering
+%	\includegraphics[width=0.7\linewidth]{immagini/cap6_Bode/diagNyquist}
+%	\caption{ Diagramma di nyquist: la funzione di trasferimento viene rappresentata come una curva parametrica al variare di $\omega$.  }
+%	\label{fig:diagNyquist}
+%\end{figure}
 
 La rappresentazione su grafici rende più facile l'interpretazione della funzione di trasferimento. Per semplicità si può dividere il segnale nel modulo e nella fase.
 
@@ -90,18 +90,18 @@ L'unità di misura dell'ampiezza nei diagrammi di Bode è il Decibel
 
 %TODO nemmeno qui non so dove piazzare questo diagramma nel contesto
 %TODO: fare immagine
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.7\linewidth]{immagini/cap6_Bode/diagNichols}
-	\caption{ Rappresentazione logaritmica nel Diagramma di Nichols  }
-	\label{fig:diagNichols}
-\end{figure}
+%\begin{figure}[H]
+%	\centering
+%	\includegraphics[width=0.7\linewidth]{immagini/cap6_Bode/diagNichols}
+%	\caption{ Rappresentazione logaritmica nel Diagramma di Nichols  }
+%	\label{fig:diagNichols}
+%\end{figure}
 
 \section{Diagrammi di Bode}
 %TODO: fare immagine
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\linewidth]{immagini/cap6_Bode/diagBode}
+	\includegraphics[width=0.7\linewidth]{immagini/cap6_Bode/diagBode.eps}
 	\label{fig:diagBode}
 \end{figure}
 
@@ -110,18 +110,18 @@ L'unità di misura dell'ampiezza nei diagrammi di Bode è il Decibel
 %TODO non so come introdurre i diseng sulle decadi
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\linewidth]{immagini/cap6_Bode/schDecade}
+	\includegraphics[width=0.7\linewidth]{immagini/cap6_Bode/decade.pdf}
 	\label{fig:schDecade}
 \end{figure}
 Considerando un punto nella decade tra $ 0 $ e $ 1 $ specifichaimo per gli esercizi
 \[ 
 	\log 2 \simeq 0,3 \quad \log 3 \simeq 0,5 \quad\log 5 \simeq 0,7 \quad\log 8 \simeq 0,9 
  \]
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.7\linewidth]{immagini/cap6_Bode/schDecade2}
-	\label{fig:schDecade2}
-\end{figure}
+%\begin{figure}[H]
+%	\centering
+%	\includegraphics[width=0.7\linewidth]{immagini/cap6_Bode/schDecade2}
+%	\label{fig:schDecade2}
+%\end{figure}
 
 \[ 
 	\ln \big(H(j\omega)\big) = \underbrace{\ln (A(\omega))}_{\text{daigramma Ampiezze}} + j\,\underbrace{\Phi (\omega)}_{\text{diagramma Fase}}
@@ -296,17 +296,20 @@ Viene più facile disegnare la funzione asintotica del segnale rispetto a quella
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\linewidth]{immagini/cap6_Bode/bodeZPR-Amp}
+	\includegraphics[width=0.7\linewidth]{immagini/cap6_Bode/bodeZPR-Amp.pdf}
 	\caption{Grafico per le ampiezze di un zero o polo reale}
 	\label{fig:bodezpr-amp}
 \end{figure}
 
-Per la fase possiamo approssimare con i punti speciali $ \frac{0.1}{\abs{\tau}} $ e $ \frac{10}{\abs{\tau}} $ per l'\emph{approssimazione semplice} oppure con $ \frac{1}{5\abs{\tau}} $ e $ \frac{5}{\abs{\tau}} $ per l'\emph{approssimazione ++} (in quest'ultima l'asisntoto è tangente alla funzione reale).
+Per la fase possiamo approssimare con i punti speciali $ \frac{1}{10\abs{\tau}} $ e $ \frac{10}{\abs{\tau}} $ per l'\emph{approssimazione semplice} oppure con $ \frac{1}{5\abs{\tau}} $ e $ \frac{5}{\abs{\tau}} $ per l'\emph{approssimazione ++} (in quest'ultima l'asisntoto è tangente alla funzione reale).
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\linewidth]{immagini/cap6_Bode/bodeZPR-Fas}
-	\caption{Grafico della fase di un zero o polo reale, a destra approssimazione semplice, a sinistra approssimazione ++}
+	\subfloat[][\emph{ approssimazione semplice}]
+	{\includegraphics[width=.7\textwidth]{immagini/cap6_Bode/bodeZPR-fas-classica.pdf}} \quad
+	\subfloat[][\emph{approssimazione ++}]
+	{\includegraphics[width=.7\textwidth]{immagini/cap6_Bode/bodeZPR-fas-++.pdf}} 
+	\caption{ Grafico della fase di un zero o polo reale. }
 	\label{fig:bodezpr-fas}
 \end{figure}
 
@@ -314,7 +317,7 @@ Per la fase possiamo approssimare con i punti speciali $ \frac{0.1}{\abs{\tau}} 
 	\[ H(j\omega) = 1-j\omega2 \qquad\tau<0, \, \mu = 1 \]
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\linewidth]{immagini/cap6_Bode/es3}
+	\includegraphics[width=0.7\linewidth]{immagini/cap6_Bode/es3.eps}
 	\label{fig:Bode_es3}
 \end{figure}	
 \end{nexample}
@@ -324,7 +327,7 @@ Per la fase possiamo approssimare con i punti speciali $ \frac{0.1}{\abs{\tau}} 
 	%TODO controlla elevato alla 2?
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\linewidth]{immagini/cap6_Bode/es4}
+	\includegraphics[width=0.7\linewidth]{immagini/cap6_Bode/es4.eps}
 	\label{fig:Bode_es4}
 \end{figure}	
 \end{nexample}
@@ -369,7 +372,7 @@ Guardiamo ora l'ampiezza. Anche qui calcoliamo il segnale asintotico:
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\linewidth]{immagini/cap6_Bode/bodeBin-Amp}
+	\includegraphics[width=0.8\linewidth]{immagini/cap6_Bode/bodeBin-amp.pdf}
 	\caption{Grafico dell'Ampiezza di un termine binomio, la parte reale è al variare di $ \zeta $}
 	\label{fig:bodeBin-Amp}
 \end{figure}
@@ -385,7 +388,7 @@ Guardiamo adesso la fase:
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\linewidth]{immagini/cap6_Bode/bodeBin-Fas}
+	\includegraphics[width=0.8\linewidth]{immagini/cap6_Bode/bodeBin-fas.pdf}
 	\caption{Grafico della fase di un termine binomio al variare di $ \zeta $}
 	\label{fig:bodeBin-Fas}
 \end{figure}

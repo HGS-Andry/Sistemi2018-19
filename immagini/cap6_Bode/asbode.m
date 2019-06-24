@@ -1,4 +1,4 @@
-function [mod,fase,omega]=asbode(num,den,W_axes,M_axes,F_axes,B,R,X,Y);
+function [mod,fase,omega]=asbode(num,den,W_axes,M_axes,F_axes,B,R,X,Y,app);
 % ASBODE : traccia il diagramma asintotico di Bode 
 % ******************************************************************************
 %                 ## SYNTAX ##
@@ -67,7 +67,8 @@ function [mod,fase,omega]=asbode(num,den,W_axes,M_axes,F_axes,B,R,X,Y);
 %     - Y = 3 : traccia entrambi i diagrammi complessivi
 %               - la curva nera tratteggiata indica i diagrammi reali
 %               - la curva blu continua indica i diagrammi asintotici
-%    
+%     app: approssimazione: 0 approssimazione semplice (default)
+%                           1 approssimazione ++ NON FUNZIONA
 %  ************************************************************************
 %  [MOD,FASE,W]=ASBODE(NUM,DEN)
 %  [MOD,FASE,W]=ASBODE(NUM,DEN,[W1,W2],[M1,M2],[F1,F2])
@@ -151,6 +152,9 @@ if (ni <8),
 end
 if (ni <9),
     Y = 0;
+end
+if (ni <10), %MODIFICATO
+    app = 0;
 end
 
 % ELIMINO GLI ZERI INIZIALI DEI VETTORI num E den
@@ -315,24 +319,44 @@ for i=1:length(omega),
            nu=A(j,1);
            gain(i,j)=-nu*20*log10(w);
            phase(i,j)=-nu*90;
-       case 3
-           tau=A(j,1);
-           if w < 1/abs(10*tau),
-               gain(i,j)=0;
-               phase(i,j)=0;
+       case 3   %MODIFICATO
+           if app == 0,
+               tau=A(j,1);
+               if w < 1/abs(10*tau),
+                   gain(i,j)=0;
+                   phase(i,j)=0;
+               end
+               if ((w >= 1/abs(10*tau)) & (w < 1/abs(tau))),
+                   gain(i,j)=0;
+                   phase(i,j)=sign(tau)*45*(log10(w)-log10(1/abs(10*tau)));
+               end
+               if ((w >= 1/abs(tau)) & (w < 10/abs(tau))),
+                   gain(i,j)=20*log10(w*abs(tau));
+                   phase(i,j)=sign(tau)*45*(log10(w)-log10(1/abs(10*tau)));
+               end
+               if w >= 10/abs(tau),
+                   gain(i,j)=20*log10(w*abs(tau));
+                   phase(i,j)=sign(tau)*90;
+               end
+           else
+               tau=A(j,1);
+               if w < 1/abs(5*tau),
+                   gain(i,j)=0;
+                   phase(i,j)=0;
+               end
+               if ((w >= 1/abs(5*tau)) & (w < 1/abs(tau))),
+                   gain(i,j)=0;
+                   phase(i,j)=sign(tau)*45*(log10(w)-log10(1/abs(5*tau)));
+               end
+               if ((w >= 1/abs(tau)) & (w < 5/abs(tau))),
+                   gain(i,j)=20*log10(w*abs(tau));
+                   phase(i,j)=sign(tau)*45*(log10(w)-log10(1/abs(5*tau)));
+               end
+               if w >= 5/abs(tau),
+                   gain(i,j)=20*log10(w*abs(tau));
+                   phase(i,j)=sign(tau)*90;
+               end 
            end
-           if ((w >= 1/abs(10*tau)) & (w < 1/abs(tau))),
-               gain(i,j)=0;
-               phase(i,j)=sign(tau)*45*(log10(w)-log10(1/abs(10*tau)));
-           end
-           if ((w >= 1/abs(tau)) & (w < 10/abs(tau))),
-               gain(i,j)=20*log10(w*abs(tau));
-               phase(i,j)=sign(tau)*45*(log10(w)-log10(1/abs(10*tau)));
-           end
-           if w >= 10/abs(tau),
-               gain(i,j)=20*log10(w*abs(tau));
-               phase(i,j)=sign(tau)*90;
-           end         
        case 4
            omega_n=A(j,1);
            zeta=A(j,2);
@@ -360,24 +384,44 @@ for i=1:length(omega),
                    phase(i,j)=180;
                end
            end         
-       case 5
-           tau=A(j,1);
-           if w < 1/abs(10*tau),
-               gain(i,j)=0;
-               phase(i,j)=0;
+       case 5   %MODIFICATO
+           if app == 0
+               tau=A(j,1);
+               if w < 1/abs(10*tau),
+                   gain(i,j)=0;
+                   phase(i,j)=0;
+               end
+               if ((w >= 1/abs(10*tau)) & (w < 1/abs(tau))),
+                   gain(i,j)=0;
+                   phase(i,j)=-sign(tau)*45*(log10(w)-log10(1/abs(10*tau)));
+               end
+               if ((w >= 1/abs(tau)) & (w < 10/abs(tau))),
+                   gain(i,j)=-20*log10(w*abs(tau));
+                   phase(i,j)=-sign(tau)*45*(log10(w)-log10(1/abs(10*tau)));
+               end
+               if w >= 10/abs(tau),
+                   gain(i,j)=-20*log10(w*abs(tau));
+                   phase(i,j)=-sign(tau)*90;
+               end       
+           else
+               tau=A(j,1);
+               if w < 1/abs(5*tau),
+                   gain(i,j)=0;
+                   phase(i,j)=0;
+               end
+               if ((w >= 1/abs(5*tau)) & (w < 1/abs(tau))),
+                   gain(i,j)=0;
+                   phase(i,j)=-sign(tau)*63*(log10(w)-log10(1/abs(5*tau)));
+               end
+               if ((w >= 1/abs(tau)) & (w < 5/abs(tau))),
+                   gain(i,j)=-20*log10(w*abs(tau));
+                   phase(i,j)=-sign(tau)*63*(log10(w)-log10(1/abs(5*tau)));
+               end
+               if w >= 5/abs(tau),
+                   gain(i,j)=-20*log10(w*abs(tau));
+                   phase(i,j)=-sign(tau)*90;
+               end   
            end
-           if ((w >= 1/abs(10*tau)) & (w < 1/abs(tau))),
-               gain(i,j)=0;
-               phase(i,j)=-sign(tau)*45*(log10(w)-log10(1/abs(10*tau)));
-           end
-           if ((w >= 1/abs(tau)) & (w < 10/abs(tau))),
-               gain(i,j)=-20*log10(w*abs(tau));
-               phase(i,j)=-sign(tau)*45*(log10(w)-log10(1/abs(10*tau)));
-           end
-           if w >= 10/abs(tau),
-               gain(i,j)=-20*log10(w*abs(tau));
-               phase(i,j)=-sign(tau)*90;
-           end         
        case 6
            omega_n=A(j,1);
            zeta=A(j,2);
