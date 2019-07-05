@@ -1,10 +1,10 @@
-\chapter{Schemi}
-\section{Schemi a Blocchi}
-Serve a rappresentare un sistema graficamente dati ingressi e uscite
+\chapter{Rappresentazione grafica dei sistemi}
+\section{Introduzion agli Schemi a Blocchi}
+Dati ingressi ed uscite, uno schema a blocchi serve a rappresentare un sistema in modo schematico.
 
 \begin{example}
 	
-	dato un segnale $ u(t)=\delta_{-2}(t) $ ottengo un blocco così:
+	dato un segnale $ u(t)=\delta_{-2}(t) $ in un blocco così fatto:
 	
 	%%%%%%%%%% immagine %%%%%%%
 	\begin{center}
@@ -14,21 +14,21 @@ Serve a rappresentare un sistema graficamente dati ingressi e uscite
 \end{example}
 
 \begin{example}
-	Sistema massa molla smorzatore
+	Sistema massa molla attrito
 	
 	\begin{center}
 	\input{immagini/sist_blocchi/mas_moll_smorz.tikz}
 	\end{center}
 
 	con $ k $ costante della molla, $ f_{ext} $ forza applicata, $ M $ massa e $ b $ attrito.
-	
+	L'ingresso del nostro sistema è la forza applicata. L'uscita è la posizione.
 	Scriviamo l'equazione del sistema in riferimento alla posizione $ x $ ricordandoci che la velocità è la prima derivata dello spazio mentre l'accellerazione ne è la seconda:
 	\[
-		\sum F = M \cdot a \Rightarrow F_{ext}-kx-bx'= Mx'' \Rightarrow F_{ext}=kx+bx'+ Mx''
+		\sum F = M \cdot a \Rightarrow F_{ext}-kx-bx'= Mx'' \Rightarrow \underbrace{F_{ext}}_{\text{Entrata}}=\underbrace{kx+bx'+ Mx''}_{\text{uscite}}
 	\]
 	\[
 		\LA \rightarrow F_{ext}=kX(s)+sbX(s)+ s^2MX(s) 
-		= X(s) (k+sb+s^2M) \Rightarrow X(s)=F_{ext} \frac{1}{k+sb+s^2M}
+		= X(s) (k+sb+s^2M) \Rightarrow X(s)=F_{ext} \underbrace{\frac{1}{k+sb+s^2M}}_{\text{Funzione di trasferimento}}
 	\]
 	
 	Trasformiamo nello schema a blocchi:
@@ -40,7 +40,7 @@ Serve a rappresentare un sistema graficamente dati ingressi e uscite
 
 \subsection{Diagramma ad anello chiuso}
 
-Se l'ingresso non dipende dall'uscita si dice ad \emph{Anello Aperto}, altrimenti ad \emph{Anello Chiuso} (o retroazionato). Quest'ultimo è quello più usato.
+Se l'ingresso non dipende dall'uscita si dice ad \textbf{anello aperto}, altrimenti ad \textbf{anello chiuso} (o sistema retroazionato). Quest'ultimo è quello più usato.
 
 \begin{center}
 	\input{immagini/sist_blocchi/schema3.tikz}
@@ -93,7 +93,7 @@ G=G_1 \pm G_2
 \]
 %TODO controllare segni disegno e formula
 
-\subsection{Retroazione unitaria}
+\subsection{Retroazione unitaria (H=1)}
 \begin{center}
 	\input{immagini/sist_blocchi/schema8.tikz}
 \end{center}
@@ -113,13 +113,13 @@ G = \frac{G_1}{1\mp G_1}
 
 \section{Schemi di Flusso}
 
-È una rappresentazione con linee orientate:
+Gli schemi di flusso sono un'altra rappresentazione grafica per i sistemi, essi sono composti da linee orientate.
 
 \begin{center}
 	\input{immagini/sist_blocchi/schema11.tikz}
 \end{center}
 
-$ x_j, x_i $ sono i nodi, $ A_ij $ è la trasmittanza %TODO è corretto il nome?
+$ x_j, x_i $ sono i nodi, $ A_{ij} $ è la trasmittanza %TODO è corretto il nome?
 con il primo indice l'indice del nodo di arrivo e con secondo quello di partenza
 
 \begin{definizione}
@@ -132,11 +132,12 @@ con il primo indice l'indice del nodo di arrivo e con secondo quello di partenza
 	Esempio di cammini:
 	\begin{enumerate}
 		\item $ A_{21},A_{32},A_{43} $ (cammino aperto)
-		\item $ A_{21},A_{42} $
+		\item $ A_{21},A_{42} $ (cammino aperto)
 		\item $ A_{32},A_{23} $ (cammino chiuso/anello)
 		\item $ A_{33} $ (autoanello)
 	\end{enumerate}
 
+\subsection{Da schemi a blocchi a schemi di flusso}
 	\input{immagini/sist_blocchi/schema13.tikz}	
 		
 \end{definizione}
@@ -187,7 +188,7 @@ dove:
 		$\begin{aligned}[t] 
 		&1-G_1G_4H_1+G_1G_4G_2H_2+G_1G_4G_3H_2 = 1-G_1 G_4 H_1 +G_1 G_4 H_2(G_2 + G_3) =\\& 1+G_1 G_4 (-H_1 + H_2(G_2 + G_3))
 		\end{aligned}$
-		\item$ \Delta_1 = 1 $, $ \Delta_2 = 2 $
+		\item$ \Delta_1 = 1 $, $ \Delta_2 = 1 $
 	\end{itemize}
 ne deriva:
 \begin{equation*}

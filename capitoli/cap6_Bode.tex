@@ -39,15 +39,15 @@ Rappresentiamo un numero complesso $z=a+jb$
 	\includegraphics[width=0.4\linewidth, valign=c]{immagini/cap6_Bode/argCompl.pdf}\quad
 	$ \displaystyle \arg(z) =
 	\begin{cases}
-		\arctan \big(\frac{b}{a}\big) &,a>0, b\in \R\\
-		\frac{\pi}{2}&,a=0, b>0\\
-		-\frac{\pi}{2}&,a=0, b<0\\
-		\arctan \big(\frac{b}{a}\big)+\pi &,a<0, b\ge 0\\
-		\arctan \big(\frac{b}{a}\big)-\pi &,a<0, b< 0
+		\arctan \big(\frac{b}{a}\big) &a>0, b\in \R\\
+		\frac{\pi}{2}&a=0, b>0\\
+		-\frac{\pi}{2}&a=0, b<0\\
+		\arctan \big(\frac{b}{a}\big)+\pi &a<0, b\ge 0\\
+		\arctan \big(\frac{b}{a}\big)-\pi &a<0, b< 0
 	\end{cases} $
 \end{figure}
 
-Vista l'ampiezza delle possibili frequenze, usualmente si usa una scala logaritmica per esse. Vediamo come usare il logaritmo nei numeri complessi.
+Vista l'ampiezza delle possibili frequenze, usualmente si usa una \textbf{scala logaritmica} per esse. Vediamo come usare il logaritmo nei numeri complessi.
 
 Nei reali: 
 \begin{equation*}
@@ -71,7 +71,7 @@ Logaritmo principale: dove $ -\pi < \arg (z) < \pi $ (oppure $ 0< \arg (x) <2\pi
 	\item $ \ln ( b c) = \ln (b) + \ln (c) $
 	\item $ \ln \Big(\frac{b}{c}\Big) = \ln (b) - \ln (c) $
 	\item $ \ln (b^c) = c \ln (b) \quad ,c \in \R$
-	\item $ \log_a (b)  = \frac{\log_c (b)}{\log_c (a)}=\frac{1)}{\log_c (a)}\log_c (b)$
+	\item $ \log_a (b)  = \frac{\log_c (b)}{\log_c (a)}=\underbrace{\frac{1}{\log_c (a)}}_{\text{Costante}}\log_c (b)$
 \end{enumerate}
 
 Per analogia:
@@ -122,9 +122,9 @@ Considerando un punto nella decade tra $ 0 $ e $ 1 $ specifichaimo per gli eserc
 %	\includegraphics[width=0.7\linewidth]{immagini/cap6_Bode/schDecade2}
 %	\label{fig:schDecade2}
 %\end{figure}
-
+Con l'insieme dei due diagrammi di Bode (diagramma delle ampiezze e diagramma della fase) si ha una rappresentazione logaritmica di $ H(j\omega) $
 \[ 
-	\ln \big(H(j\omega)\big) = \underbrace{\ln (A(\omega))}_{\text{daigramma Ampiezze}} + j\,\underbrace{\Phi (\omega)}_{\text{diagramma Fase}}
+	\ln \big(H(j\omega)\big) = \underbrace{\ln (A(\omega))}_{\text{diagramma Ampiezze}} + j\,\underbrace{\Phi (\omega)}_{\text{diagramma Fase}}
  \]
  
  In caso di un sistema:
@@ -140,7 +140,7 @@ Considerando un punto nella decade tra $ 0 $ e $ 1 $ specifichaimo per gli eserc
 \[ 
 	H(j \omega)=A(j \omega)B(j \omega)
  \]
- di conseguenza: 
+ di conseguenza, visto che usiamo la scala logaritmica, una moltiplicazione diventa una somma: 
  \[ 
 	\ln H(j \omega)=\ln A(j \omega) + \ln B(j \omega)
  \]
@@ -150,7 +150,7 @@ Considerando un punto nella decade tra $ 0 $ e $ 1 $ specifichaimo per gli eserc
  
  Possiamo scrivere $ H(s) $ come:
  \[  
- 	K \, \frac{(s-z_1)\,(s-z_2)\,\dots \,(s-z_m)}{(p-z_1)\,(p-z_2)\,\dots \,(p-z_m)}
+ 	K \, \frac{(s-z_1)\,(s-z_2)\,\dots \,(s-z_m)}{(s-p_1)\,(s-p_2)\,\dots \,(s-p_n)}
  \]
  in forma \emph{irriducibile} con $K \in \R  $, $ z_i $ zeri di $ H(s) $ e $ p_i $ poli di $ H(s) $
  
@@ -163,12 +163,12 @@ Considerando un punto nella decade tra $ 0 $ e $ 1 $ specifichaimo per gli eserc
 
 \subsubsection{Caso 1}
 Avremo un termine di questo tipo al denominatore:
- $ \frac{1}{s^\nu}  $
+ $\displaystyle \frac{1}{s^\nu}  $
 con 
 \begin{itemize}
-	\item $ \nu =0 $ Se $ H(s) $ non ha poli o zeri nell'origine
-	\item $ \nu >0 $ Se $ H(s) $ ha polo nell'origine di molteplicità $ \nu $
-	\item $ \nu <0 $ Se $ H(s) $ ha zeri nell'origine di molteplicità $\nu$
+	\item $ \nu =0 $ se $ H(s) $ non ha poli o zeri nell'origine
+	\item $ \nu >0 $ se $ H(s) $ ha polo nell'origine di molteplicità $ \nu $
+	\item $ \nu <0 $ se $ H(s) $ ha zeri nell'origine di molteplicità $\nu$
 \end{itemize}
 
 \subsubsection{Caso 2}
@@ -177,27 +177,31 @@ Zeri: $ s-z_i \quad z_i \ne 0 $
 	(s-z_i)=(-z_i)\Big(1+s \frac{1}{-z_1} \Big)=(-z_i)(1+s \tau'_i) \qquad \tau'_i \dot{=} \frac{1}{-z_i}
  \]
  
- (In questo caso $ \tau'_i $ non ha seignificato fisico) %TODO ho capito bene?
+ (In questo caso $ \tau'_i $ non ha significato fisico) %TODO ho capito bene?
  
  Equivalentemente per i poli: $ s-p_i \quad p_i \ne 0 $
  \[ 
- (s-p_i)=(-z_i)\Big(1+s \frac{1}{-p_1} \Big)=(-p_i)(1+s \tau_i) \qquad \tau_i \dot{=} \frac{1}{-p_i} \, \text{Costante di tempo}
+ (s-p_i)=(-z_i)\Big(1+s \frac{1}{-p_1} \Big)=(-p_i)(1+s \tau_i) \qquad \tau_i \dot{=} \frac{1}{-p_i}
  \]
+ 
  %TODO nei miei appunti è l al posto di e e nell'ultima parte p al posto di Tau, purtroppo non ho trovato sul libro un riferimento 
- \[ (s-p_i) \rightarrow e^{p_i t} \rightarrow e^{-\frac{t}{\tau_1}} \, \text{decadimento esponenziale}\]
+ (In quest-altro caso, $ \tau_i $, invece, ha significato fisico: la costante di tempo)
+ \[ (s-p_i) \rightarrow e^{p_i t} \rightarrow e^{\textstyle -\frac{t}{\tau_1}} \, \text{decadimento esponenziale}\]
  
  \subsubsection{Caso 3}
  
  \[ 
- 	(s-z_k)(s-\overline{z_k}) = s^2-z_ks-\overline{z_k}s+z_k \,\overline{z_k} = \Re(z_k) s+\abs{z_k}^2 = \abs{z_k}^2\Big(1-\frac{2 \Re(z_k)}{\abs{z_k}}\frac{s}{\abs{z_k}}+\frac{s^2}{\abs{z_k}} \Big)
+ 	(s-z_k)(s-\overline{z_k}) = s^2-z_ks-\overline{z_k}s+z_k \,\overline{z_k} 
+ 	= s^2 - 2 \Re(z_k) s+\abs{z_k}^2 
+ 	= \abs{z_k}^2\Big(1-\frac{2 \Re(z_k)}{\abs{z_k}}\frac{s} {\abs{z_k}} + \frac{s^2}{\abs{z_k}^2} \Big)
  \]
 
- Definiamo $ \omega'_n \dot{=} \abs{z_k} $ come \emph{pulsazione naturale} e $ \zeta_k \dot{=} \frac{-\Re(z_k)}{\abs{z_k}} $ come \emph{fattore di smorzamento}, di conseguenza abbiamo: 
+ Definiamo $ \omega'_n \dot{=} \abs{z_k} $ come \emph{pulsazione naturale} e $ \zeta_k \dot{=} \frac{-\Re(z_k)}{\abs{z_k}} $ (zeta) come \emph{fattore di smorzamento}, di conseguenza abbiamo: 
  \[ 
  	(s-z_k)(s-\overline{z_k}) = \abs{z_k}^2\Big(1+2\zeta'_k\frac{s}{\omega'_{nk}}+\frac{s^2}{\omega^{'2}_{nk}} \Big)
   \]
   
-  Analogalmente con $ \omega_n \dot{=} \abs{p_k} $ e $ \zeta_k \dot{=} \frac{-\Re(p_k)}{\abs{p_k}} $ abbiamo:
+  Analogamente con $ \omega_n \dot{=} \abs{p_k} $ e $ \zeta_k \dot{=} \frac{-\Re(p_k)}{\abs{p_k}} $ abbiamo:
    \[ 
   (s-p_k)(s-\overline{p_k}) = \abs{p_k}^2\Big(1+2\zeta_k\frac{s}{\omega_{nk}}+\frac{s^2}{\omega^{2}_{nk}} \Big)
   \]
@@ -219,7 +223,7 @@ Zeri: $ s-z_i \quad z_i \ne 0 $
 	(1+j\omega\tau_i)^{\mu} \qquad 
 	\Big(1+j2\zeta\frac{\omega}{\omega_{n}}+\frac{\omega^2}{\omega^{2}_{n}} \Big)^{\mu}
 \]
-In cui $ \omega_n > 0 \quad ,\abs{\zeta}<1 \quad,\mu \in \R $ con $ \mu > 0 \rightarrow$ zeri e $ \mu < 0 \rightarrow$ poli.
+In cui $ \omega_n > 0 \quad ,\abs{\zeta}<1 \quad,\mu \in \Z $ con $ \mu > 0 \rightarrow$ zeri e $ \mu < 0 \rightarrow$ poli.
 
 \subsection{Termine Costante $ K_B $} 
 \[ H(j\omega) = K_B \rightarrow \abs{H(j\omega)}_{dB} = 20 \log \abs{K_B} \]
@@ -234,8 +238,8 @@ In cui $ \omega_n > 0 \quad ,\abs{\zeta}<1 \quad,\mu \in \R $ con $ \mu > 0 \rig
 
 \begin{gather*}
 	H(j\omega) = \frac{1}{(j\omega)^\nu}\\
-	\abs{H(j\omega)}_{dB} = 20 \log \Abs{\frac{1}{(j\omega)^\nu}} = 20 ( -\nu) \log \abs{\omega} \\
-	\arg \bigg(\frac{1}{(j\omega)^\nu}\bigg) = \arg \big((j\omega)^{\nu}\big) = -\nu \cdot \ang{90} 
+	\abs{H(j\omega)}_{dB} = 20 \log \Abs{\frac{1}{(j\omega)^\nu}} = 20 ( -\nu) \log \abs{\omega} \qquad \text{dove: }\abs{j\omega}=\abs{\omega}\\
+	\arg \bigg(\frac{1}{(j\omega)^\nu}\bigg) = \arg \big((j\omega)^{-\nu}\big) = -\nu \cdot \ang{90} 
 \end{gather*}
 
 \begin{figure}[H]
@@ -247,6 +251,7 @@ In cui $ \omega_n > 0 \quad ,\abs{\zeta}<1 \quad,\mu \in \R $ con $ \mu > 0 \rig
 
 \begin{nexample}
 	\[ H(j\omega) = \frac{1}{(j\omega)^2} \rightarrow \nu = 2 \rightarrow \abs{H(j\omega)}_{dB} = -40 \log \abs{\omega}\]
+	\[ \arg \arg \big(H(j\omega)\big) =-\nu \cdot \ang{90} =-2\cdot \ang{90} =\ang{180}  \]
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\linewidth]{immagini/cap6_Bode/es1.eps}
@@ -256,6 +261,7 @@ In cui $ \omega_n > 0 \quad ,\abs{\zeta}<1 \quad,\mu \in \R $ con $ \mu > 0 \rig
 
 \begin{nexample}
 	\[ H(j\omega) =j\omega = \frac{1}{(j\omega)^{-1}} \rightarrow \nu = -1 \rightarrow \abs{H(j\omega)}_{dB} = 20 \log \abs{\omega}\]
+	\[ \arg \arg \big(H(j\omega)\big) =-\nu \cdot \ang{90} =-(-1)\cdot \ang{90} =\ang{90}  \]
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\linewidth]{immagini/cap6_Bode/es2.eps}
@@ -263,7 +269,7 @@ In cui $ \omega_n > 0 \quad ,\abs{\zeta}<1 \quad,\mu \in \R $ con $ \mu > 0 \rig
 \end{figure}
 \end{nexample}
 
-\subsection{Poli / Zeri reali}
+\subsection{Termine Binomiale - Poli / Zeri reali}
 
 \[ H(j\omega) = (1+j\omega\tau)^{\mu} \quad \tau \in \R \backslash \{0\} \quad \mu \in \Z \backslash \{0\}  \]
 $ \mu>0 $ \emph{Zero Reale} di molteplicità $ \mu $\\
@@ -332,7 +338,7 @@ Per la fase possiamo approssimare con i punti speciali $ \frac{1}{10\abs{\tau}} 
 \end{figure}	
 \end{nexample}
 
-\subsection{Termine Binomio}
+\subsection{Termine Trinomio}
 \begin{gather*}
 	\Big(1+j2\zeta\frac{\omega}{\omega_{n}}-\frac{\omega^2}{\omega^{2}_{n}} \Big)^{\mu}\\
 	\abs{H(j\omega)}_{dB} = 20 \mu \log \Abs{\underbrace{1-\frac{\omega^2}{\omega^{2}_{n}}}_{\text{\scriptsize Parte Reale}}+\underbrace{j2\zeta\frac{\omega}{\omega_{n}}}_{\text{\scriptsize Parte Immaginaria}}} = 20\mu \log \sqrt{\bigg(1-\frac{\omega^2}{\omega^{2}_{n}} \bigg)^2+\bigg(j2\zeta\frac{\omega}{\omega_{n}}\bigg)^2}\\
@@ -395,9 +401,11 @@ Guardiamo adesso la fase:
 dove: $\displaystyle \omega_a \simeq \frac{1}{5^{\abs{\zeta}}}\omega_n \qquad \omega_b \simeq 5^{\abs{\zeta}}\omega_n$
 
 
-	Con $\displaystyle \abs{\zeta}=1 \rightarrow \zeta =\frac{\Re (Z_K)}{\abs{Z_K}} \equiv \Big(1+\sng(\zeta)j \omega \frac{1}{\omega_n}\Big)^{2\mu} $  In questo caso la differenza tra reale e asintotico è di $ 6 dB $
+	Con $\displaystyle \abs{\zeta}=1 \rightarrow \zeta =\frac{\Re (Z_K)}{\abs{Z_K}} \equiv \Big(1+\sng(\zeta)j \omega \frac{1}{\omega_n}\Big)^{2\mu} $. 	
+	In questo caso la differenza tra reale e asintotico è di $ 6 dB $
 	
-	Con $ \displaystyle \abs{\zeta} = 0 \rightarrow H(j\omega) = \Big(1-\frac{\omega^2}{\omega2_n}\Big)^\mu $ abbiamo, quindi, 2 poli complessi coniugati con $ \Re =0 $ (completamente immaginari). Di conseguenza:
+	Con $ \displaystyle \abs{\zeta} = 0 \rightarrow H(j\omega) = \Big(1-\frac{\omega^2}{\omega2_n}\Big)^\mu $.
+	Abbiamo, quindi, 2 poli complessi coniugati con $ \Re =0 $ (completamente immaginari). Di conseguenza:
 	\begin{gather*}
 		H(j\omega)=
 		\begin{cases}
@@ -407,7 +415,7 @@ dove: $\displaystyle \omega_a \simeq \frac{1}{5^{\abs{\zeta}}}\omega_n \qquad \o
 		\arg \big(H(j\omega)\big) = 
 		\begin{cases}
 			0 &\omega \ll \omega_n\\
-			\pm \mu \ang{180} 0 &\omega \gg \omega_n
+			\pm \mu \ang{180} &\omega \gg \omega_n
 		\end{cases}
 	\end{gather*}
 Si può scegliere come convenzione se fare + o - \ang{180}, noi useremo +\ang{180}.
